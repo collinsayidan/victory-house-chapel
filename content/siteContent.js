@@ -1,0 +1,324 @@
+// content/siteContent.js
+export const siteConfig = {
+  name: 'Victory House Chapel Assemblies of God, Edinburgh',
+  shortName: 'Victory House Chapel',
+  location: 'Edinburgh, Scotland',
+  tagline: 'A welcoming Christ-centred church for Edinburgh.',
+  description:
+    'A Christian church within the Assemblies of God, serving a diverse congregation with Sunday services, midweek prayer meetings and community outreach.',
+  addressLine1: 'Murrayburn House, 2nd Floor',
+  addressLine2: 'Edinburgh EH14 3HR',
+  charityNumber: '[Insert Scottish charity number]',
+  email: 'info@victoryhousechapelag.org',
+  phone: '013 1244 18915',
+  privacyEmail: '[Insert privacy email]',
+  financeEmail: '[Insert finance email]',
+  dataProtectionContact: '[Insert contact name or role]',
+  officeHours: '[Insert office or enquiry hours]',
+  serviceTimes: [
+    'Sunday Prayer - 10:00 am',
+    'Sunday Worship Service - 11:00 am',
+    'Midweek Prayer Meeting - Wednesday, 7:00 pm',
+    'Community Outreach - Selected Saturdays, 11:00 am'
+  ],
+  hero: {
+    title: 'A place to worship, grow and belong.',
+    intro:
+      'Victory House Chapel Assemblies of God, Edinburgh is a welcoming local church serving people of many backgrounds across the city. We gather to worship Jesus, pray together, learn from Scripture and share the love of Christ in practical ways.'
+  },
+  footerNotice:
+    'This starter site includes sample wording and placeholders that should be reviewed and updated before publication.'
+};
+
+export const socialLinks = [
+  {
+    name: 'YouTube',
+    href: 'https://www.youtube.com/[insert-channel]',
+    handle: '@[insert-youtube-handle]',
+    icon: 'youtube'
+  },
+  {
+    name: 'Instagram',
+    href: 'https://www.instagram.com/[insert-instagram-handle]',
+    handle: '@[insert-instagram-handle]',
+    icon: 'instagram'
+  },
+  {
+    name: 'TikTok',
+    href: 'https://www.tiktok.com/@[insert-tiktok-handle]',
+    handle: '@[insert-tiktok-handle]',
+    icon: 'tiktok'
+  },
+  {
+    name: 'X',
+    href: 'https://x.com/[insert-x-handle]',
+    handle: '@[insert-x-handle]',
+    icon: 'x'
+  }
+];
+
+export const homeHighlights = [
+  {
+    title: 'Sunday gatherings',
+    text: 'Join us each Sunday for worship, biblical teaching, prayer and warm fellowship for all ages.'
+  },
+  {
+    title: 'Prayer and discipleship',
+    text: 'We seek to grow as disciples of Jesus through prayer, teaching, encouragement and shared life.'
+  },
+  {
+    title: 'Outreach and care',
+    text: 'We serve our local community through hospitality, support, outreach and practical compassion.'
+  }
+];
+
+export const ministries = [
+  {
+    title: "Children's ministry",
+    text: 'A safe and encouraging environment where children can learn about Jesus in an age-appropriate way.'
+  },
+  {
+    title: 'Youth ministry',
+    text: 'Helping young people grow in faith, confidence and Christian community.'
+  },
+  {
+    title: 'Prayer ministry',
+    text: 'Regular times of intercession for the church, city and wider world.'
+  },
+  {
+    title: 'Outreach ministry',
+    text: 'Practical service, evangelism and support for people in the local community.'
+  },
+  {
+    title: "Women's and men's fellowship",
+    text: 'Spaces for encouragement, friendship, discipleship and prayer.'
+  },
+  {
+    title: 'Worship and media',
+    text: 'Serving the gathered church through music, sound, projection and communication.'
+  }
+];
+
+export const events = [
+  {
+    title: 'Sunday Worship Service',
+    schedule: 'Every Sunday, 11:00 am',
+    location: 'Murrayburn House, 2nd Floor, Edinburgh EH14 3HR',
+    description: 'A weekly gathering for worship, prayer, Bible teaching and fellowship.',
+    image: '/images/events/church-service.webp',
+    alt: 'Congregation gathered for Sunday worship at Victory House Chapel in Edinburgh'
+  },
+  {
+    title: 'Midweek Prayer Meeting',
+    schedule: 'Every Wednesday, 7:00 pm',
+    location: 'Murrayburn House, 2nd Floor, Edinburgh EH14 3HR',
+    description: 'A time to seek God together and pray for the church, community and wider world.',
+    image: '/images/events/prayer-meeting.png',
+    alt: 'Church members praying together during a prayer gathering'
+  },
+  {
+    title: 'Community Outreach Saturday',
+    schedule: 'First Saturday of each month, 11:00 am',
+    location: 'Various local venues',
+    description: 'Serving our neighbours through practical support, hospitality and Christian witness.',
+    image: '/images/events/outreach.webp',
+    alt: 'Church volunteers serving the local community during outreach in Edinburgh'
+  },
+  {
+    title: 'Youth Fellowship Evening',
+    schedule: 'Fortnightly Friday, 6:30 pm',
+    location: 'Church premises',
+    description: 'A welcoming gathering for young people with teaching, conversation and community.',
+    image: '/images/events/youth-fellowship.webp',
+    alt: 'Young people taking part in a church youth programme activity'
+  }
+];
+
+export const sermons = [
+  {
+    title: 'Hope in Christ',
+    speaker: '[Insert speaker name]',
+    date: 'Sunday, 2 March 2026',
+    summary: 'A message on the living hope we have through the resurrection of Jesus Christ.',
+    href: '/sermons/hope-in-christ-notes.pdf',
+    linkLabel: 'Read message notes',
+    image: '/images/sermons/sermon - 01.jpg',
+    alt: 'Pastor preaching a sermon about hope in Christ during a church service'
+  },
+  {
+    title: 'A Church Devoted to Prayer',
+    speaker: '[Insert speaker name]',
+    date: 'Sunday, 23 February 2026',
+    summary: 'An encouragement from Acts on prayer, unity and dependence on the Holy Spirit.',
+    href: '/audio/devoted-to-prayer.mp3',
+    linkLabel: 'Listen to sermon audio',
+    image: '/images/sermons/sermon - 02.jpg',
+    alt: 'Church members gathered prayerfully during a sermon on prayer and unity'
+  },
+  {
+    title: 'Faithful in Everyday Witness',
+    speaker: '[Insert speaker name]',
+    date: 'Sunday, 16 February 2026',
+    summary: 'A practical sermon on following Jesus in daily life, work, study and relationships.',
+    href: 'https://www.youtube.com/watch?v=YOUR_VIDEO_ID',
+    linkLabel: 'Watch sermon',
+    image: '/images/sermons/sermon - 03.webp',
+    alt: 'A church sermon focused on faithful Christian witness in everyday life'
+  }
+];
+
+export const donateOptions = [
+  'Bank transfer: [Insert bank details or donation instructions]',
+  'PayPal: [Insert verified PayPal donation link]',
+  'Online donation page: [Insert secure donation link]',
+  'Standing order: [Insert regular giving details]',
+  'In-person offering: [Insert details if applicable]'
+];
+
+export const donateSummary = [
+  {
+    title: 'Worship and ministry',
+    text: 'Supporting Sunday services, prayer gatherings, Bible teaching and the ongoing ministry of the church.'
+  },
+  {
+    title: 'Pastoral care',
+    text: 'Helping provide prayer, encouragement, support and practical care for members, visitors and those in need.'
+  },
+  {
+    title: 'Community outreach',
+    text: 'Supporting local outreach, hospitality, evangelism and compassionate service within the wider community.'
+  },
+  {
+    title: 'Church operations',
+    text: 'Helping with the practical running costs that enable the church to remain open, active and welcoming.'
+  }
+];
+
+export const leaders = [
+  {
+    id: 1,
+    name: 'Pastor [Insert Name]',
+    role: 'Lead Pastor',
+    email: '[insert-pastor-email@example.org]',
+    phone: '[Insert contact number]',
+    image: '/images/leaders/lead-pastor.jpg',
+    alt: 'Portrait of the lead pastor at Victory House Chapel'
+  },
+  {
+    id: 2,
+    name: '[Insert Name]',
+    role: 'Associate Pastor',
+    email: '[insert-associate-email@example.org]',
+    phone: '[Insert contact number]',
+    image: '/images/leaders/associate-pastor.jpg',
+    alt: 'Portrait of the associate pastor at Victory House Chapel'
+  },
+  {
+    id: 3,
+    name: '[Insert Name]',
+    role: 'Church Administrator',
+    email: '[insert-admin-email@example.org]',
+    phone: '[Insert contact number]',
+    image: '/images/leaders/church-administrator.jpg',
+    alt: 'Portrait of the church administrator at Victory House Chapel'
+  },
+  {
+    id: 4,
+    name: '[Insert Name]',
+    role: 'Ministry Leader',
+    email: '[insert-ministry-email@example.org]',
+    phone: '[Insert contact number]',
+    image: '/images/leaders/ministry-leader.jpg',
+    alt: 'Portrait of a ministry leader at Victory House Chapel'
+  }
+];
+
+export const galleryItems = [
+  {
+    id: 1,
+    title: 'Sunday worship',
+    category: 'Worship',
+    image: '/images/gallery/worship.jpg',
+    alt: 'Congregation gathered for Sunday worship at Victory House Chapel in Edinburgh'
+  },
+  {
+    id: 2,
+    title: 'Prayer gathering',
+    category: 'Prayer',
+    image: '/images/gallery/Worship03.jpg',
+    alt: 'Church members praying together during a prayer gathering'
+  },
+  {
+    id: 3,
+    title: 'Community outreach',
+    category: 'Outreach',
+    image: '/images/gallery/Outreach02.webp',
+    alt: 'Church volunteers serving the local community during outreach in Edinburgh'
+  },
+  {
+    id: 4,
+    title: 'Pastoral leadership',
+    category: 'Pastors',
+    image: '/images/leaders/HeadPastor.JPG',
+    alt: 'Portrait of the pastor and leadership team at Victory House Chapel'
+  },
+  {
+    id: 5,
+    title: 'Youth programme',
+    category: 'Programmes',
+    image: '/images/gallery/youth-fellowship.webp',
+    alt: 'Young people taking part in a church youth programme activity'
+  },
+  {
+    id: 6,
+    title: 'Church fellowship',
+    category: 'Community',
+    image: '/images/gallery/worship05.jpg',
+    alt: 'Members and visitors spending time together after a church gathering'
+  },
+  {
+    id: 7,
+    title: "Children's programme",
+    category: 'Programmes',
+    image: '/images/children-ministries/children-ministry - 03.jpg',
+    alt: "Children taking part in a church programme activity with appropriate supervision"
+  },
+  {
+    id: 8,
+    title: 'Special church event',
+    category: 'Events',
+    image: '/images/hero/church-activities.jpeg',
+    alt: 'Church members attending a special event or celebration at Victory House Chapel'
+  }
+];
+
+export const galleryCategories = [
+  'All',
+  'Worship',
+  'Prayer',
+  'Outreach',
+  'Pastors',
+  'Programmes',
+  'Community',
+  'Events'
+];
+
+export const mainNavigation = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/events', label: 'Events' },
+  { href: '/contact', label: 'Contact' }
+];
+
+export const moreNavigation = [
+  { href: '/ministries', label: 'Ministries' },
+  { href: '/sermons', label: 'Sermons' },
+  { href: '/gallery', label: 'Gallery' },
+  { href: '/donate', label: 'Donate' }
+];
+
+export const navigation = [
+  ...mainNavigation,
+  { href: '/visit', label: 'Plan Your Visit' },
+  ...moreNavigation
+];
