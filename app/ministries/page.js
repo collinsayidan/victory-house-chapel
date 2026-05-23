@@ -16,7 +16,6 @@ export default function MinistriesPage() {
         backgroundImage="/images/hero/victory-voices-ministration-01.jpeg"
         overlay="ministries"
       />
-
       <MinistriesPageClient />
     </>
   );

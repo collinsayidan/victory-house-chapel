@@ -16,7 +16,6 @@ export default function AboutPage() {
         backgroundImage="/images/hero/worship.webp"
         overlay="about"
       />
-
       <AboutPageClient />
     </>
   );

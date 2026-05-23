@@ -13,60 +13,98 @@ export default function GallerySection({
 
   return (
     <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
-      <div className="mb-8 max-w-3xl">
-        <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-700">
-          Gallery
-        </p>
-        <h2 className="mt-3 text-3xl font-bold tracking-tight text-church-heading">
+
+      {/* ── Header ──────────────────────────────────────────────────────── */}
+      <div className="mb-10 max-w-3xl">
+        <p className="eyebrow">Gallery</p>
+        <h2
+          className="mt-4 tracking-tight text-church-heading"
+          style={{ fontFamily: 'var(--font-display)' }}
+        >
           {title}
         </h2>
-        <p className="mt-3 text-base leading-7 text-church-text">
+        <p className="mt-4 text-base leading-7 text-church-text">
           {intro}
         </p>
       </div>
 
+      {/* ── Grid ────────────────────────────────────────────────────────── */}
       <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-        {visibleItems.map((item, index) => (
-          <article
-            key={item.id}
-            className={`group overflow-hidden rounded-2xl border shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-navy ${
-              index % 3 === 1
-                ? 'border-church-border bg-church-panel'
-                : 'border-church-border bg-white'
-            }`}
-          >
-            <div className="relative aspect-[4/3] overflow-hidden">
-              <Image
-                src={item.image}
-                alt={item.alt}
-                fill
-                className="object-cover transition duration-500 group-hover:scale-[1.04]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy-950/40 via-transparent to-transparent" />
-            </div>
+        {visibleItems.map((item, index) => {
+          /* Alternate card tone: default white / soft panel / navy-violet dark */
+          const tone = index % 3;
 
-            <div className="p-5">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-700">
-                {item.category}
-              </p>
-              <h3 className="mt-2 text-xl font-semibold tracking-tight text-church-heading">
-                {item.title}
-              </h3>
-            </div>
-          </article>
-        ))}
+          return (
+            <article
+              key={item.id}
+              className="gallery-card group overflow-hidden rounded-3xl border transition-all duration-300 hover:-translate-y-2"
+              style={{
+                borderColor: tone === 2
+                  ? 'rgba(79,61,140,0.25)'
+                  : 'rgba(14,27,61,0.08)',
+                background: tone === 2
+                  ? 'var(--gradient-card)'
+                  : tone === 1
+                    ? 'var(--gold-lt)'
+                    : 'white',
+                boxShadow: 'var(--shadow-card)'
+              }}
+            >
+              {/* Image */}
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <Image
+                  src={item.image}
+                  alt={item.alt}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-[1.05]"
+                />
+                {/* Overlay — navy→violet on dark cards, lighter on others */}
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background: tone === 2
+                      ? 'linear-gradient(to top, rgba(14,27,61,0.65) 0%, rgba(46,33,96,0.20) 50%, transparent 100%)'
+                      : 'linear-gradient(to top, rgba(14,27,61,0.45) 0%, transparent 60%)'
+                  }}
+                />
+                {/* Gold accent pip — top left corner */}
+                <div
+                  className="absolute left-4 top-4 h-1 w-8 rounded-full opacity-90"
+                  style={{ background: 'linear-gradient(90deg, var(--gold-on-dark), var(--violet-mid))' }}
+                />
+              </div>
+
+              {/* Caption */}
+              <div className="p-5">
+                <p
+                  className="text-xs font-semibold uppercase tracking-widest"
+                  style={{ color: tone === 2 ? 'var(--gold-on-dark)' : 'var(--gold-dk)' }}
+                >
+                  {item.category}
+                </p>
+                <h3
+                  className="mt-2 tracking-tight"
+                  style={{
+                    fontFamily: 'var(--font-display)',
+                    color: tone === 2 ? 'white' : 'var(--navy)'
+                  }}
+                >
+                  {item.title}
+                </h3>
+              </div>
+            </article>
+          );
+        })}
       </div>
 
-      {showViewAll ? (
-        <div className="mt-8">
-          <Link
-            href="/gallery"
-            className="inline-flex items-center rounded-full border border-church-border bg-white px-5 py-3 text-sm font-semibold text-church-heading shadow-soft transition duration-200 hover:border-brand-300 hover:bg-brand-50 hover:text-brand-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400"
-          >
+      {/* ── View all link ────────────────────────────────────────────────── */}
+      {showViewAll && (
+        <div className="mt-10">
+          <Link href="/gallery" className="btn-secondary">
             View full gallery
           </Link>
         </div>
-      ) : null}
+      )}
     </section>
   );
 }

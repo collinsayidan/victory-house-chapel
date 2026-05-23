@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const STORAGE_KEY = 'vhc-cookie-consent';
 
@@ -18,43 +19,74 @@ export default function CookieBanner() {
     setVisible(false);
   }
 
-  if (!visible) return null;
-
   return (
-    <div className="fixed inset-x-4 bottom-4 z-50 sm:inset-x-auto sm:right-4 sm:w-full sm:max-w-xl">
-      <div
-        className="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft"
-        role="dialog"
-        aria-label="Cookie consent banner"
-      >
-        <p className="text-sm leading-6 text-slate-700">
-          We use necessary cookies by default to help this website work properly. Non-essential cookies,
-          such as analytics cookies, are optional. You can accept all cookies or reject non-essential cookies.
-        </p>
-        <p className="mt-3 text-sm text-slate-700">
-          Read our{' '}
-          <Link href="/cookie-policy" className="font-semibold text-brand-700 underline underline-offset-2">
-            Cookie Policy
-          </Link>
-          .
-        </p>
-        <div className="mt-4 flex flex-wrap gap-3">
-          <button
-            type="button"
-            onClick={() => saveChoice('accepted')}
-            className="rounded-full bg-brand-700 px-5 py-3 text-sm font-semibold text-white"
+    <AnimatePresence>
+      {visible && (
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 16 }}
+          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+          className="fixed inset-x-4 bottom-4 z-50 sm:inset-x-auto sm:right-4 sm:w-full sm:max-w-md"
+        >
+          <div
+            className="relative overflow-hidden rounded-2xl bg-white p-5"
+            role="dialog"
+            aria-label="Cookie consent banner"
+            style={{
+              border: '1px solid rgba(13,27,62,0.10)',
+              boxShadow: '0 8px 40px rgba(13,27,62,0.16), 0 2px 8px rgba(13,27,62,0.08)'
+            }}
           >
-            Accept all cookies
-          </button>
-          <button
-            type="button"
-            onClick={() => saveChoice('rejected')}
-            className="rounded-full border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-800"
-          >
-            Reject non-essential cookies
-          </button>
-        </div>
-      </div>
-    </div>
+            {/* Navy → gold top bar */}
+            <div
+              className="absolute inset-x-0 top-0 h-1 rounded-t-2xl"
+              style={{ background: 'linear-gradient(90deg, var(--navy), var(--navy-lt), var(--gold-mid))' }}
+            />
+
+            <div className="pt-1">
+              <p
+                className="text-xs font-semibold uppercase tracking-widest"
+                style={{ color: 'var(--gold-dk)' }}
+              >
+                Cookie settings
+              </p>
+              <p className="mt-2 text-sm leading-6 text-slate-600">
+                We use necessary cookies to keep this site working. Non-essential
+                cookies (such as analytics) are optional — you choose.
+              </p>
+              <p className="mt-2 text-sm text-slate-500">
+                Read our{' '}
+                <Link
+                  href="/cookie-policy"
+                  className="font-semibold underline underline-offset-2 transition-colors duration-200"
+                  style={{ color: 'var(--navy)' }}
+                >
+                  Cookie Policy
+                </Link>
+                .
+              </p>
+
+              <div className="mt-4 flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  onClick={() => saveChoice('accepted')}
+                  className="btn-primary px-4 py-2 text-xs"
+                >
+                  Accept all
+                </button>
+                <button
+                  type="button"
+                  onClick={() => saveChoice('rejected')}
+                  className="btn-secondary px-4 py-2 text-xs"
+                >
+                  Reject non-essential
+                </button>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

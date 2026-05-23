@@ -17,32 +17,59 @@ export default function CookiePolicyPage() {
       />
 
       <Section title="What are cookies?">
-        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft prose-content max-w-none">
+        <div
+          className="prose-content max-w-none rounded-3xl border border-church-border bg-white p-8"
+          style={{ boxShadow: 'var(--shadow-card)' }}
+        >
           <p>
-            Cookies are small text files stored on your device when you visit a website. Some cookies are necessary for the website to function properly,
-            while others may be used to remember preferences or gather analytics information.
+            Cookies are small text files stored on your device when you visit a
+            website. Some cookies are necessary for the website to function
+            properly, while others may be used to remember preferences or gather
+            analytics information.
           </p>
         </div>
       </Section>
 
       <Section title="How we use cookies">
-        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft prose-content max-w-none">
+        <div
+          className="prose-content max-w-none rounded-3xl border border-church-border bg-white p-8"
+          style={{ boxShadow: 'var(--shadow-card)' }}
+        >
           <ul>
-            <li><strong>Necessary cookies</strong> help with essential site functions, such as remembering your cookie preferences.</li>
-            <li><strong>Analytics cookies</strong> may be used to help us understand how visitors use the site, but only if you choose to accept non-essential cookies.</li>
+            <li>
+              <strong>Necessary cookies</strong> help with essential site
+              functions, such as remembering your cookie preferences.
+            </li>
+            <li>
+              <strong>Analytics cookies</strong> may be used to help us
+              understand how visitors use the site, but only if you choose to
+              accept non-essential cookies.
+            </li>
           </ul>
         </div>
       </Section>
 
       <Section title="Your choices">
-        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft prose-content max-w-none">
+        <div
+          className="prose-content max-w-none rounded-3xl border border-church-border bg-white p-8"
+          style={{ boxShadow: 'var(--shadow-card)' }}
+        >
           <p>
-            On your first visit, you will be shown a cookie banner that allows you to accept all cookies or reject non-essential cookies.
-            If you reject non-essential cookies, only necessary cookies should remain active.
+            On your first visit, you will be shown a cookie banner that allows
+            you to accept all cookies or reject non-essential cookies. If you
+            reject non-essential cookies, only necessary cookies should remain
+            active.
           </p>
           <p>
-            For more detail on how personal data may be handled alongside cookie technologies, please read our{' '}
-            <Link href="/privacy-policy" className="font-semibold text-brand-700 underline underline-offset-2">Privacy Policy</Link>.
+            For more detail on how personal data may be handled alongside cookie
+            technologies, please read our{' '}
+            <Link
+              href="/privacy-policy"
+              className="font-semibold underline underline-offset-2 transition-colors duration-200"
+              style={{ color: 'var(--violet-dk)' }}
+            >
+              Privacy Policy
+            </Link>.
           </p>
         </div>
       </Section>

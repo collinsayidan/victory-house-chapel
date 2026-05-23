@@ -19,59 +19,48 @@ export default function DonatePage() {
         overlay="donate"
       />
 
+      {/* ── Why your donation matters ────────────────────────────────────────── */}
       <Section
         title="Why your donation matters"
         intro="Giving helps support the day-to-day ministry of the church and our practical service in the community."
       >
         <div className="grid gap-6 lg:grid-cols-[1.08fr_0.92fr]">
-          <div className="rounded-3xl border border-church-border bg-white p-6 shadow-soft lg:p-8">
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-700">
-              What donations support
-            </p>
 
-            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-church-heading">
+          <div className="rounded-3xl border border-church-border bg-white p-8" style={{ boxShadow: 'var(--shadow-card)' }}>
+            <p className="eyebrow">What donations support</p>
+            <h2 className="mt-5 text-2xl tracking-tight text-church-heading" style={{ fontFamily: 'var(--font-display)' }}>
               Worship, care and community mission
             </h2>
-
             <p className="mt-4 text-base leading-7 text-church-text">
               We want giving to be clear, prayerful and transparent. Donations
               help us support gathered worship, Bible teaching, prayer,
               discipleship, pastoral support and practical ministry in the local
               community.
             </p>
-
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
               {donateSummary.map((item) => (
-                <div
-                  key={item.title}
-                  className="rounded-2xl border border-church-border bg-church-panel p-4"
-                >
-                  <h3 className="text-base font-semibold text-church-heading">
+                <div key={item.title} className="summary-item">
+                  <h3 className="text-base tracking-tight text-church-heading" style={{ fontFamily: 'var(--font-display)' }}>
                     {item.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-6 text-church-text">
-                    {item.text}
-                  </p>
+                  <p className="mt-2 text-sm leading-6 text-church-text">{item.text}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-3xl border border-church-border bg-white shadow-soft">
-            <div className="relative aspect-[4/3]">
+          <div className="overflow-hidden rounded-3xl border border-church-border bg-white" style={{ boxShadow: 'var(--shadow-card)' }}>
+            <div className="relative aspect-[4/3] overflow-hidden">
               <Image
                 src="/images/donate/donate-to-church.webp"
                 alt="Members of Victory House Chapel gathered in worship and community life"
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-700 hover:scale-105"
               />
             </div>
-
-            <div className="p-6 lg:p-8">
-              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-700">
-                Thank you
-              </p>
-              <h3 className="mt-3 text-2xl font-semibold tracking-tight text-church-heading">
+            <div className="p-8">
+              <p className="eyebrow">Thank you</p>
+              <h3 className="mt-4 text-2xl tracking-tight text-church-heading" style={{ fontFamily: 'var(--font-display)' }}>
                 Giving supports real ministry
               </h3>
               <p className="mt-4 text-base leading-7 text-church-text">
@@ -84,29 +73,25 @@ export default function DonatePage() {
         </div>
       </Section>
 
+      {/* ── Ways to donate ───────────────────────────────────────────────────── */}
       <Section
         title="Ways to donate"
         intro="Offer the methods that are secure, straightforward and convenient for your congregation and supporters."
       >
-        <div className="grid gap-6 lg:grid-cols-[1fr_1fr]">
-          <div className="rounded-3xl border border-church-border bg-white p-6 shadow-soft lg:p-8">
-            <h3 className="text-xl font-semibold text-church-heading">
+        <div className="grid gap-6 lg:grid-cols-2">
+
+          <div className="rounded-3xl border border-church-border bg-white p-8" style={{ boxShadow: 'var(--shadow-card)' }}>
+            <div className="mb-5 h-1 w-10 rounded-full" style={{ background: 'var(--gold)' }} />
+            <h3 className="text-xl tracking-tight text-church-heading" style={{ fontFamily: 'var(--font-display)' }}>
               Donation options
             </h3>
-
-            <ul className="mt-5 space-y-3">
+            <ul className="mt-5 space-y-2">
               {donateOptions.map((option) => (
-                <li
-                  key={option}
-                  className="rounded-2xl border border-church-border bg-church-panel px-4 py-3 text-base text-church-text"
-                >
-                  {option}
-                </li>
+                <li key={option} className="donate-option-item">{option}</li>
               ))}
             </ul>
-
-            <div className="mt-6 rounded-2xl border border-brand-200 bg-brand-50 p-4">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-700">
+            <div className="mt-6 rounded-2xl p-4" style={{ background: 'var(--gold-lt)', border: '1px solid rgba(201,168,76,0.12)' }}>
+              <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: 'var(--gold)' }}>
                 PayPal
               </p>
               <p className="mt-2 text-sm leading-6 text-church-text">
@@ -117,57 +102,54 @@ export default function DonatePage() {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-navy-800/70 bg-gradient-to-br from-navy-950 via-navy-900 to-navy-800 p-6 text-white shadow-navy lg:p-8">
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-300">
-              Stewardship
-            </p>
-
-            <h3 className="mt-3 text-2xl font-semibold tracking-tight text-white">
-              One-off or regular support
-            </h3>
-
-            <p className="mt-4 text-base leading-7 text-slate-200">
-              You may wish to offer both regular and one-off giving, with clear
-              digital giving options for general ministry or specific projects.
-            </p>
-
-            <p className="mt-4 text-base leading-7 text-slate-200">
-              Before launch, make sure your giving links, payment provider,
-              finance contact details, PayPal details and Gift Aid wording are
-              fully checked and accurate.
-            </p>
-
-            <div className="mt-6 space-y-3 border-t border-white/10 pt-6">
-              <div className="rounded-2xl bg-white/5 p-4 text-sm font-medium text-white">
-                Secure online giving options
-              </div>
-              <div className="rounded-2xl bg-white/5 p-4 text-sm font-medium text-white">
-                Clear guidance for regular giving
-              </div>
-              <div className="rounded-2xl bg-white/5 p-4 text-sm font-medium text-white">
-                Transparent finance contact details
+          <div
+            className="relative overflow-hidden rounded-3xl p-8 text-white"
+            style={{ background: 'linear-gradient(135deg, #0f0c29 0%, #1e1b4b 45%, #172554 100%)', boxShadow: '0 8px 32px 0 rgba(15,23,42,0.28)' }}
+          >
+            <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full opacity-20"
+              style={{ background: 'radial-gradient(circle, var(--gold), transparent 70%)' }} />
+            <div className="relative">
+              <p className="eyebrow" style={{ color: 'rgba(255,255,255,0.55)' }}>Stewardship</p>
+              <h3 className="mt-4 text-2xl tracking-tight text-white" style={{ fontFamily: 'var(--font-display)' }}>
+                One-off or regular support
+              </h3>
+              <p className="mt-4 text-base leading-7 text-white/75">
+                You may wish to offer both regular and one-off giving, with clear
+                digital giving options for general ministry or specific projects.
+              </p>
+              <p className="mt-4 text-base leading-7 text-white/75">
+                Before launch, make sure your giving links, payment provider,
+                finance contact details, PayPal details and Gift Aid wording are
+                fully checked and accurate.
+              </p>
+              <div className="mt-6 space-y-2 border-t border-white/10 pt-6">
+                {['Secure online giving options', 'Clear guidance for regular giving', 'Transparent finance contact details'].map((item) => (
+                  <div key={item} className="rounded-2xl px-4 py-3 text-sm font-medium text-white/90"
+                    style={{ background: 'rgba(255,255,255,0.07)', borderLeft: '3px solid rgba(201,168,76,0.6)' }}>
+                    {item}
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </Section>
 
+      {/* ── Gift Aid ─────────────────────────────────────────────────────────── */}
       <Section
         title="Gift Aid and donor consent"
         intro="Make your Gift Aid wording, privacy wording and donor consent clear before publishing."
       >
         <div className="grid gap-6 lg:grid-cols-[1.02fr_0.98fr]">
-          <div className="rounded-3xl border border-church-border bg-white p-6 shadow-soft prose-content max-w-none lg:p-8">
+
+          <div className="prose-content max-w-none rounded-3xl border border-church-border bg-white p-8" style={{ boxShadow: 'var(--shadow-card)' }}>
             <h2>Gift Aid guidance</h2>
             <p>
               If you are eligible to claim Gift Aid, make sure your final
               wording reflects your actual giving process and is reviewed by the
               appropriate church finance lead before launch.
             </p>
-            <p>
-              Example wording for a donor declaration could be adapted to suit
-              your final form or giving page:
-            </p>
+            <p>Example wording for a donor declaration could be adapted to suit your final form or giving page:</p>
             <blockquote>
               I want Victory House Chapel Assemblies of God, Edinburgh to treat
               this donation, and any donations I make in the future or have made
@@ -177,17 +159,12 @@ export default function DonatePage() {
               of Gift Aid claimed on all my donations in that tax year, it is my
               responsibility to pay any difference.
             </blockquote>
-            <p>
-              Replace this sample wording with your final approved wording if
-              your finance team or adviser uses a different version.
-            </p>
+            <p>Replace this sample wording with your final approved wording if your finance team or adviser uses a different version.</p>
           </div>
 
-          <div className="rounded-3xl border border-church-border bg-church-panel p-6 shadow-soft lg:p-8">
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-700">
-              Privacy and consent
-            </p>
-            <h3 className="mt-3 text-2xl font-semibold tracking-tight text-church-heading">
+          <div className="rounded-3xl border border-church-border bg-church-panel p-8" style={{ boxShadow: 'var(--shadow-soft)' }}>
+            <p className="eyebrow">Privacy and consent</p>
+            <h3 className="mt-4 text-2xl tracking-tight text-church-heading" style={{ fontFamily: 'var(--font-display)' }}>
               Donor details will be handled with care
             </h3>
             <p className="mt-4 text-base leading-7 text-church-text">
@@ -197,8 +174,9 @@ export default function DonatePage() {
               finance record-keeping and any related communication the donor has
               agreed to receive.
             </p>
-            <div className="mt-6 rounded-2xl border border-church-border bg-white p-5">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-700">
+            <div className="mt-6 rounded-2xl border border-church-border bg-white p-5"
+              style={{ borderLeftWidth: '3px', borderLeftColor: 'var(--gold)' }}>
+              <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: 'var(--gold)' }}>
                 Sample consent wording
               </p>
               <p className="mt-3 text-sm leading-6 text-church-text">
@@ -211,29 +189,26 @@ export default function DonatePage() {
             </div>
             <p className="mt-4 text-sm leading-6 text-church-text">
               Make sure this wording matches your actual privacy policy,
-              donation platform and data handling arrangements before going
-              live.
+              donation platform and data handling arrangements before going live.
             </p>
           </div>
         </div>
       </Section>
 
+      {/* ── Financial accountability ──────────────────────────────────────────── */}
       <Section
         title="Financial accountability"
         intro="Victory House Chapel seeks to manage donations responsibly and transparently."
       >
-        <div className="rounded-3xl border border-church-border bg-white p-6 shadow-soft prose-content max-w-none lg:p-8">
+        <div className="prose-content max-w-none rounded-3xl border border-church-border bg-white p-8" style={{ boxShadow: 'var(--shadow-card)' }}>
           <p>
             The church is registered as a charity in Scotland and operates in
-            accordance with its governing document and the relevant charity
-            regulations.
+            accordance with its governing document and the relevant charity regulations.
           </p>
-
           <ul>
             <li>Scottish Charity Number: {siteConfig.charityNumber}</li>
             <li>Finance contact: {siteConfig.financeEmail}</li>
           </ul>
-
           <p>
             If you have questions about donating, Gift Aid, stewardship,
             privacy or financial administration, please contact the church using
