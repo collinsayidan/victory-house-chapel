@@ -1,4 +1,4 @@
-const LIMITS = { name: 100, email: 254, subject: 150, message: 5000 };
+const LIMITS = { topic: 20, name: 100, email: 254, subject: 150, message: 5000 };
 
 export async function POST(request) {
   let body;

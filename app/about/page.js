@@ -2,6 +2,8 @@ import Hero from '../../components/Hero';
 import Section from '../../components/Section';
 import LeadershipGrid from '../../components/LeadershipGrid';
 import Link from 'next/link';
+import CtaBand from '../../components/CtaBand';
+import Icon from '../../components/Icon';
 import { leaders, siteConfig } from '../../content/siteContent';
 
 export const metadata = {
@@ -12,14 +14,17 @@ export const metadata = {
 
 const values = [
   {
+    icon: 'church',
     title: 'Christ-centred worship',
     text: 'We gather to honour God with joyful, Spirit-led worship and prayer.'
   },
   {
+    icon: 'book',
     title: 'Biblical discipleship',
     text: 'We teach the Bible clearly and help one another follow Jesus in everyday life.'
   },
   {
+    icon: 'heart',
     title: 'Compassionate outreach',
     text: 'We serve our neighbours in Edinburgh with practical love and hospitality.'
   }
@@ -56,7 +61,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <aside className="self-start rounded border-l-8 border-gold-500 bg-gold-50 p-6">
+          <aside className="self-start rounded-lg border-l-8 border-gold-500 bg-gold-50 p-7">
             <h2 className="font-sans text-xl">What to expect on a Sunday</h2>
             <p className="mt-3">
               A warm welcome, worship, prayer, Bible teaching and time to connect with others. Come
@@ -71,10 +76,13 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      <Section alt title="What matters to us">
+      <Section alt caption="Our values" title="What matters to us">
         <ul className="grid gap-6 md:grid-cols-3">
           {values.map((value) => (
-            <li key={value.title} className="card border-t-4 border-t-navy-900 p-6">
+            <li key={value.title} className="card p-7">
+              <span className="mb-5 flex h-12 w-12 items-center justify-center rounded-full bg-gold-50 text-gold-800">
+                <Icon name={value.icon} />
+              </span>
               <h3>{value.title}</h3>
               <p className="mt-3">{value.text}</p>
             </li>
@@ -83,6 +91,7 @@ export default function AboutPage() {
       </Section>
 
       <Section
+        caption="Our team"
         title="Meet the leadership team"
         intro="Our leaders serve the church through prayer, pastoral care, administration and ministry support."
       >
@@ -91,6 +100,7 @@ export default function AboutPage() {
 
       <Section
         alt
+        caption="Governance"
         title="Leadership and governance"
         intro="The church is led by its pastoral and leadership team in line with its governing document and charity law in Scotland."
       >
@@ -115,6 +125,8 @@ export default function AboutPage() {
           </div>
         </dl>
       </Section>
+
+      <CtaBand />
     </>
   );
 }

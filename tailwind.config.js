@@ -33,7 +33,7 @@ module.exports = {
         muted: '#505A5F',
         line: '#B1B4B6',
         'line-light': '#E2E5E8',
-        surface: '#F3F2F1',
+        surface: '#F6F5F2',
         focus: '#FFDD00',
         success: '#00703C',
         error: '#D4351C'
@@ -42,8 +42,12 @@ module.exports = {
         sans: ['var(--font-body)', 'system-ui', 'sans-serif'],
         serif: ['var(--font-display)', 'Georgia', 'serif']
       },
+      boxShadow: {
+        card: '0 1px 2px rgba(11, 26, 59, 0.06), 0 2px 8px rgba(11, 26, 59, 0.05)',
+        lift: '0 4px 8px rgba(11, 26, 59, 0.06), 0 16px 32px rgba(11, 26, 59, 0.10)'
+      },
       maxWidth: {
-        page: '75rem',
+        page: '76rem',
         prose: '40rem'
       }
     }

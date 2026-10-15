@@ -1,4 +1,5 @@
 // app/contact/page.js
+import { Suspense } from 'react';
 import Hero from '../../components/Hero';
 import Section from '../../components/Section';
 import ContactForm from '../../components/ContactForm';
@@ -25,6 +26,7 @@ export default function ContactPage() {
       <Section>
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
+            <span className="eyebrow">Get in touch</span>
             <h2>Contact details</h2>
             <dl className="summary-list mt-6">
               <div>
@@ -63,14 +65,18 @@ export default function ContactPage() {
           </div>
 
           <div>
-            <h2>Send us a message</h2>
-            <p className="mb-6 mt-3">All fields are required.</p>
-            <ContactForm />
+            <div className="card p-6 sm:p-10">
+              <h2>Send us a message</h2>
+              <p className="mb-8 mt-3">All fields are required.</p>
+              <Suspense fallback={null}>
+                <ContactForm />
+              </Suspense>
+            </div>
           </div>
         </div>
       </Section>
 
-      <Section alt title="Find us" intro={`We meet at ${mapsQuery}.`}>
+      <Section alt caption="Location" title="Find us" intro={`We meet at ${mapsQuery}.`}>
         <GoogleMapEmbed query={mapsQuery} title={`Map showing the location of ${siteConfig.shortName}`} />
       </Section>
     </>

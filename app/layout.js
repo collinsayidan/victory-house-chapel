@@ -78,7 +78,7 @@ const structuredData = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en-GB" className={`${sourceSerif.variable} ${inter.variable}`}>
-      <body>
+      <body id="top">
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>

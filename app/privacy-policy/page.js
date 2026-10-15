@@ -105,7 +105,7 @@ export default function PrivacyPolicyPage() {
             </ul>
           </div>
 
-          <div className="self-start rounded bg-navy-50 p-6">
+          <div className="self-start rounded-lg bg-navy-50 p-6">
             <p className="text-xl font-bold">
               Lawful bases
             </p>

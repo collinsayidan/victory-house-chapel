@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import CtaBand from '../../components/CtaBand';
 import Hero from '../../components/Hero';
 import Section from '../../components/Section';
 import { ministries } from '../../content/siteContent';
@@ -27,12 +28,13 @@ export default function MinistriesPage() {
       />
 
       <Section
+        caption="Get involved"
         title="Our ministries"
         intro="Each ministry helps build a church life that is prayerful, welcoming, grounded in Scripture and active in service."
       >
         <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {ministries.map((ministry) => (
-            <li key={ministry.title} className="card border-t-4 border-t-navy-900 p-6">
+            <li key={ministry.title} className="card border-t-4 border-t-gold-500 p-7">
               <h3>{ministry.title}</h3>
               <p className="mt-3">{ministry.text}</p>
             </li>
@@ -54,7 +56,7 @@ export default function MinistriesPage() {
               fellowship, discipleship and community outreach.
             </p>
           </div>
-          <div className="rounded bg-white p-6 sm:p-8">
+          <div className="card p-6 sm:p-8">
             <h2 className="font-sans text-2xl">How to get involved</h2>
             <ol className="mt-4 space-y-4">
               {steps.map((step, index) => (
@@ -70,7 +72,7 @@ export default function MinistriesPage() {
               ))}
             </ol>
             <p className="mt-6">
-              <Link href="/contact" className="btn btn-primary">
+              <Link href="/contact?topic=serving" className="btn btn-primary">
                 Ask about serving
               </Link>
             </p>
@@ -88,6 +90,13 @@ export default function MinistriesPage() {
           </p>
         </div>
       </Section>
+
+      <CtaBand
+        title="Ready to get involved?"
+        text="Tell us where you would like to serve and a ministry leader will be in touch."
+        primary={{ href: '/contact?topic=serving', label: 'Ask about serving' }}
+        secondary={{ href: '/visit', label: 'Plan your visit' }}
+      />
     </>
   );
 }

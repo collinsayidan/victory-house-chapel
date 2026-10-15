@@ -29,7 +29,7 @@ export default function DonatePage() {
         imageAlt="Hands holding a young plant growing from coins"
       />
 
-      <Section title="Ways to give">
+      <Section caption="Give online or in person" title="Ways to give">
         <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">
           <dl className="summary-list">
             {donateOptions.map((option) => {
@@ -42,7 +42,7 @@ export default function DonatePage() {
               );
             })}
           </dl>
-          <aside className="self-start rounded border-l-8 border-gold-500 bg-gold-50 p-6">
+          <aside className="self-start rounded-lg border-l-8 border-gold-500 bg-gold-50 p-7">
             <h3 className="text-xl">Questions about giving?</h3>
             <p className="mt-3">
               Contact our finance team at {siteConfig.financeEmail} or{' '}
@@ -52,10 +52,10 @@ export default function DonatePage() {
         </div>
       </Section>
 
-      <Section alt title="What your giving supports">
+      <Section alt caption="Your impact" title="What your giving supports">
         <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {donateSummary.map((item) => (
-            <li key={item.title} className="card border-t-4 border-t-gold-500 p-6">
+            <li key={item.title} className="card border-t-4 border-t-gold-500 p-7">
               <h3 className="text-xl">{item.title}</h3>
               <p className="mt-3 text-base">{item.text}</p>
             </li>
@@ -63,7 +63,7 @@ export default function DonatePage() {
         </ul>
       </Section>
 
-      <Section title="Gift Aid">
+      <Section caption="UK taxpayers" title="Gift Aid">
         <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">
           <div className="prose-content">
             <p>
@@ -89,7 +89,7 @@ export default function DonatePage() {
               <Link href="/privacy-policy">privacy policy</Link>.
             </p>
           </div>
-          <div className="relative hidden aspect-[4/3] overflow-hidden rounded lg:block">
+          <div className="relative hidden aspect-[4/3] overflow-hidden rounded-xl lg:block">
             <Image
               src="/images/donate/giving-to-god.jpg"
               alt=""
@@ -101,7 +101,7 @@ export default function DonatePage() {
         </div>
       </Section>
 
-      <Section alt title="Financial accountability">
+      <Section alt caption="Transparency" title="Financial accountability">
         <p>
           The church is a registered charity in Scotland and manages donations in line with its
           governing document and charity regulations.

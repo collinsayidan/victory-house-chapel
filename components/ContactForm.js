@@ -1,13 +1,15 @@
 'use client';
 
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { useRef, useState } from 'react';
-import { siteConfig } from '../content/siteContent';
+import { contactTopics, siteConfig } from '../content/siteContent';
 
-const EMPTY = { name: '', email: '', subject: '', message: '', consent: false, website: '' };
+const EMPTY = { topic: '', name: '', email: '', subject: '', message: '', consent: false, website: '' };
 
 function validate(data) {
   const errors = {};
+  if (!data.topic) errors.topic = 'Select what your message is about';
   if (!data.name.trim()) errors.name = 'Enter your name';
   if (!data.email.trim()) errors.email = 'Enter your email address';
   else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim()))
@@ -41,7 +43,11 @@ function Field({ id, label, hint, error, children }) {
 }
 
 export default function ContactForm() {
-  const [data, setData] = useState(EMPTY);
+  const searchParams = useSearchParams();
+  const initialTopic = contactTopics.some((t) => t.value === searchParams?.get('topic'))
+    ? searchParams.get('topic')
+    : '';
+  const [data, setData] = useState({ ...EMPTY, topic: initialTopic });
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState({ type: 'idle', message: '' });
   const summaryRef = useRef(null);
@@ -72,7 +78,7 @@ export default function ContactForm() {
       if (!response.ok) throw new Error(result.message || 'Something went wrong.');
 
       setStatus({ type: result.delivered ? 'success' : 'not-sent', message: '' });
-      if (result.delivered) setData(EMPTY);
+      if (result.delivered) setData({ ...EMPTY, topic: initialTopic });
     } catch (error) {
       setStatus({ type: 'error', message: error.message });
     }
@@ -85,7 +91,7 @@ export default function ContactForm() {
 
   if (status.type === 'success') {
     return (
-      <div className="rounded bg-success p-6 text-white" role="status">
+      <div className="rounded-lg bg-success p-6 text-white" role="status">
         <h2 className="font-sans text-2xl text-white">Message sent</h2>
         <p className="mt-2">Thank you for getting in touch. We will reply as soon as we can.</p>
       </div>
@@ -108,7 +114,7 @@ export default function ContactForm() {
           <ul className="mt-3 space-y-1">
             {errorList.map(([field, message]) => (
               <li key={field}>
-                <a href={`#${field}`} className="font-bold text-error">
+                <a href={field === 'topic' ? '#topic-general' : `#${field}`} className="font-bold text-error">
                   {message}
                 </a>
               </li>
@@ -135,6 +141,42 @@ export default function ContactForm() {
       ) : null}
 
       <form onSubmit={handleSubmit} noValidate>
+        <fieldset
+          className={`mb-6 ${errors.topic ? 'border-l-4 border-error pl-4' : ''}`}
+          aria-describedby={errors.topic ? 'topic-error' : undefined}
+        >
+          <legend className="form-label text-lg">What is your message about?</legend>
+          {errors.topic ? (
+            <span id="topic-error" className="form-error-message">
+              <span className="sr-only">Error: </span>
+              {errors.topic}
+            </span>
+          ) : null}
+          <div className="mt-2">
+            {contactTopics.map((topic) => (
+              <div key={topic.value} className="radio-item">
+                <input
+                  id={`topic-${topic.value}`}
+                  type="radio"
+                  name="topic"
+                  value={topic.value}
+                  checked={data.topic === topic.value}
+                  onChange={handleChange}
+                />
+                <label htmlFor={`topic-${topic.value}`} className="pt-0.5">
+                  {topic.label}
+                </label>
+              </div>
+            ))}
+          </div>
+          {data.topic === 'prayer' ? (
+            <p className="inset-text">
+              Share as much or as little as you like. You can also tell us if you would like
+              someone to contact you.
+            </p>
+          ) : null}
+        </fieldset>
+
         <Field id="name" label="Name" error={errors.name}>
           <input
             id="name"
