@@ -1,21 +1,16 @@
 import './globals.css';
-import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
+import { Figtree } from 'next/font/google';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import CookieBanner from '../components/CookieBanner';
 import { siteConfig } from '../content/siteContent';
 
 /* ─── Fonts ────────────────────────────────────────────────────────────── */
-const jakarta = Plus_Jakarta_Sans({
+// One open, friendly sans-serif for headings and body. It keeps clear letter
+// spacing at small sizes, so headings stay easy to read on phones.
+const figtree = Figtree({
   subsets: ['latin'],
-  weight: ['600', '700', '800'],
-  variable: '--font-display',
-  display: 'swap'
-});
-
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '600', '700'],
+  weight: ['400', '500', '600', '700', '800'],
   variable: '--font-body',
   display: 'swap'
 });
@@ -77,7 +72,7 @@ const structuredData = {
 /* ─── Root layout ──────────────────────────────────────────────────────── */
 export default function RootLayout({ children }) {
   return (
-    <html lang="en-GB" className={`${jakarta.variable} ${inter.variable}`}>
+    <html lang="en-GB" className={figtree.variable}>
       <body id="top">
         <a href="#main-content" className="skip-link">
           Skip to main content
