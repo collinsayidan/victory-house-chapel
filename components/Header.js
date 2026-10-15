@@ -77,7 +77,7 @@ export default function Header() {
               <Image src="/images/logo-mark.png" alt="" fill sizes="48px" className="object-contain" priority />
             </span>
             <span className="flex flex-col leading-tight">
-              <span className="font-serif text-base font-bold text-navy-900 group-hover:underline sm:text-xl">
+              <span className="font-display text-base font-bold text-navy-900 group-hover:underline sm:text-xl">
                 {siteConfig.shortName}
               </span>
               <span className="text-[0.7rem] font-semibold uppercase tracking-[0.1em] text-gold-800 sm:text-xs">
