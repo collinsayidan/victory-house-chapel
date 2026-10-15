@@ -25,7 +25,7 @@ export default function Lightbox({ item, onClose }) {
       onClick={(event) => {
         if (event.target === dialogRef.current) onClose();
       }}
-      className="w-[min(64rem,calc(100vw-2rem))] max-w-none rounded bg-white p-0 backdrop:bg-black/80"
+      className="w-[min(64rem,calc(100vw-2rem))] max-w-none rounded-lg bg-white p-0 backdrop:bg-black/80"
     >
       {item ? (
         <div>

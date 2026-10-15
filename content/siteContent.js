@@ -303,6 +303,54 @@ export const galleryItems = [
   }
 ];
 
+// Photos from church life, added in the second design pass
+galleryItems.push(
+  {
+    id: 9,
+    title: 'Sunday service',
+    category: 'Worship',
+    image: '/images/gallery/church-service.jpeg',
+    alt: 'Members of the congregation seated together during a Sunday service'
+  },
+  {
+    id: 10,
+    title: 'Prayer and reflection',
+    category: 'Prayer',
+    image: '/images/gallery/church-service02.jpeg',
+    alt: 'A church member holding a microphone with head bowed in prayer during a service'
+  },
+  {
+    id: 11,
+    title: 'Preaching the Word',
+    category: 'Pastors',
+    image: '/images/gallery/preaching.jpeg',
+    alt: 'A minister in a suit preaching to the congregation'
+  },
+  {
+    id: 12,
+    title: 'After church',
+    category: 'Community',
+    image: '/images/gallery/after-church-gathring.jpeg',
+    alt: 'Church members in colourful outfits standing together outside after a service'
+  },
+  {
+    id: 13,
+    title: 'Outdoor activities',
+    category: 'Programmes',
+    image: '/images/gallery/children-activities.jpeg',
+    alt: 'Children and adults playing a game together in a park'
+  }
+);
+
+// Reasons someone might get in touch. `value` is used in links such as /contact?topic=prayer
+export const contactTopics = [
+  { value: 'general', label: 'A general question' },
+  { value: 'visit', label: 'Planning a visit' },
+  { value: 'prayer', label: 'A prayer request' },
+  { value: 'pastoral', label: 'Pastoral support' },
+  { value: 'serving', label: 'Getting involved or serving' }
+];
+
 export const galleryCategories = [
   'All',
   'Worship',

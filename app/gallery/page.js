@@ -1,3 +1,4 @@
+import CtaBand from '../../components/CtaBand';
 import Hero from '../../components/Hero';
 import Section from '../../components/Section';
 import GalleryPageClient from './GalleryPageClient';
@@ -19,6 +20,7 @@ export default function GalleryPage() {
       <Section>
         <GalleryPageClient />
       </Section>
+      <CtaBand title="Be part of the story" />
     </>
   );
 }

@@ -1,8 +1,8 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import {
   isPlaceholder,
   legalNavigation,
-  navigation,
   siteConfig,
   socialLinks
 } from '../content/siteContent';
@@ -10,90 +10,121 @@ import {
 // Only show social accounts once a real handle has been added
 const liveSocialLinks = socialLinks.filter((social) => !isPlaceholder(social.href));
 
+const columns = [
+  {
+    heading: 'Visit',
+    links: [
+      { href: '/visit', label: 'Plan your visit' },
+      { href: '/events', label: 'Services and events' },
+      { href: '/calendar.ics', label: 'Add services to your calendar' },
+      { href: '/contact', label: 'Contact us' }
+    ]
+  },
+  {
+    heading: 'Church life',
+    links: [
+      { href: '/about', label: 'About us' },
+      { href: '/ministries', label: 'Ministries' },
+      { href: '/sermons', label: 'Sermons' },
+      { href: '/gallery', label: 'Gallery' },
+      { href: '/donate', label: 'Give' }
+    ]
+  }
+];
+
 export default function Footer() {
   const year = new Date().getFullYear();
+  const mapsQuery = encodeURIComponent(`${siteConfig.addressLine1}, ${siteConfig.addressLine2}`);
 
   return (
-    <footer className="mt-16 border-t-4 border-gold-500 bg-navy-900 text-white">
-      <div className="container-page grid gap-10 py-12 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr]">
+    <footer className="bg-navy-900 text-white">
+      <div className="h-1 bg-gradient-to-r from-gold-800 via-gold-500 to-gold-300" aria-hidden="true" />
+
+      <div className="container-page grid gap-12 py-14 sm:py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
         <div>
-          <h2 className="text-2xl text-white">{siteConfig.shortName}</h2>
-          <p className="mt-3 text-white/90">{siteConfig.description}</p>
-          <p className="mt-6">
-            <Link href="/visit" className="btn btn-gold">
-              Plan your visit
-            </Link>
-          </p>
+          <Link href="/" className="inline-flex items-center gap-3 text-white no-underline hover:text-white">
+            <span className="relative block h-14 w-14 shrink-0 rounded-md bg-white p-1">
+              <Image src="/images/logo-mark.png" alt="" fill sizes="56px" className="object-contain p-1" />
+            </span>
+            <span className="font-serif text-2xl font-bold">{siteConfig.shortName}</span>
+          </Link>
+          <p className="mt-4 text-white/85">{siteConfig.description}</p>
+          {liveSocialLinks.length > 0 ? (
+            <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-2" aria-label="Social media">
+              {liveSocialLinks.map((social) => (
+                <li key={social.name}>
+                  <a href={social.href} className="text-white hover:text-white" rel="noopener noreferrer">
+                    {social.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          ) : null}
         </div>
 
+        {columns.map((column) => (
+          <nav key={column.heading} aria-label={`Footer: ${column.heading}`}>
+            <h2 className="font-sans text-sm font-bold uppercase tracking-[0.14em] text-gold-300">
+              {column.heading}
+            </h2>
+            <ul className="mt-4 space-y-2.5">
+              {column.links.map((item) => (
+                <li key={item.href}>
+                  {item.href.endsWith('.ics') ? (
+                    <a href={item.href} download className="text-white no-underline hover:text-white hover:underline">
+                      {item.label}
+                    </a>
+                  ) : (
+                    <Link href={item.href} className="text-white no-underline hover:text-white hover:underline">
+                      {item.label}
+                    </Link>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ))}
+
         <div>
-          <h2 className="font-sans text-lg text-white">Visit or contact us</h2>
-          <address className="mt-3 not-italic text-white/90">
+          <h2 className="font-sans text-sm font-bold uppercase tracking-[0.14em] text-gold-300">
+            Find us
+          </h2>
+          <address className="mt-4 not-italic text-white/90">
             {siteConfig.addressLine1}
             <br />
             {siteConfig.addressLine2}
           </address>
-          <ul className="mt-4 space-y-2">
+          <p className="mt-2">
+            <a
+              href={`https://www.google.com/maps/dir/?api=1&destination=${mapsQuery}`}
+              className="font-semibold text-white hover:text-white"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Get directions<span className="sr-only"> (opens in a new tab)</span>
+            </a>
+          </p>
+          <ul className="mt-4 space-y-1.5 text-white/90">
             <li>
-              <span className="text-white/90">Email: </span>
-              <a href={`mailto:${siteConfig.email}`} className="text-white hover:text-white">
+              <a href={`mailto:${siteConfig.email}`} className="break-words text-white hover:text-white">
                 {siteConfig.email}
               </a>
             </li>
             <li>
-              <span className="text-white/90">Phone: </span>
               <a href={`tel:${siteConfig.phone.replace(/\s/g, '')}`} className="text-white hover:text-white">
                 {siteConfig.phone}
               </a>
             </li>
-            <li className="text-white/90">Office hours: {siteConfig.officeHours}</li>
-          </ul>
-
-          <h3 className="mt-6 text-base text-white">Sunday services</h3>
-          <ul className="mt-2 space-y-1 text-white/90">
-            {siteConfig.weeklyServices
-              .filter((service) => service.day === 'Sunday')
-              .map((service) => (
-                <li key={service.name}>
-                  {service.name}: {service.time}
-                </li>
-              ))}
+            <li>Office hours: {siteConfig.officeHours}</li>
           </ul>
         </div>
-
-        <nav aria-label="Footer">
-          <h2 className="font-sans text-lg text-white">Explore</h2>
-          <ul className="mt-3 grid grid-cols-2 gap-x-6 gap-y-2">
-            {navigation
-              .filter((item) => item.href !== '/')
-              .map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href} className="text-white hover:text-white">
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-          </ul>
-
-          {liveSocialLinks.length > 0 ? (
-            <>
-              <h3 className="mt-6 text-base text-white">Follow us</h3>
-              <ul className="mt-2 space-y-2">
-                {liveSocialLinks.map((social) => (
-                  <li key={social.name}>
-                    <a href={social.href} className="text-white hover:text-white" rel="noopener noreferrer">
-                      {social.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </>
-          ) : null}
-        </nav>
       </div>
 
-      <div className="border-t border-white/25">
-        <div className="container-page flex flex-col gap-4 py-6 text-sm text-white/90 md:flex-row md:items-center md:justify-between">
+      <div className="border-t border-white/20">
+        <div className="container-page flex flex-col gap-4 py-6 text-sm text-white/85 lg:flex-row lg:items-center lg:justify-between">
+          <p className="max-w-none">
+            © {year} {siteConfig.name}. Scottish Charity Number: {siteConfig.charityNumber}
+          </p>
           <ul className="flex flex-wrap gap-x-6 gap-y-2">
             {legalNavigation.map((item) => (
               <li key={item.href}>
@@ -102,10 +133,12 @@ export default function Footer() {
                 </Link>
               </li>
             ))}
+            <li>
+              <a href="#top" className="font-semibold text-white hover:text-white">
+                Back to top <span aria-hidden="true">↑</span>
+              </a>
+            </li>
           </ul>
-          <p className="max-w-none">
-            © {year} {siteConfig.name}. Scottish Charity Number: {siteConfig.charityNumber}
-          </p>
         </div>
       </div>
     </footer>

@@ -13,6 +13,15 @@ The design follows GOV.UK Design System patterns adapted to the church's navy an
 
 Colours and components live in `tailwind.config.js` and `app/globals.css`. Use those tokens rather than inline colours.
 
+Shared building blocks in `components/`:
+
+- `Hero` – inner-page header with breadcrumbs (pass buttons as children)
+- `Section` – page section with eyebrow, title, intro and an optional `action` link; `tone="alt"` or `"dark"`
+- `CtaBand` – closing call to action used at the foot of most pages
+- `ServiceTimes`, `NextGathering`, `Icon`
+
+Other features: `/calendar.ics` lets visitors add the regular services to their calendar, and contact links can preselect a topic with `/contact?topic=prayer` (see `contactTopics` in `content/siteContent.js`).
+
 ## Run locally
 
 ```bash

@@ -1,6 +1,7 @@
 import Image from 'next/image';
-import Link from 'next/link';
+import CtaBand from '../../components/CtaBand';
 import Hero from '../../components/Hero';
+import Icon from '../../components/Icon';
 import Section from '../../components/Section';
 import { sermons } from '../../content/siteContent';
 
@@ -14,7 +15,28 @@ function isExternal(href) {
   return href.startsWith('http');
 }
 
+function SermonLink({ sermon, className = 'font-semibold' }) {
+  if (!sermon.href) return null;
+  const external = isExternal(sermon.href);
+  return (
+    <a
+      href={sermon.href}
+      className={className}
+      target={external ? '_blank' : undefined}
+      rel={external ? 'noopener noreferrer' : undefined}
+    >
+      {sermon.linkLabel}
+      <span className="sr-only">
+        : {sermon.title}
+        {external ? ' (opens in a new tab)' : ''}
+      </span>
+    </a>
+  );
+}
+
 export default function SermonsPage() {
+  const [featured, ...rest] = sermons;
+
   return (
     <>
       <Hero
@@ -25,70 +47,70 @@ export default function SermonsPage() {
         imageAlt="A minister preaching during a church service"
       />
 
-      <Section title="Recent messages">
-        <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {sermons.map((sermon) => (
-            <li key={sermon.title} className="card flex flex-col overflow-hidden">
-              <div className="relative aspect-[16/9] bg-surface">
+      <Section caption="Latest message" title={featured.title}>
+        <article className="card grid overflow-hidden lg:grid-cols-2">
+          <div className="relative aspect-video lg:aspect-auto lg:min-h-[22rem]">
+            <Image
+              src={featured.image}
+              alt={featured.alt}
+              fill
+              sizes="(min-width: 1024px) 38rem, 100vw"
+              className="object-cover"
+            />
+          </div>
+          <div className="flex flex-col justify-center p-6 sm:p-10">
+            <dl className="flex flex-wrap gap-x-6 gap-y-1 text-base text-muted">
+              <div>
+                <dt className="sr-only">Date</dt>
+                <dd>{featured.date}</dd>
+              </div>
+              <div>
+                <dt className="inline font-semibold text-ink">Speaker: </dt>
+                <dd className="inline">{featured.speaker}</dd>
+              </div>
+            </dl>
+            <p className="mt-4 text-lg">{featured.summary}</p>
+            <p className="mt-8">
+              <SermonLink sermon={featured} className="btn btn-primary" />
+            </p>
+          </div>
+        </article>
+      </Section>
+
+      <Section alt caption="Archive" title="Recent messages">
+        <ul className="grid gap-6 md:grid-cols-2">
+          {rest.map((sermon) => (
+            <li key={sermon.title} className="card flex flex-col overflow-hidden sm:flex-row">
+              <div className="relative aspect-video shrink-0 sm:aspect-auto sm:w-56">
                 <Image
                   src={sermon.image}
                   alt={sermon.alt}
                   fill
-                  sizes="(min-width: 1024px) 24rem, (min-width: 768px) 50vw, 100vw"
+                  sizes="(min-width: 640px) 14rem, 100vw"
                   className="object-cover"
                 />
               </div>
-              <div className="flex flex-1 flex-col p-5">
+              <div className="flex flex-1 flex-col p-6">
                 <p className="text-base text-muted">{sermon.date}</p>
                 <h3 className="mt-1">{sermon.title}</h3>
                 <p className="mt-1 text-base">
                   <span className="font-semibold">Speaker:</span> {sermon.speaker}
                 </p>
                 <p className="mt-3 flex-1 text-base">{sermon.summary}</p>
-                {sermon.href ? (
-                  <p className="mt-4">
-                    <a
-                      href={sermon.href}
-                      className="font-semibold"
-                      target={isExternal(sermon.href) ? '_blank' : undefined}
-                      rel={isExternal(sermon.href) ? 'noopener noreferrer' : undefined}
-                    >
-                      {sermon.linkLabel}
-                      <span className="sr-only">
-                        : {sermon.title}
-                        {isExternal(sermon.href) ? ' (opens in a new tab)' : ''}
-                      </span>
-                    </a>
-                  </p>
-                ) : null}
+                <p className="mt-4 flex items-center gap-2">
+                  <Icon name="play" className="h-5 w-5 text-navy-700" />
+                  <SermonLink sermon={sermon} />
+                </p>
               </div>
             </li>
           ))}
         </ul>
       </Section>
 
-      <section className="bg-navy-900 py-14 text-white">
-        <figure className="container-page text-center">
-          <blockquote>
-            <p className="mx-auto max-w-3xl font-serif text-3xl font-semibold leading-snug text-white">
-              “Your word is a lamp to my feet and a light to my path.”
-            </p>
-          </blockquote>
-          <figcaption className="mt-4 text-lg font-semibold text-gold-300">Psalm 119:105</figcaption>
-        </figure>
-      </section>
-
-      <Section title="Hear it in person">
-        <p>
-          Every sermon we share aims to point people to Christ and strengthen daily Christian living.
-          We would love you to join us on a Sunday.
-        </p>
-        <p className="mt-6">
-          <Link href="/visit" className="btn btn-primary">
-            Plan your visit
-          </Link>
-        </p>
-      </Section>
+      <CtaBand
+        title="Hear the Word in person"
+        text="Every sermon aims to point people to Christ. We would love you to join us on a Sunday at 11:00am."
+      />
     </>
   );
 }
