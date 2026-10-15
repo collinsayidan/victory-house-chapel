@@ -1,6 +1,6 @@
 import Hero from '../../components/Hero';
 import Section from '../../components/Section';
-import { siteConfig } from '../../content/siteContent';
+import { filled, privacyContactEmail, siteConfig } from '../../content/siteContent';
 
 export const metadata = {
   title: 'Data protection'
@@ -78,8 +78,12 @@ export default function DataProtectionPage() {
             or action you are requesting.
           </p>
           <ul>
-            <li>Data protection contact: {siteConfig.dataProtectionContact}</li>
-            <li>Email: {siteConfig.privacyEmail}</li>
+            {filled(siteConfig.dataProtectionContact) ? (
+              <li>Data protection contact: {siteConfig.dataProtectionContact}</li>
+            ) : null}
+            <li>
+              Email: <a href={`mailto:${privacyContactEmail}`}>{privacyContactEmail}</a>
+            </li>
             <li>
               Postal address: {siteConfig.addressLine1},{' '}
               {siteConfig.addressLine2}

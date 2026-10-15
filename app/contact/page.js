@@ -4,7 +4,7 @@ import Hero from '../../components/Hero';
 import Section from '../../components/Section';
 import ContactForm from '../../components/ContactForm';
 import GoogleMapEmbed from '../../components/GoogleMapEmbed';
-import { siteConfig } from '../../content/siteContent';
+import { filled, siteConfig } from '../../content/siteContent';
 
 export const metadata = {
   title: 'Contact us',
@@ -53,10 +53,12 @@ export default function ContactPage() {
                   </address>
                 </dd>
               </div>
-              <div>
-                <dt>Office hours</dt>
-                <dd>{siteConfig.officeHours}</dd>
-              </div>
+              {filled(siteConfig.officeHours) ? (
+                <div>
+                  <dt>Office hours</dt>
+                  <dd>{siteConfig.officeHours}</dd>
+                </div>
+              ) : null}
             </dl>
             <div className="inset-text">
               If you are visiting for the first time and need help with directions, access, parking

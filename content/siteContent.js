@@ -376,3 +376,13 @@ export const legalNavigation = [
 export function isPlaceholder(value) {
   return typeof value === 'string' && value.includes('[');
 }
+
+// The value when it has been filled in, otherwise null. Pages use this to
+// hide a line rather than show "[Insert …]" to visitors.
+export function filled(value) {
+  return value && !isPlaceholder(value) ? value : null;
+}
+
+// Where to send privacy and finance questions until dedicated inboxes are set
+export const privacyContactEmail = filled(siteConfig.privacyEmail) || siteConfig.email;
+export const financeContactEmail = filled(siteConfig.financeEmail) || siteConfig.email;

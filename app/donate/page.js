@@ -3,7 +3,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Hero from '../../components/Hero';
 import Section from '../../components/Section';
-import { donateOptions, donateSummary, siteConfig } from '../../content/siteContent';
+import {
+  donateOptions,
+  donateSummary,
+  filled,
+  financeContactEmail,
+  siteConfig
+} from '../../content/siteContent';
 
 export const metadata = {
   title: 'Give',
@@ -19,6 +25,11 @@ function splitOption(option) {
 }
 
 export default function DonatePage() {
+  // Hide any giving method whose details are still a placeholder
+  const givingOptions = donateOptions
+    .map(splitOption)
+    .filter(({ method, details }) => filled(method) && filled(details));
+
   return (
     <>
       <Hero
@@ -31,21 +42,29 @@ export default function DonatePage() {
 
       <Section caption="Give online or in person" title="Ways to give">
         <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">
-          <dl className="summary-list">
-            {donateOptions.map((option) => {
-              const { method, details } = splitOption(option);
-              return (
+          {givingOptions.length ? (
+            <dl className="summary-list">
+              {givingOptions.map(({ method, details }) => (
                 <div key={method}>
                   <dt>{method}</dt>
                   <dd>{details}</dd>
                 </div>
-              );
-            })}
-          </dl>
+              ))}
+            </dl>
+          ) : (
+            <div className="prose-content">
+              <p>
+                We are setting up our online and bank giving details. In the meantime you can give
+                in person at a Sunday service, or{' '}
+                <a href={`mailto:${financeContactEmail}`}>email us</a> and we will tell you how to
+                give by bank transfer.
+              </p>
+            </div>
+          )}
           <aside className="self-start rounded-lg border-l-8 border-gold-500 bg-gold-50 p-7">
             <h3 className="text-xl">Questions about giving?</h3>
             <p className="mt-3">
-              Contact our finance team at {siteConfig.financeEmail} or{' '}
+              Email <a href={`mailto:${financeContactEmail}`}>{financeContactEmail}</a> or{' '}
               <Link href="/contact">send us a message</Link>.
             </p>
           </aside>
@@ -107,13 +126,17 @@ export default function DonatePage() {
           governing document and charity regulations.
         </p>
         <dl className="summary-list mt-6 max-w-3xl">
-          <div>
-            <dt>Scottish Charity Number</dt>
-            <dd>{siteConfig.charityNumber}</dd>
-          </div>
+          {filled(siteConfig.charityNumber) ? (
+            <div>
+              <dt>Scottish Charity Number</dt>
+              <dd>{siteConfig.charityNumber}</dd>
+            </div>
+          ) : null}
           <div>
             <dt>Finance contact</dt>
-            <dd>{siteConfig.financeEmail}</dd>
+            <dd>
+              <a href={`mailto:${financeContactEmail}`}>{financeContactEmail}</a>
+            </dd>
           </div>
         </dl>
       </Section>

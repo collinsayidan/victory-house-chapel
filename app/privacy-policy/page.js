@@ -1,7 +1,7 @@
 // app/privacy-policy/page.js
 import Hero from '../../components/Hero';
 import Section from '../../components/Section';
-import { siteConfig } from '../../content/siteContent';
+import { filled, privacyContactEmail, siteConfig } from '../../content/siteContent';
 
 export const metadata = {
   title: 'Privacy policy'
@@ -42,11 +42,16 @@ export default function PrivacyPolicyPage() {
           </p>
           <ul>
             <li>Organisation: {siteConfig.name}</li>
-            <li>Registered Scottish Charity Number: {siteConfig.charityNumber}</li>
+            {filled(siteConfig.charityNumber) ? (
+              <li>Registered Scottish Charity Number: {siteConfig.charityNumber}</li>
+            ) : null}
             <li>
               Postal address: {siteConfig.addressLine1}, {siteConfig.addressLine2}
             </li>
-            <li>Data protection email: {siteConfig.privacyEmail}</li>
+            <li>
+              Data protection email:{' '}
+              <a href={`mailto:${privacyContactEmail}`}>{privacyContactEmail}</a>
+            </li>
           </ul>
           <p>
             We aim to handle personal data in line with the UK General Data
@@ -186,7 +191,9 @@ export default function PrivacyPolicyPage() {
             data protection matters.
           </p>
           <ul>
-            <li>Email: {siteConfig.privacyEmail}</li>
+            <li>
+              Email: <a href={`mailto:${privacyContactEmail}`}>{privacyContactEmail}</a>
+            </li>
             <li>
               Postal address: {siteConfig.addressLine1}, {siteConfig.addressLine2}
             </li>
