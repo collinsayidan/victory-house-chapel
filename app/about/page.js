@@ -4,7 +4,7 @@ import LeadershipGrid from '../../components/LeadershipGrid';
 import Link from 'next/link';
 import CtaBand from '../../components/CtaBand';
 import Icon from '../../components/Icon';
-import { leaders, siteConfig } from '../../content/siteContent';
+import { filled, leaders, siteConfig } from '../../content/siteContent';
 
 export const metadata = {
   title: 'About us',
@@ -109,14 +109,12 @@ export default function AboutPage() {
             <dt>Lead Pastor</dt>
             <dd>Rev. Kwarteng Boamah</dd>
           </div>
-          <div>
-            <dt>Associate leaders and elders</dt>
-            <dd>[Insert names]</dd>
-          </div>
-          <div>
-            <dt>Scottish Charity Number</dt>
-            <dd>{siteConfig.charityNumber}</dd>
-          </div>
+          {filled(siteConfig.charityNumber) ? (
+            <div>
+              <dt>Scottish Charity Number</dt>
+              <dd>{siteConfig.charityNumber}</dd>
+            </div>
+          ) : null}
           <div>
             <dt>Correspondence address</dt>
             <dd>

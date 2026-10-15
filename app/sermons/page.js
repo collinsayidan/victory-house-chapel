@@ -4,6 +4,7 @@ import Hero from '../../components/Hero';
 import Icon from '../../components/Icon';
 import Section from '../../components/Section';
 import { sermons } from '../../content/siteContent';
+import { sermonHref, sermonSpeaker } from '../../lib/sermons';
 
 export const metadata = {
   title: 'Sermons',
@@ -16,11 +17,12 @@ function isExternal(href) {
 }
 
 function SermonLink({ sermon, className = 'font-semibold' }) {
-  if (!sermon.href) return null;
-  const external = isExternal(sermon.href);
+  const href = sermonHref(sermon.href);
+  if (!href) return null;
+  const external = isExternal(href);
   return (
     <a
-      href={sermon.href}
+      href={href}
       className={className}
       target={external ? '_blank' : undefined}
       rel={external ? 'noopener noreferrer' : undefined}
@@ -64,15 +66,19 @@ export default function SermonsPage() {
                 <dt className="sr-only">Date</dt>
                 <dd>{featured.date}</dd>
               </div>
-              <div>
-                <dt className="inline font-semibold text-ink">Speaker: </dt>
-                <dd className="inline">{featured.speaker}</dd>
-              </div>
+              {sermonSpeaker(featured) ? (
+                <div>
+                  <dt className="inline font-semibold text-ink">Speaker: </dt>
+                  <dd className="inline">{sermonSpeaker(featured)}</dd>
+                </div>
+              ) : null}
             </dl>
             <p className="mt-4 text-lg">{featured.summary}</p>
-            <p className="mt-8">
-              <SermonLink sermon={featured} className="btn btn-primary" />
-            </p>
+            {sermonHref(featured.href) ? (
+              <p className="mt-8">
+                <SermonLink sermon={featured} className="btn btn-primary" />
+              </p>
+            ) : null}
           </div>
         </article>
       </Section>
@@ -93,14 +99,18 @@ export default function SermonsPage() {
               <div className="flex flex-1 flex-col p-6">
                 <p className="text-base text-muted">{sermon.date}</p>
                 <h3 className="mt-1">{sermon.title}</h3>
-                <p className="mt-1 text-base">
-                  <span className="font-semibold">Speaker:</span> {sermon.speaker}
-                </p>
+                {sermonSpeaker(sermon) ? (
+                  <p className="mt-1 text-base">
+                    <span className="font-semibold">Speaker:</span> {sermonSpeaker(sermon)}
+                  </p>
+                ) : null}
                 <p className="mt-3 flex-1 text-base">{sermon.summary}</p>
-                <p className="mt-4 flex items-center gap-2">
-                  <Icon name="play" className="h-5 w-5 text-navy-700" />
-                  <SermonLink sermon={sermon} />
-                </p>
+                {sermonHref(sermon.href) ? (
+                  <p className="mt-4 flex items-center gap-2">
+                    <Icon name="play" className="h-5 w-5 text-navy-700" />
+                    <SermonLink sermon={sermon} />
+                  </p>
+                ) : null}
               </div>
             </li>
           ))}

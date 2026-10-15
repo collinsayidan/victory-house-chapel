@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import {
+  filled,
   isPlaceholder,
   legalNavigation,
   siteConfig,
@@ -115,7 +116,7 @@ export default function Footer() {
                 {siteConfig.phone}
               </a>
             </li>
-            <li>Office hours: {siteConfig.officeHours}</li>
+            {filled(siteConfig.officeHours) ? <li>Office hours: {siteConfig.officeHours}</li> : null}
           </ul>
         </div>
       </div>
@@ -123,7 +124,8 @@ export default function Footer() {
       <div className="border-t border-white/20">
         <div className="container-page flex flex-col gap-4 py-6 text-sm text-white/85 lg:flex-row lg:items-center lg:justify-between">
           <p className="max-w-none">
-            © {year} {siteConfig.name}. Scottish Charity Number: {siteConfig.charityNumber}
+            © {year} {siteConfig.name}.
+            {filled(siteConfig.charityNumber) ? ` Scottish Charity Number: ${siteConfig.charityNumber}` : ''}
           </p>
           <ul className="flex flex-wrap gap-x-6 gap-y-2">
             {legalNavigation.map((item) => (

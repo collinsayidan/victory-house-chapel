@@ -5,6 +5,7 @@ import Icon from '../components/Icon';
 import NextGathering from '../components/NextGathering';
 import Section from '../components/Section';
 import { galleryItems, homeHighlights, ministries, sermons, siteConfig } from '../content/siteContent';
+import { sermonHref, sermonSpeaker } from '../lib/sermons';
 
 export const metadata = {
   title: { absolute: siteConfig.name },
@@ -57,6 +58,8 @@ const facts = [
 export default function HomePage() {
   const sundayServices = siteConfig.weeklyServices.filter((s) => s.day === 'Sunday');
   const latestSermon = sermons[0];
+  const latestSermonHref = sermonHref(latestSermon.href);
+  const latestSermonSpeaker = sermonSpeaker(latestSermon);
 
   return (
     <>
@@ -239,15 +242,18 @@ export default function HomePage() {
             <span className="eyebrow eyebrow-on-dark">Latest sermon</span>
             <h2>{latestSermon.title}</h2>
             <p className="mt-3 text-white/85">
-              {latestSermon.date} · {latestSermon.speaker}
+              {latestSermon.date}
+              {latestSermonSpeaker ? ` · ${latestSermonSpeaker}` : ''}
             </p>
             <p className="mt-4 text-lg text-white/90">{latestSermon.summary}</p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <a href={latestSermon.href} className="btn btn-gold">
-                <Icon name="play" className="h-5 w-5" />
-                {latestSermon.linkLabel}
-              </a>
-              <Link href="/sermons" className="btn btn-inverse">
+              {latestSermonHref ? (
+                <a href={latestSermonHref} className="btn btn-gold">
+                  <Icon name="play" className="h-5 w-5" />
+                  {latestSermon.linkLabel}
+                </a>
+              ) : null}
+              <Link href="/sermons" className={latestSermonHref ? 'btn btn-inverse' : 'btn btn-gold'}>
                 All sermons
               </Link>
             </div>
