@@ -4,22 +4,21 @@ import Section from '../../components/Section';
 import { siteConfig } from '../../content/siteContent';
 
 export const metadata = {
-  title: `Cookie Policy | ${siteConfig.name}`
+  title: 'Cookie policy'
 };
 
 export default function CookiePolicyPage() {
   return (
     <>
       <Hero
-        eyebrow="Cookie Policy"
-        title="How cookies may be used on this website."
+        eyebrow="Cookie policy"
+        title="How cookies may be used on this website"
         intro="This page explains how visitors can make choices about non-essential cookies and how the church can describe cookie use in a UK context."
       />
 
       <Section title="What are cookies?">
         <div
-          className="prose-content max-w-none rounded-3xl border border-church-border bg-white p-8"
-          style={{ boxShadow: 'var(--shadow-card)' }}
+          className="prose-content"
         >
           <p>
             Cookies are small text files stored on your device when you visit a
@@ -32,8 +31,7 @@ export default function CookiePolicyPage() {
 
       <Section title="How we use cookies">
         <div
-          className="prose-content max-w-none rounded-3xl border border-church-border bg-white p-8"
-          style={{ boxShadow: 'var(--shadow-card)' }}
+          className="prose-content"
         >
           <ul>
             <li>
@@ -51,8 +49,7 @@ export default function CookiePolicyPage() {
 
       <Section title="Your choices">
         <div
-          className="prose-content max-w-none rounded-3xl border border-church-border bg-white p-8"
-          style={{ boxShadow: 'var(--shadow-card)' }}
+          className="prose-content"
         >
           <p>
             On your first visit, you will be shown a cookie banner that allows
@@ -65,8 +62,7 @@ export default function CookiePolicyPage() {
             technologies, please read our{' '}
             <Link
               href="/privacy-policy"
-              className="font-semibold underline underline-offset-2 transition-colors duration-200"
-              style={{ color: 'var(--violet-dk)' }}
+              
             >
               Privacy Policy
             </Link>.

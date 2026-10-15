@@ -1,220 +1,121 @@
 // app/donate/page.js
 import Image from 'next/image';
+import Link from 'next/link';
 import Hero from '../../components/Hero';
 import Section from '../../components/Section';
 import { donateOptions, donateSummary, siteConfig } from '../../content/siteContent';
 
 export const metadata = {
-  title: `Donate | ${siteConfig.name}`
+  title: 'Give',
+  description:
+    'Support the work of Victory House Chapel, Edinburgh. Ways to give, Gift Aid and how we handle donations responsibly.'
 };
+
+// "Bank transfer: details" → { method, details }
+function splitOption(option) {
+  const index = option.indexOf(':');
+  if (index === -1) return { method: option, details: '' };
+  return { method: option.slice(0, index), details: option.slice(index + 1).trim() };
+}
 
 export default function DonatePage() {
   return (
     <>
       <Hero
-        eyebrow="Donate"
-        title="Support the work of Victory House Chapel."
+        eyebrow="Give"
+        title="Support the work of Victory House Chapel"
         intro="Your generosity helps sustain worship, pastoral care, discipleship and practical outreach in Edinburgh."
-        backgroundImage="/images/hero/donate.avif"
-        overlay="donate"
+        backgroundImage="/images/donate/donate-to-church.webp"
+        imageAlt="Hands holding a young plant growing from coins"
       />
 
-      {/* ── Why your donation matters ────────────────────────────────────────── */}
-      <Section
-        title="Why your donation matters"
-        intro="Giving helps support the day-to-day ministry of the church and our practical service in the community."
-      >
-        <div className="grid gap-6 lg:grid-cols-[1.08fr_0.92fr]">
-
-          <div className="rounded-3xl border border-church-border bg-white p-8" style={{ boxShadow: 'var(--shadow-card)' }}>
-            <p className="eyebrow">What donations support</p>
-            <h2 className="mt-5 text-2xl tracking-tight text-church-heading" style={{ fontFamily: 'var(--font-display)' }}>
-              Worship, care and community mission
-            </h2>
-            <p className="mt-4 text-base leading-7 text-church-text">
-              We want giving to be clear, prayerful and transparent. Donations
-              help us support gathered worship, Bible teaching, prayer,
-              discipleship, pastoral support and practical ministry in the local
-              community.
-            </p>
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              {donateSummary.map((item) => (
-                <div key={item.title} className="summary-item">
-                  <h3 className="text-base tracking-tight text-church-heading" style={{ fontFamily: 'var(--font-display)' }}>
-                    {item.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-6 text-church-text">{item.text}</p>
+      <Section title="Ways to give">
+        <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">
+          <dl className="summary-list">
+            {donateOptions.map((option) => {
+              const { method, details } = splitOption(option);
+              return (
+                <div key={method}>
+                  <dt>{method}</dt>
+                  <dd>{details}</dd>
                 </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="overflow-hidden rounded-3xl border border-church-border bg-white" style={{ boxShadow: 'var(--shadow-card)' }}>
-            <div className="relative aspect-[4/3] overflow-hidden">
-              <Image
-                src="/images/donate/donate-to-church.webp"
-                alt="Members of Victory House Chapel gathered in worship and community life"
-                fill
-                className="object-cover transition-transform duration-700 hover:scale-105"
-              />
-            </div>
-            <div className="p-8">
-              <p className="eyebrow">Thank you</p>
-              <h3 className="mt-4 text-2xl tracking-tight text-church-heading" style={{ fontFamily: 'var(--font-display)' }}>
-                Giving supports real ministry
-              </h3>
-              <p className="mt-4 text-base leading-7 text-church-text">
-                Your donation helps us care for people well, maintain ministry
-                and continue serving our neighbourhood with Christian love and
-                practical compassion.
-              </p>
-            </div>
-          </div>
+              );
+            })}
+          </dl>
+          <aside className="self-start rounded border-l-8 border-gold-500 bg-gold-50 p-6">
+            <h3 className="text-xl">Questions about giving?</h3>
+            <p className="mt-3">
+              Contact our finance team at {siteConfig.financeEmail} or{' '}
+              <Link href="/contact">send us a message</Link>.
+            </p>
+          </aside>
         </div>
       </Section>
 
-      {/* ── Ways to donate ───────────────────────────────────────────────────── */}
-      <Section
-        title="Ways to donate"
-        intro="Offer the methods that are secure, straightforward and convenient for your congregation and supporters."
-      >
-        <div className="grid gap-6 lg:grid-cols-2">
-
-          <div className="rounded-3xl border border-church-border bg-white p-8" style={{ boxShadow: 'var(--shadow-card)' }}>
-            <div className="mb-5 h-1 w-10 rounded-full" style={{ background: 'var(--gold)' }} />
-            <h3 className="text-xl tracking-tight text-church-heading" style={{ fontFamily: 'var(--font-display)' }}>
-              Donation options
-            </h3>
-            <ul className="mt-5 space-y-2">
-              {donateOptions.map((option) => (
-                <li key={option} className="donate-option-item">{option}</li>
-              ))}
-            </ul>
-            <div className="mt-6 rounded-2xl p-4" style={{ background: 'var(--gold-lt)', border: '1px solid rgba(201,168,76,0.12)' }}>
-              <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: 'var(--gold)' }}>
-                PayPal
-              </p>
-              <p className="mt-2 text-sm leading-6 text-church-text">
-                If you offer PayPal giving, replace the placeholder in your
-                donation options with your verified PayPal donation link or QR
-                code so supporters can give securely online.
-              </p>
-            </div>
-          </div>
-
-          <div
-            className="relative overflow-hidden rounded-3xl p-8 text-white"
-            style={{ background: 'linear-gradient(135deg, #0f0c29 0%, #1e1b4b 45%, #172554 100%)', boxShadow: '0 8px 32px 0 rgba(15,23,42,0.28)' }}
-          >
-            <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full opacity-20"
-              style={{ background: 'radial-gradient(circle, var(--gold), transparent 70%)' }} />
-            <div className="relative">
-              <p className="eyebrow" style={{ color: 'rgba(255,255,255,0.55)' }}>Stewardship</p>
-              <h3 className="mt-4 text-2xl tracking-tight text-white" style={{ fontFamily: 'var(--font-display)' }}>
-                One-off or regular support
-              </h3>
-              <p className="mt-4 text-base leading-7 text-white/75">
-                You may wish to offer both regular and one-off giving, with clear
-                digital giving options for general ministry or specific projects.
-              </p>
-              <p className="mt-4 text-base leading-7 text-white/75">
-                Before launch, make sure your giving links, payment provider,
-                finance contact details, PayPal details and Gift Aid wording are
-                fully checked and accurate.
-              </p>
-              <div className="mt-6 space-y-2 border-t border-white/10 pt-6">
-                {['Secure online giving options', 'Clear guidance for regular giving', 'Transparent finance contact details'].map((item) => (
-                  <div key={item} className="rounded-2xl px-4 py-3 text-sm font-medium text-white/90"
-                    style={{ background: 'rgba(255,255,255,0.07)', borderLeft: '3px solid rgba(201,168,76,0.6)' }}>
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
+      <Section alt title="What your giving supports">
+        <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {donateSummary.map((item) => (
+            <li key={item.title} className="card border-t-4 border-t-gold-500 p-6">
+              <h3 className="text-xl">{item.title}</h3>
+              <p className="mt-3 text-base">{item.text}</p>
+            </li>
+          ))}
+        </ul>
       </Section>
 
-      {/* ── Gift Aid ─────────────────────────────────────────────────────────── */}
-      <Section
-        title="Gift Aid and donor consent"
-        intro="Make your Gift Aid wording, privacy wording and donor consent clear before publishing."
-      >
-        <div className="grid gap-6 lg:grid-cols-[1.02fr_0.98fr]">
-
-          <div className="prose-content max-w-none rounded-3xl border border-church-border bg-white p-8" style={{ boxShadow: 'var(--shadow-card)' }}>
-            <h2>Gift Aid guidance</h2>
+      <Section title="Gift Aid">
+        <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">
+          <div className="prose-content">
             <p>
-              If you are eligible to claim Gift Aid, make sure your final
-              wording reflects your actual giving process and is reviewed by the
-              appropriate church finance lead before launch.
+              If you are a UK taxpayer, Gift Aid lets the church claim an extra 25p from HMRC for
+              every £1 you give, at no extra cost to you.
             </p>
-            <p>Example wording for a donor declaration could be adapted to suit your final form or giving page:</p>
-            <blockquote>
-              I want Victory House Chapel Assemblies of God, Edinburgh to treat
-              this donation, and any donations I make in the future or have made
-              in the past four years, as Gift Aid donations until I notify you
-              otherwise. I confirm that I am a UK taxpayer and understand that,
-              if I pay less Income Tax and/or Capital Gains Tax than the amount
-              of Gift Aid claimed on all my donations in that tax year, it is my
-              responsibility to pay any difference.
-            </blockquote>
-            <p>Replace this sample wording with your final approved wording if your finance team or adviser uses a different version.</p>
+            {/* TODO: confirm the final declaration wording with the church finance lead. */}
+            <details className="details border-y border-line-light">
+              <summary>Read the Gift Aid declaration</summary>
+              <blockquote className="mb-5">
+                I want {siteConfig.name} to treat this donation, and any donations I make in the
+                future or have made in the past four years, as Gift Aid donations until I notify you
+                otherwise. I confirm that I am a UK taxpayer and understand that, if I pay less
+                Income Tax and/or Capital Gains Tax than the amount of Gift Aid claimed on all my
+                donations in that tax year, it is my responsibility to pay any difference.
+              </blockquote>
+            </details>
+            <h2>How we use your details</h2>
+            <p>
+              We only use your details to process your donation, claim Gift Aid where it applies,
+              keep our finance records and contact you about your giving if we need to. We will not
+              pass your details to another organisation for marketing or fundraising. Read our{' '}
+              <Link href="/privacy-policy">privacy policy</Link>.
+            </p>
           </div>
-
-          <div className="rounded-3xl border border-church-border bg-church-panel p-8" style={{ boxShadow: 'var(--shadow-soft)' }}>
-            <p className="eyebrow">Privacy and consent</p>
-            <h3 className="mt-4 text-2xl tracking-tight text-church-heading" style={{ fontFamily: 'var(--font-display)' }}>
-              Donor details will be handled with care
-            </h3>
-            <p className="mt-4 text-base leading-7 text-church-text">
-              If you collect donor information through a form, donation platform
-              or Gift Aid declaration, make it clear that personal details are
-              used only for donation administration, Gift Aid processing,
-              finance record-keeping and any related communication the donor has
-              agreed to receive.
-            </p>
-            <div className="mt-6 rounded-2xl border border-church-border bg-white p-5"
-              style={{ borderLeftWidth: '3px', borderLeftColor: 'var(--gold)' }}>
-              <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: 'var(--gold)' }}>
-                Sample consent wording
-              </p>
-              <p className="mt-3 text-sm leading-6 text-church-text">
-                We will use your details only for processing your donation,
-                administering Gift Aid where applicable, maintaining our finance
-                records and communicating with you about your giving where
-                necessary. We will not pass your personal details to another
-                organisation for marketing or fundraising purposes.
-              </p>
-            </div>
-            <p className="mt-4 text-sm leading-6 text-church-text">
-              Make sure this wording matches your actual privacy policy,
-              donation platform and data handling arrangements before going live.
-            </p>
+          <div className="relative hidden aspect-[4/3] overflow-hidden rounded lg:block">
+            <Image
+              src="/images/donate/giving-to-god.jpg"
+              alt=""
+              fill
+              sizes="30rem"
+              className="object-cover"
+            />
           </div>
         </div>
       </Section>
 
-      {/* ── Financial accountability ──────────────────────────────────────────── */}
-      <Section
-        title="Financial accountability"
-        intro="Victory House Chapel seeks to manage donations responsibly and transparently."
-      >
-        <div className="prose-content max-w-none rounded-3xl border border-church-border bg-white p-8" style={{ boxShadow: 'var(--shadow-card)' }}>
-          <p>
-            The church is registered as a charity in Scotland and operates in
-            accordance with its governing document and the relevant charity regulations.
-          </p>
-          <ul>
-            <li>Scottish Charity Number: {siteConfig.charityNumber}</li>
-            <li>Finance contact: {siteConfig.financeEmail}</li>
-          </ul>
-          <p>
-            If you have questions about donating, Gift Aid, stewardship,
-            privacy or financial administration, please contact the church using
-            the details above.
-          </p>
-        </div>
+      <Section alt title="Financial accountability">
+        <p>
+          The church is a registered charity in Scotland and manages donations in line with its
+          governing document and charity regulations.
+        </p>
+        <dl className="summary-list mt-6 max-w-3xl">
+          <div>
+            <dt>Scottish Charity Number</dt>
+            <dd>{siteConfig.charityNumber}</dd>
+          </div>
+          <div>
+            <dt>Finance contact</dt>
+            <dd>{siteConfig.financeEmail}</dd>
+          </div>
+        </dl>
       </Section>
     </>
   );

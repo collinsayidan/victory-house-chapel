@@ -4,15 +4,15 @@ import Section from '../../components/Section';
 import { siteConfig } from '../../content/siteContent';
 
 export const metadata = {
-  title: `Privacy Policy | ${siteConfig.name}`
+  title: 'Privacy policy'
 };
 
 export default function PrivacyPolicyPage() {
   return (
     <>
       <Hero
-        eyebrow="Privacy Policy"
-        title="How we collect, use and protect personal data."
+        eyebrow="Privacy policy"
+        title="How we collect, use and protect personal data"
         intro="This sample privacy policy is written for a UK church website and should be reviewed against the church’s actual practices before publication."
       />
 
@@ -20,8 +20,8 @@ export default function PrivacyPolicyPage() {
         title="Important notice"
         intro="Please review this wording carefully before the site goes live."
       >
-        <div className="rounded-2xl border border-brand-200 bg-brand-50 p-6 shadow-soft">
-          <p className="text-base leading-7 text-church-text">
+        <div className="border-l-8 border-gold-500 bg-gold-50 p-6">
+          <p >
             This sample privacy policy is provided for general website
             development purposes only and does not constitute legal advice. The
             church should review and approve the final wording in light of its
@@ -35,7 +35,7 @@ export default function PrivacyPolicyPage() {
         title="Who we are"
         intro="Victory House Chapel Assemblies of God, Edinburgh acts as the data controller for personal data collected through this website."
       >
-        <div className="rounded-2xl border border-church-border bg-white p-6 shadow-soft prose-content max-w-none">
+        <div className="prose-content">
           <p>
             {siteConfig.name} is the data controller for the personal data
             collected through this website for the purposes described below.
@@ -61,7 +61,7 @@ export default function PrivacyPolicyPage() {
         title="What personal data we may collect"
         intro="The exact data collected will depend on how the website is used and which services are enabled."
       >
-        <div className="rounded-2xl border border-church-border bg-church-panel p-6 shadow-soft prose-content max-w-none">
+        <div className="prose-content">
           <ul>
             <li>
               Contact details submitted through website forms, such as name,
@@ -90,7 +90,7 @@ export default function PrivacyPolicyPage() {
         intro="We use personal data only where there is a clear purpose and lawful basis for doing so."
       >
         <div className="grid gap-6 md:grid-cols-2">
-          <div className="rounded-2xl border border-church-border bg-white p-6 shadow-soft prose-content max-w-none">
+          <div className="prose-content">
             <h2>Common purposes</h2>
             <ul>
               <li>Responding to enquiries and communicating with visitors or members</li>
@@ -105,11 +105,11 @@ export default function PrivacyPolicyPage() {
             </ul>
           </div>
 
-          <div className="rounded-2xl border border-navy-800/30 bg-navy-950 p-6 shadow-navy">
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-300">
+          <div className="self-start rounded bg-navy-50 p-6">
+            <p className="text-xl font-bold">
               Lawful bases
             </p>
-            <div className="mt-4 space-y-4 text-base leading-7 text-slate-200">
+            <div className="mt-3 space-y-4">
               <p>
                 Depending on the circumstances, we may rely on consent,
                 legitimate interests, legal obligation or contract as lawful
@@ -129,7 +129,7 @@ export default function PrivacyPolicyPage() {
         title="Sharing, retention and security"
         intro="We seek to handle personal information carefully and responsibly."
       >
-        <div className="rounded-2xl border border-church-border bg-white p-6 shadow-soft prose-content max-w-none">
+        <div className="prose-content">
           <p>
             We do not sell personal data. We may share information, where
             appropriate, with trusted service providers who help us operate the
@@ -165,9 +165,9 @@ export default function PrivacyPolicyPage() {
           ].map((item) => (
             <div
               key={item}
-              className="rounded-2xl border border-church-border bg-church-panel p-5 shadow-soft"
+              className="card border-t-4 border-t-navy-900 p-5"
             >
-              <p className="text-base font-semibold text-church-heading">{item}</p>
+              <p className="font-semibold">{item}</p>
             </div>
           ))}
         </div>
@@ -177,7 +177,7 @@ export default function PrivacyPolicyPage() {
         title="Complaints and contact"
         intro="If you have concerns about how your information is handled, please contact the church first."
       >
-        <div className="rounded-2xl border border-church-border bg-white p-6 shadow-soft prose-content max-w-none">
+        <div className="prose-content">
           <p>
             If you are unhappy with how your data has been handled, please
             contact us first so we have an opportunity to address your concern.

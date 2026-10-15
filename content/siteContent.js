@@ -2,6 +2,9 @@
 export const siteConfig = {
   name: 'Victory House Chapel Assemblies of God, Edinburgh',
   shortName: 'Victory House Chapel',
+  // Public web address, used for search engines and link previews.
+  // Inferred from the church email domain — update if the site lives elsewhere.
+  url: 'https://www.victoryhousechapelag.org',
   location: 'Edinburgh, Scotland',
   tagline: 'A welcoming Christ-centred church for Edinburgh.',
   description:
@@ -15,11 +18,19 @@ export const siteConfig = {
   financeEmail: '[Insert finance email]',
   dataProtectionContact: '[Insert contact name or role]',
   officeHours: '[Insert office or enquiry hours]',
+  // Structured version of the weekly timetable, used for the service times
+  // tables and for search engines. Keep in step with `serviceTimes` below.
+  weeklyServices: [
+    { name: 'Sunday prayer', day: 'Sunday', time: '10:00am' },
+    { name: 'Sunday worship service', day: 'Sunday', time: '11:00am' },
+    { name: 'Midweek prayer meeting', day: 'Wednesday', time: '7:00pm' },
+    { name: 'Community outreach', day: 'First Saturday of the month', time: '11:00am' }
+  ],
   serviceTimes: [
     'Sunday Prayer - 10:00 am',
     'Sunday Worship Service - 11:00 am',
     'Midweek Prayer Meeting - Wednesday, 7:00 pm',
-    'Community Outreach - Selected Saturdays, 11:00 am'
+    'Community Outreach - First Saturday of each month, 11:00 am'
   ],
   hero: {
     title: 'A place to worship, grow and belong.',
@@ -127,7 +138,7 @@ export const events = [
   {
     title: 'Youth Fellowship Evening',
     schedule: 'Fortnightly Friday, 6:30 pm',
-    location: 'Church premises',
+    location: 'Murrayburn House, 2nd Floor, Edinburgh EH14 3HR',
     description: 'A welcoming gathering for young people with teaching, conversation and community.',
     image: '/images/events/youth-fellowship.webp',
     alt: 'Young people taking part in a church youth programme activity'
@@ -201,7 +212,7 @@ export const leaders = [
     role: 'Lead Pastor',
     email: '[insert-pastor-email@example.org]',
     phone: '[Insert contact number]',
-    image: '/images/leaders/lead-pastor.jpg',
+    image: '/images/leaders/HeadPastor.JPG',
     alt: 'Portrait of the lead pastor at Victory House Chapel'
   },
   {
@@ -210,7 +221,7 @@ export const leaders = [
     role: 'Associate Pastor',
     email: '[insert-associate-email@example.org]',
     phone: '[Insert contact number]',
-    image: '/images/leaders/associate-pastor.jpg',
+    image: '/images/leaders/Henry.jpg',
     alt: 'Portrait of the associate pastor at Victory House Chapel'
   },
   {
@@ -219,7 +230,7 @@ export const leaders = [
     role: 'Church Administrator',
     email: '[insert-admin-email@example.org]',
     phone: '[Insert contact number]',
-    image: '/images/leaders/church-administrator.jpg',
+    image: '/images/leaders/IMG_6433.JPG',
     alt: 'Portrait of the church administrator at Victory House Chapel'
   },
   {
@@ -228,7 +239,7 @@ export const leaders = [
     role: 'Ministry Leader',
     email: '[insert-ministry-email@example.org]',
     phone: '[Insert contact number]',
-    image: '/images/leaders/ministry-leader.jpg',
+    image: '/images/leaders/IMG_6919.JPG',
     alt: 'Portrait of a ministry leader at Victory House Chapel'
   }
 ];
@@ -245,7 +256,7 @@ export const galleryItems = [
     id: 2,
     title: 'Prayer gathering',
     category: 'Prayer',
-    image: '/images/gallery/Worship03.jpg',
+    image: '/images/gallery/worship03.jpg',
     alt: 'Church members praying together during a prayer gathering'
   },
   {
@@ -303,22 +314,26 @@ export const galleryCategories = [
   'Events'
 ];
 
-export const mainNavigation = [
+// Primary navigation, in the order it appears in the header.
+export const navigation = [
   { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
+  { href: '/about', label: 'About us' },
+  { href: '/visit', label: 'Plan your visit' },
   { href: '/events', label: 'Events' },
+  { href: '/sermons', label: 'Sermons' },
+  { href: '/ministries', label: 'Ministries' },
+  { href: '/gallery', label: 'Gallery' },
+  { href: '/donate', label: 'Give' },
   { href: '/contact', label: 'Contact' }
 ];
 
-export const moreNavigation = [
-  { href: '/ministries', label: 'Ministries' },
-  { href: '/sermons', label: 'Sermons' },
-  { href: '/gallery', label: 'Gallery' },
-  { href: '/donate', label: 'Donate' }
+export const legalNavigation = [
+  { href: '/privacy-policy', label: 'Privacy policy' },
+  { href: '/cookie-policy', label: 'Cookie policy' },
+  { href: '/data-protection', label: 'Data protection' }
 ];
 
-export const navigation = [
-  ...mainNavigation,
-  { href: '/visit', label: 'Plan Your Visit' },
-  ...moreNavigation
-];
+// True when a value still holds an "[Insert …]" placeholder.
+export function isPlaceholder(value) {
+  return typeof value === 'string' && value.includes('[');
+}
