@@ -232,15 +232,6 @@ export const leaders = [
     phone: '[Insert contact number]',
     image: '/images/leaders/IMG_6433.JPG',
     alt: 'Portrait of the church administrator at Victory House Chapel'
-  },
-  {
-    id: 4,
-    name: '[Insert Name]',
-    role: 'Ministry Leader',
-    email: '[insert-ministry-email@example.org]',
-    phone: '[Insert contact number]',
-    image: '/images/leaders/IMG_6919.JPG',
-    alt: 'Portrait of a ministry leader at Victory House Chapel'
   }
 ];
 

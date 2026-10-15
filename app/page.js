@@ -258,9 +258,9 @@ export default function HomePage() {
       {/* ── Scripture ────────────────────────────────────────────────── */}
       <section className="section">
         <figure className="container-page text-center">
-          <span aria-hidden="true" className="block font-serif text-7xl leading-none text-gold-500">“</span>
+          <span aria-hidden="true" className="block font-display text-7xl leading-none text-gold-500">“</span>
           <blockquote>
-            <p className="mx-auto max-w-3xl font-serif text-3xl font-semibold leading-snug text-navy-900 sm:text-4xl">
+            <p className="mx-auto max-w-3xl font-display text-3xl font-semibold leading-snug text-navy-900 sm:text-4xl">
               Your word is a lamp to my feet and a light to my path.
             </p>
           </blockquote>

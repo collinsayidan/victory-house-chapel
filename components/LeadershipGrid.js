@@ -4,7 +4,7 @@ import { isPlaceholder } from '../content/siteContent';
 
 export default function LeadershipGrid({ leaders = [] }) {
   return (
-    <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {leaders.map((leader) => (
         <li key={leader.id} className="card overflow-hidden">
           <div className="relative aspect-square bg-surface">
@@ -12,7 +12,7 @@ export default function LeadershipGrid({ leaders = [] }) {
               src={leader.image}
               alt={leader.alt}
               fill
-              sizes="(min-width: 1024px) 18rem, (min-width: 640px) 50vw, 100vw"
+              sizes="(min-width: 1024px) 24rem, (min-width: 640px) 50vw, 100vw"
               className="object-cover"
             />
           </div>

@@ -1,14 +1,14 @@
 import './globals.css';
-import { Inter, Source_Serif_4 } from 'next/font/google';
+import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import CookieBanner from '../components/CookieBanner';
 import { siteConfig } from '../content/siteContent';
 
 /* ─── Fonts ────────────────────────────────────────────────────────────── */
-const sourceSerif = Source_Serif_4({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
-  weight: ['600', '700'],
+  weight: ['600', '700', '800'],
   variable: '--font-display',
   display: 'swap'
 });
@@ -77,7 +77,7 @@ const structuredData = {
 /* ─── Root layout ──────────────────────────────────────────────────────── */
 export default function RootLayout({ children }) {
   return (
-    <html lang="en-GB" className={`${sourceSerif.variable} ${inter.variable}`}>
+    <html lang="en-GB" className={`${jakarta.variable} ${inter.variable}`}>
       <body id="top">
         <a href="#main-content" className="skip-link">
           Skip to main content
