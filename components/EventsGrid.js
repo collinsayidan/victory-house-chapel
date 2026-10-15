@@ -1,50 +1,35 @@
-'use client';
-
 import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { ContentCard } from './Contentcard';
 
-export function EventsGrid({ events, columns = 2 }) {
-  const gridClass =
-    columns === 1
-      ? 'grid gap-6'
-      : columns === 2
-        ? 'grid gap-6 md:grid-cols-2'
-        : 'grid gap-6 md:grid-cols-2 xl:grid-cols-3';
-
+export function EventsGrid({ events }) {
   return (
-    <motion.div
-      className={gridClass}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.1 }}
-      variants={{
-        hidden: {},
-        visible: { transition: { staggerChildren: 0.08 } }
-      }}
-    >
-      {events.map((item, index) => (
-        <ContentCard
-          key={item.title}
-          title={item.title}
-          tone={index % 2 === 1 ? 'soft' : 'default'}
-        >
-          {item.image && (
-            <div className="mb-4 overflow-hidden rounded-2xl">
-              <Image
-                src={item.image}
-                alt={item.alt || item.title}
-                width={800}
-                height={500}
-                className="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-            </div>
-          )}
-          <p><strong>When:</strong> {item.schedule}</p>
-          <p><strong>Where:</strong> {item.location}</p>
-          <p>{item.description}</p>
-        </ContentCard>
+    <ul className="grid gap-6 md:grid-cols-2">
+      {events.map((event) => (
+        <li key={event.title} className="card flex flex-col overflow-hidden sm:flex-row">
+          <div className="relative aspect-[16/9] w-full shrink-0 bg-surface sm:aspect-auto sm:w-48">
+            <Image
+              src={event.image}
+              alt={event.alt}
+              fill
+              sizes="(min-width: 640px) 12rem, 100vw"
+              className="object-cover"
+            />
+          </div>
+          <div className="p-5">
+            <h3>{event.title}</h3>
+            <dl className="mt-3 space-y-1 text-base">
+              <div>
+                <dt className="inline font-semibold">When: </dt>
+                <dd className="inline">{event.schedule}</dd>
+              </div>
+              <div>
+                <dt className="inline font-semibold">Where: </dt>
+                <dd className="inline">{event.location}</dd>
+              </div>
+            </dl>
+            <p className="mt-3 text-base">{event.description}</p>
+          </div>
+        </li>
       ))}
-    </motion.div>
+    </ul>
   );
 }

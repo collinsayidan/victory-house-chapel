@@ -1,52 +1,99 @@
 import './globals.css';
-import { Cormorant_Garamond, Inter } from 'next/font/google';
+import { Inter, Source_Serif_4 } from 'next/font/google';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import CookieBanner from '../components/CookieBanner';
-import PageTransition from '../components/PageTransition';
 import { siteConfig } from '../content/siteContent';
 
-/* ─── Fonts ────────────────────────────────────────────────────────────────── */
-const cormorant = Cormorant_Garamond({
+/* ─── Fonts ────────────────────────────────────────────────────────────── */
+const sourceSerif = Source_Serif_4({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  style: ['normal', 'italic'],
+  weight: ['600', '700'],
   variable: '--font-display',
   display: 'swap'
 });
 
 const inter = Inter({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['400', '600', '700'],
   variable: '--font-body',
   display: 'swap'
 });
 
-/* ─── Metadata ─────────────────────────────────────────────────────────────── */
+/* ─── Metadata ─────────────────────────────────────────────────────────── */
 export const metadata = {
-  title: siteConfig.name,
-  description: siteConfig.description
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.shortName}`
+  },
+  description: siteConfig.description,
+  openGraph: {
+    type: 'website',
+    locale: 'en_GB',
+    siteName: siteConfig.name,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [
+      {
+        url: '/images/hero/worship.webp',
+        alt: 'Worship at Victory House Chapel, Edinburgh'
+      }
+    ]
+  },
+  twitter: {
+    card: 'summary_large_image'
+  }
 };
 
-/* ─── Root layout ──────────────────────────────────────────────────────────── */
+export const viewport = {
+  themeColor: '#0b1a3b'
+};
+
+/* ─── Structured data for search engines and maps ──────────────────────── */
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Church',
+  name: siteConfig.name,
+  url: siteConfig.url,
+  email: siteConfig.email,
+  telephone: siteConfig.phone,
+  logo: `${siteConfig.url}/images/church-logo.jpeg`,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: siteConfig.addressLine1,
+    addressLocality: 'Edinburgh',
+    postalCode: 'EH14 3HR',
+    addressCountry: 'GB'
+  },
+  event: siteConfig.weeklyServices.map((service) => ({
+    '@type': 'Event',
+    name: service.name,
+    description: `${service.day}, ${service.time}`,
+    location: { '@type': 'Place', name: siteConfig.shortName }
+  }))
+};
+
+/* ─── Root layout ──────────────────────────────────────────────────────── */
 export default function RootLayout({ children }) {
   return (
-    <html lang="en-GB" className={`${cormorant.variable} ${inter.variable}`}>
-      <body
-        className="bg-church-bg text-church-text antialiased"
-        style={{ fontFamily: 'var(--font-body)' }}
-      >
+    <html lang="en-GB" className={`${sourceSerif.variable} ${inter.variable}`}>
+      <body>
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
-        <div className="min-h-screen bg-slate-50">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+        <div className="flex min-h-screen flex-col">
           <Header />
-          <PageTransition>
-            <main id="main-content">{children}</main>
-          </PageTransition>
+          <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-none">
+            {children}
+          </main>
           <Footer />
-          <CookieBanner />
         </div>
+        <CookieBanner />
       </body>
     </html>
   );

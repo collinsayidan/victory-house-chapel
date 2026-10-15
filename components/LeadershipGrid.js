@@ -1,57 +1,49 @@
 // components/LeadershipGrid.js
 import Image from 'next/image';
+import { isPlaceholder } from '../content/siteContent';
 
 export default function LeadershipGrid({ leaders = [] }) {
   return (
-    <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+    <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {leaders.map((leader) => (
-        <article
-          key={leader.id}
-          className="group overflow-hidden rounded-2xl border border-church-border bg-white shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-navy"
-        >
-          <div className="relative aspect-[4/4.5] overflow-hidden bg-church-panel">
+        <li key={leader.id} className="card overflow-hidden">
+          <div className="relative aspect-square bg-surface">
             <Image
               src={leader.image}
               alt={leader.alt}
               fill
-              className="object-cover transition duration-500 group-hover:scale-[1.03]"
+              sizes="(min-width: 1024px) 18rem, (min-width: 640px) 50vw, 100vw"
+              className="object-cover"
             />
-            <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/15 to-transparent" />
           </div>
-
           <div className="p-5">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-700">
-              {leader.role}
-            </p>
-
-            <h3 className="mt-2 text-xl font-semibold tracking-tight text-church-heading">
-              {leader.name}
-            </h3>
-
-            <div className="mt-4 space-y-2 text-sm leading-6 text-church-text">
-              <p>
-                <span className="font-semibold text-church-heading">Email: </span>
-                <a
-                  href={`mailto:${leader.email}`}
-                  className="break-words text-brand-700 underline underline-offset-4 transition hover:text-brand-800"
-                >
-                  {leader.email}
-                </a>
-              </p>
-
-              <p>
-                <span className="font-semibold text-church-heading">Phone: </span>
-                <a
-                  href={`tel:${leader.phone}`}
-                  className="transition hover:text-brand-800"
-                >
-                  {leader.phone}
-                </a>
-              </p>
-            </div>
+            <p className="text-base font-semibold text-gold-800">{leader.role}</p>
+            <h3 className="mt-1 text-xl">{leader.name}</h3>
+            <dl className="mt-3 space-y-1 text-base">
+              <div>
+                <dt className="inline font-semibold">Email: </dt>
+                <dd className="inline break-words">
+                  {isPlaceholder(leader.email) ? (
+                    leader.email
+                  ) : (
+                    <a href={`mailto:${leader.email}`}>{leader.email}</a>
+                  )}
+                </dd>
+              </div>
+              <div>
+                <dt className="inline font-semibold">Phone: </dt>
+                <dd className="inline">
+                  {isPlaceholder(leader.phone) ? (
+                    leader.phone
+                  ) : (
+                    <a href={`tel:${leader.phone.replace(/\s/g, '')}`}>{leader.phone}</a>
+                  )}
+                </dd>
+              </div>
+            </dl>
           </div>
-        </article>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }

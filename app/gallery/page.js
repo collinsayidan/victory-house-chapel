@@ -1,9 +1,11 @@
 import Hero from '../../components/Hero';
-import { siteConfig } from '../../content/siteContent';
+import Section from '../../components/Section';
 import GalleryPageClient from './GalleryPageClient';
 
 export const metadata = {
-  title: `Gallery | ${siteConfig.name}`
+  title: 'Gallery',
+  description:
+    'Photos from worship services, prayer gatherings, outreach and church life at Victory House Chapel, Edinburgh.'
 };
 
 export default function GalleryPage() {
@@ -12,13 +14,11 @@ export default function GalleryPage() {
       <Hero
         eyebrow="Gallery"
         title="Moments from church life"
-        intro="A glimpse of worship, fellowship, outreach and ministry at Victory House Chapel."
-        backgroundImage="/images/hero/church-activities.jpeg"
-        overlay="gallery"
-        align="center"
+        intro="Photos from worship services, prayer gatherings, outreach and community life at Victory House Chapel. Select a photo to see it larger."
       />
-
-      <GalleryPageClient />
+      <Section>
+        <GalleryPageClient />
+      </Section>
     </>
   );
 }

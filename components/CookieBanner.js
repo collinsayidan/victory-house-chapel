@@ -2,91 +2,71 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 
 const STORAGE_KEY = 'vhc-cookie-consent';
 
+/**
+ * Cookie banner in the GOV.UK style: shown at the top of the page until
+ * the visitor makes a choice, then replaced by a short confirmation.
+ */
 export default function CookieBanner() {
-  const [visible, setVisible] = useState(false);
+  const [state, setState] = useState('hidden'); // hidden | asking | accepted | rejected
 
   useEffect(() => {
-    const saved = window.localStorage.getItem(STORAGE_KEY);
-    if (!saved) setVisible(true);
+    try {
+      if (!window.localStorage.getItem(STORAGE_KEY)) setState('asking');
+    } catch {
+      setState('asking');
+    }
   }, []);
 
   function saveChoice(choice) {
-    window.localStorage.setItem(STORAGE_KEY, choice);
-    setVisible(false);
+    try {
+      window.localStorage.setItem(STORAGE_KEY, choice);
+    } catch {
+      /* storage unavailable – keep the choice for this page view only */
+    }
+    setState(choice);
   }
 
+  if (state === 'hidden') return null;
+
   return (
-    <AnimatePresence>
-      {visible && (
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 16 }}
-          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed inset-x-4 bottom-4 z-50 sm:inset-x-auto sm:right-4 sm:w-full sm:max-w-md"
-        >
-          <div
-            className="relative overflow-hidden rounded-2xl bg-white p-5"
-            role="dialog"
-            aria-label="Cookie consent banner"
-            style={{
-              border: '1px solid rgba(13,27,62,0.10)',
-              boxShadow: '0 8px 40px rgba(13,27,62,0.16), 0 2px 8px rgba(13,27,62,0.08)'
-            }}
-          >
-            {/* Navy → gold top bar */}
-            <div
-              className="absolute inset-x-0 top-0 h-1 rounded-t-2xl"
-              style={{ background: 'linear-gradient(90deg, var(--navy), var(--navy-lt), var(--gold-mid))' }}
-            />
-
-            <div className="pt-1">
-              <p
-                className="text-xs font-semibold uppercase tracking-widest"
-                style={{ color: 'var(--gold-dk)' }}
-              >
-                Cookie settings
-              </p>
-              <p className="mt-2 text-sm leading-6 text-slate-600">
-                We use necessary cookies to keep this site working. Non-essential
-                cookies (such as analytics) are optional — you choose.
-              </p>
-              <p className="mt-2 text-sm text-slate-500">
-                Read our{' '}
-                <Link
-                  href="/cookie-policy"
-                  className="font-semibold underline underline-offset-2 transition-colors duration-200"
-                  style={{ color: 'var(--navy)' }}
-                >
-                  Cookie Policy
-                </Link>
-                .
-              </p>
-
-              <div className="mt-4 flex flex-wrap gap-2">
-                <button
-                  type="button"
-                  onClick={() => saveChoice('accepted')}
-                  className="btn-primary px-4 py-2 text-xs"
-                >
-                  Accept all
-                </button>
-                <button
-                  type="button"
-                  onClick={() => saveChoice('rejected')}
-                  className="btn-secondary px-4 py-2 text-xs"
-                >
-                  Reject non-essential
-                </button>
-              </div>
+    <div
+      role="region"
+      aria-label="Cookies on this website"
+      className="fixed inset-x-0 bottom-0 z-50 border-t-4 border-navy-900 bg-surface shadow-[0_-4px_16px_rgba(0,0,0,0.12)]"
+    >
+      <div className="container-page py-5">
+        {state === 'asking' ? (
+          <>
+            <h2 className="font-sans text-xl">Cookies on this website</h2>
+            <p className="mt-2">
+              We use some essential cookies to make this website work. We would also like to
+              set optional cookies to understand how you use the site, so we can improve it.
+            </p>
+            <div className="mt-4 flex flex-wrap items-center gap-4">
+              <button type="button" className="btn btn-primary" onClick={() => saveChoice('accepted')}>
+                Accept optional cookies
+              </button>
+              <button type="button" className="btn btn-primary" onClick={() => saveChoice('rejected')}>
+                Reject optional cookies
+              </button>
+              <Link href="/cookie-policy">View cookies</Link>
             </div>
+          </>
+        ) : (
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <p>
+              You have {state} optional cookies. You can{' '}
+              <Link href="/cookie-policy">change your cookie settings</Link> at any time.
+            </p>
+            <button type="button" className="btn btn-secondary" onClick={() => setState('hidden')}>
+              Hide cookie message
+            </button>
           </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+        )}
+      </div>
+    </div>
   );
 }

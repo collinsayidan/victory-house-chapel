@@ -1,264 +1,259 @@
-/* app/globals.css */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap');
+/* app/globals.css
+ *
+ * Design system for Victory House Chapel.
+ * Patterns follow the GOV.UK Design System where it fits a church site:
+ * one clear typeface, large readable body text, underlined links,
+ * a high-visibility yellow focus state and plain, predictable components.
+ */
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Design tokens ──────────────────────────────────────────────────────────
-   Two-colour system: deep navy + champagne gold + white
-   Navy has three depth stops so gradients feel rich, not flat.
-   Gold is cooled/metallic — blends naturally into navy without clashing.
-   ────────────────────────────────────────────────────────────────────────── */
 :root {
-  --gold:        #B8953F;
-  --gold-lt:     #F7F1E3;
-  --gold-mid:    #D4A84B;
-  --gold-dk:     #7A5C1E;
-  --gold-on-dark:#E8C86A;
-
-  --navy:        #0D1B3E;
-  --navy-md:     #14285A;
-  --navy-lt:     #1B3A78;
-  --navy-pale:   #EEF2FA;
-
-  --gradient-brand: linear-gradient(135deg, #0D1B3E 0%, #14285A 40%, #1B3A78 75%, rgba(212,168,75,0.28) 100%);
-  --gradient-hero:  linear-gradient(135deg, rgba(13,27,62,0.93) 0%, rgba(20,40,90,0.82) 35%, rgba(27,58,120,0.55) 70%, rgba(184,149,63,0.12) 100%);
-  --gradient-card:  linear-gradient(135deg, #0D1B3E 0%, #14285A 50%, #1B3A78 100%);
-  --gradient-gold:  linear-gradient(135deg, var(--gold-dk) 0%, var(--gold) 50%, var(--gold-mid) 100%);
-
-  --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-body:    'Inter', system-ui, sans-serif;
-
-  --section-y: 5rem;
-
-  --shadow-card:  0 2px 12px 0 rgba(13,27,62,0.08), 0 1px 3px 0 rgba(13,27,62,0.05);
-  --shadow-navy:  0 8px 32px 0 rgba(13,27,62,0.32);
-  --shadow-soft:  0 2px 16px 0 rgba(13,27,62,0.06);
-  --shadow-xl:    0 20px 60px 0 rgba(13,27,62,0.16);
-  --shadow-gold:  0 4px 20px 0 rgba(184,149,63,0.28);
+  --navy: #0b1a3b;
+  --navy-800: #14285a;
+  --navy-700: #1b3a78;
+  --gold: #d4a84b;
+  --gold-on-dark: #e8c86a;
+  --gold-dk: #7a5c1e;
+  --ink: #0b0c0c;
+  --muted: #505a5f;
+  --line: #b1b4b6;
+  --surface: #f3f2f1;
+  --focus: #ffdd00;
+  --link: #1b3a78;
+  --link-visited: #4c2c92;
 }
 
-html { scroll-behavior: smooth; background-color: #f8fafc; }
-section, [id] { scroll-margin-top: 6rem; }
+/* ─── Base ─────────────────────────────────────────────────────────────── */
 
-body {
-  @apply bg-church-bg text-church-text antialiased;
-  font-family: var(--font-body);
-  min-height: 100vh;
-}
-body, input, textarea, button, select {
-  font-feature-settings: 'liga' 1, 'kern' 1, 'ss01' 1;
-}
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
 
-::selection { background-color: var(--gold-lt); color: var(--gold-dk); }
-:focus-visible { outline: 2px solid var(--gold-mid); outline-offset: 3px; border-radius: 4px; }
+  body {
+    @apply bg-white text-ink antialiased;
+    font-family: var(--font-body), system-ui, sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
 
-.skip-link { position: absolute; left: -9999px; top: auto; }
-.skip-link:focus {
-  left: 1rem; top: 1rem; z-index: 60;
-  @apply rounded-lg bg-white px-4 py-3 font-semibold shadow-soft;
-  color: var(--navy);
-}
+  @media (min-width: 40.0625em) {
+    body { font-size: 1.1875rem; }
+  }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
-  @apply text-church-heading;
-  letter-spacing: -0.01em;
-  line-height: 1.15;
-}
-h1 { font-size: clamp(2.5rem, 5.5vw, 4.25rem); font-weight: 700; }
-h2 { font-size: clamp(2rem, 3.8vw, 3.1rem);    font-weight: 700; }
-h3 { font-size: clamp(1.5rem, 2.8vw, 2.1rem);  font-weight: 700; }
+  [id] { scroll-margin-top: 1.5rem; }
 
-p { @apply leading-7; font-family: var(--font-body); }
-a { @apply transition-colors duration-200; }
-a:hover { color: var(--navy-lt); }
+  h1, h2, h3, h4 {
+    @apply text-ink;
+    font-weight: 700;
+    line-height: 1.2;
+    text-wrap: balance;
+  }
 
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-body);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--navy);
-}
-.eyebrow::before {
-  content: '';
-  display: inline-block;
-  width: 1.75rem;
-  height: 2px;
-  background: linear-gradient(90deg, var(--gold), var(--gold-mid));
-  border-radius: 2px;
-  flex-shrink: 0;
-}
+  h1 { font-family: var(--font-display), Georgia, serif; font-size: clamp(2rem, 4.5vw, 3rem); letter-spacing: -0.01em; }
+  h2 { font-family: var(--font-display), Georgia, serif; font-size: clamp(1.5rem, 3vw, 2.25rem); }
+  h3 { font-size: clamp(1.125rem, 2vw, 1.5rem); }
 
-.btn-primary {
-  @apply inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold text-white transition-all duration-200;
-  background: var(--navy);
-  box-shadow: 0 4px 14px 0 rgba(13,27,62,0.38);
-}
-.btn-primary:hover {
-  background: var(--gradient-card);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 22px 0 rgba(13,27,62,0.48);
-}
-.btn-primary:active { transform: translateY(0); }
+  p { max-width: 42rem; }
 
-.btn-gold {
-  @apply inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200;
-  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-mid) 100%);
-  color: var(--navy);
-  box-shadow: var(--shadow-gold);
-}
-.btn-gold:hover {
-  background: linear-gradient(135deg, var(--gold-mid) 0%, var(--gold-on-dark) 100%);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 24px 0 rgba(184,149,63,0.48);
-}
-.btn-gold:active { transform: translateY(0); }
+  /* Links: underlined and clearly coloured, as in GOV.UK */
+  a {
+    color: var(--link);
+    text-decoration: underline;
+    text-decoration-thickness: max(1px, 0.0625rem);
+    text-underline-offset: 0.15em;
+  }
+  a:hover {
+    color: var(--navy);
+    text-decoration-thickness: max(3px, 0.1875rem);
+  }
 
-.btn-secondary {
-  @apply inline-flex items-center justify-center rounded-full border bg-white px-6 py-3 text-sm font-semibold transition-all duration-200;
-  border-color: rgba(13,27,62,0.20);
-  color: var(--navy);
-}
-.btn-secondary:hover {
-  border-color: var(--gold-mid);
-  background: var(--gold-lt);
-  color: var(--gold-dk);
-  transform: translateY(-1px);
+  /* High-visibility focus: yellow fill with a thick dark underline */
+  :focus { outline: none; }
+  :focus-visible {
+    outline: 3px solid transparent;
+    background-color: var(--focus);
+    box-shadow: 0 -2px var(--focus), 0 4px var(--ink);
+    color: var(--ink) !important;
+    text-decoration: none;
+  }
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    background-color: #fff;
+    outline: 3px solid var(--focus);
+    outline-offset: 0;
+    box-shadow: inset 0 0 0 2px var(--ink);
+  }
+  button:focus-visible,
+  .btn:focus-visible,
+  .card-link:focus-visible,
+  summary:focus-visible {
+    outline: 3px solid transparent;
+    background-color: var(--focus);
+    border-color: var(--focus);
+    box-shadow: inset 0 0 0 1px var(--focus), 0 4px var(--ink);
+    color: var(--ink) !important;
+  }
+
+  ::selection { background-color: #f5eacb; color: var(--ink); }
 }
 
-.btn-ghost {
-  @apply inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition-all duration-200;
-  background-color: rgba(255,255,255,0.08);
-}
-.btn-ghost:hover { background-color: rgba(255,255,255,0.16); }
+/* ─── Components ───────────────────────────────────────────────────────── */
 
-.card-base {
-  @apply rounded-3xl border border-church-border bg-white p-6;
-  box-shadow: var(--shadow-card);
-  transition: box-shadow 0.25s ease, transform 0.25s ease;
-}
-.card-base:hover { box-shadow: var(--shadow-xl); transform: translateY(-2px); }
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-page px-4 sm:px-6 lg:px-8;
+  }
 
-.card-soft {
-  @apply rounded-3xl border border-church-border bg-church-panel p-6;
-  box-shadow: var(--shadow-soft);
-}
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 100;
+    padding: 0.75rem 1rem;
+    font-weight: 700;
+  }
+  .skip-link:focus,
+  .skip-link:focus-visible {
+    left: 0;
+  }
 
-.card-navy {
-  @apply rounded-3xl p-6 text-white;
-  background: var(--gradient-card);
-  box-shadow: var(--shadow-navy);
-}
+  /* Small label above headings */
+  .caption {
+    @apply mb-2 block text-base font-semibold text-muted;
+  }
+  .caption-on-dark {
+    @apply mb-2 block text-base font-semibold;
+    color: var(--gold-on-dark);
+  }
 
-.card-gold {
-  @apply rounded-3xl border p-6;
-  border-color: rgba(184,149,63,0.28);
-  background: linear-gradient(135deg, #FDFAF4 0%, var(--gold-lt) 60%, #FDFBF7 100%);
-  box-shadow: var(--shadow-gold);
-}
+  .lead {
+    @apply text-lg leading-relaxed sm:text-xl;
+  }
 
-.card-navy-pale {
-  @apply rounded-3xl border p-6;
-  border-color: rgba(13,27,62,0.10);
-  background: var(--navy-pale);
-  box-shadow: var(--shadow-soft);
-}
+  /* Buttons — square-ish with a bottom shadow, as in GOV.UK */
+  .btn {
+    @apply inline-flex min-h-[2.75rem] items-center justify-center gap-2 rounded px-5 py-2.5 text-base font-semibold no-underline;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.45);
+    transition: background-color 0.15s ease;
+  }
+  .btn:hover { text-decoration: none; }
+  .btn:active { transform: translateY(2px); box-shadow: none; }
 
-.feature-panel-gold {
-  @apply rounded-3xl border p-6;
-  border-color: rgba(184,149,63,0.28);
-  background: linear-gradient(135deg, #FDFAF4 0%, var(--gold-lt) 50%, #FDFBF7 100%);
-  box-shadow: var(--shadow-gold);
-}
+  .btn-primary { background: var(--navy); color: #fff; }
+  .btn-primary:hover, .btn-primary:visited { color: #fff; }
+  .btn-primary:hover { background: var(--navy-700); }
 
-.prose-content p { @apply text-sm leading-7 text-church-text sm:text-base; font-family: var(--font-body); }
-.prose-content ul, .prose-content ol { @apply ml-6 space-y-2 text-sm leading-7 text-church-text sm:text-base; }
-.prose-content ul  { @apply list-disc; }
-.prose-content ol  { @apply list-decimal; }
-.prose-content h2  { font-family: var(--font-display); @apply text-2xl tracking-tight text-church-heading; }
-.prose-content h3  { font-family: var(--font-display); @apply text-xl text-church-heading; }
+  .btn-gold { background: var(--gold-on-dark); color: var(--ink); box-shadow: 0 2px 0 #8a6a22; }
+  .btn-gold:hover, .btn-gold:visited { color: var(--ink); }
+  .btn-gold:hover { background: #f0d68a; }
 
-.section-padding { padding-top: var(--section-y); padding-bottom: var(--section-y); @apply px-4 sm:px-6 lg:px-8; }
+  .btn-secondary { background: var(--surface); color: var(--ink); box-shadow: 0 2px 0 #929191; }
+  .btn-secondary:hover, .btn-secondary:visited { color: var(--ink); }
+  .btn-secondary:hover { background: #dbdad9; }
 
-.bg-brand-gradient  { background: var(--gradient-brand); }
-.bg-hero-gradient   { background: var(--gradient-hero); }
-.bg-card-gradient   { background: var(--gradient-card); }
-.bg-navy-gradient   { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-md) 50%, var(--navy-lt) 100%); }
-.bg-gold-surface    { background: linear-gradient(135deg, var(--gold-lt) 0%, #FDFBF7 100%); }
-.bg-navy-pale       { background: var(--navy-pale); }
+  .btn-inverse { background: #fff; color: var(--navy); box-shadow: 0 2px 0 rgba(0, 0, 0, 0.6); }
+  .btn-inverse:hover, .btn-inverse:visited { color: var(--navy); }
+  .btn-inverse:hover { background: #eef2fa; }
 
-.bg-church-hero-gradient {
-  background:
-    radial-gradient(circle at top right, rgba(212,168,75,0.18), transparent 40%),
-    radial-gradient(circle at bottom left, rgba(184,149,63,0.10), transparent 35%),
-    linear-gradient(135deg, var(--navy) 0%, var(--navy-md) 40%, var(--navy-lt) 100%);
-}
+  /* Cards */
+  .card {
+    @apply rounded border border-line-light bg-white;
+  }
+  .card-link {
+    @apply block h-full rounded border border-line-light bg-white p-6 text-ink no-underline transition-colors;
+    border-top: 4px solid var(--navy);
+  }
+  .card-link:hover {
+    @apply bg-navy-50 text-ink;
+    border-top-color: var(--gold);
+  }
+  .card-link:hover .card-link-title { text-decoration: underline; text-decoration-thickness: 3px; }
+  .card-link-title {
+    @apply text-xl font-bold;
+    color: var(--link);
+    text-underline-offset: 0.15em;
+  }
 
-.surface-blue { @apply border border-navy-100 bg-navy-50; }
-.navy-panel   { @apply bg-navy-800 text-white; }
+  /* Inset text and notices */
+  .inset-text {
+    @apply my-6 max-w-prose py-3 pl-4;
+    border-left: 6px solid var(--line);
+  }
+  .notice {
+    @apply flex max-w-prose items-start gap-4 font-semibold;
+  }
+  .notice-icon {
+    @apply flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-ink text-xl font-bold text-white;
+  }
 
-.service-time-item {
-  @apply rounded-2xl border border-church-border bg-church-panel px-4 py-4 text-base font-medium text-church-text transition-all duration-200;
-  border-left-width: 3px;
-  border-left-color: transparent;
-}
-.service-time-item:hover {
-  border-left-color: var(--gold-mid);
-  background-color: var(--gold-lt);
-  color: var(--gold-dk);
-  transform: translateX(4px);
-}
+  /* Summary list (key–value rows) */
+  .summary-list { @apply w-full; }
+  .summary-list > div {
+    @apply flex flex-col gap-1 border-b border-line-light py-3 sm:flex-row sm:gap-6;
+  }
+  .summary-list dt { @apply font-semibold sm:w-2/5; }
+  .summary-list dd { @apply sm:w-3/5; }
 
-.donate-option-item {
-  @apply rounded-2xl border border-church-border bg-church-panel px-4 py-3 text-base text-church-text transition-all duration-200;
-  border-left-width: 3px;
-  border-left-color: transparent;
-}
-.donate-option-item:hover {
-  border-left-color: var(--gold-mid);
-  background-color: var(--gold-lt);
-  color: var(--gold-dk);
-  transform: translateX(4px);
-}
+  /* Long-form text */
+  .prose-content { @apply max-w-prose; }
+  .prose-content > * + * { @apply mt-4; }
+  .prose-content h2 { @apply mt-10 text-2xl; }
+  .prose-content h3 { @apply mt-8 text-xl; }
+  .prose-content ul { @apply list-disc space-y-2 pl-6; }
+  .prose-content ol { @apply list-decimal space-y-2 pl-6; }
+  .prose-content blockquote { @apply border-l-4 border-line pl-4 italic; }
+  .prose-content strong { @apply font-semibold; }
 
-.summary-item {
-  @apply rounded-2xl border border-church-border bg-church-panel p-4 transition-all duration-200;
-  border-left-width: 3px;
-  border-left-color: var(--gold-mid);
-}
-.summary-item:hover {
-  background-color: var(--gold-lt);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-card);
-}
+  /* Policy pages still use these older wrappers; keep them plain */
+  .shadow-soft { box-shadow: none; }
 
-.heading-underline { position: relative; display: inline-block; }
-.heading-underline::after {
-  content: '';
-  position: absolute;
-  left: 0; bottom: -6px;
-  width: 3rem; height: 3px;
-  background: var(--gold-mid);
-  border-radius: 2px;
-}
+  /* Section rhythm */
+  .section { @apply py-12 sm:py-16; }
+  .section-alt { @apply bg-surface py-12 sm:py-16; }
 
-* { scrollbar-width: thin; scrollbar-color: rgba(184,149,63,0.45) rgba(255,255,255,0.8); }
-*::-webkit-scrollbar { width: 10px; height: 10px; }
-*::-webkit-scrollbar-track { background: rgba(255,255,255,0.9); }
-*::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, rgba(13,27,62,0.50), rgba(184,149,63,0.70));
-  border-radius: 999px;
-  border: 3px solid rgba(255,255,255,0.9);
-}
-*::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, rgba(13,27,62,0.75), rgba(184,149,63,0.90));
+  .section-break {
+    @apply my-10 border-0 border-t border-line-light;
+  }
+
+  /* Tag */
+  .tag {
+    @apply inline-block rounded-sm bg-navy-50 px-2 py-0.5 text-sm font-bold uppercase tracking-wide text-navy-800;
+  }
+
+  /* Details / FAQ */
+  .details summary {
+    @apply cursor-pointer list-none py-4 pr-10 text-lg font-semibold;
+    color: var(--link);
+    position: relative;
+  }
+  .details summary::-webkit-details-marker { display: none; }
+  .details summary::after {
+    content: '+';
+    position: absolute;
+    right: 0.5rem;
+    top: 0.85rem;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .details[open] summary::after { content: '−'; }
+  .details summary:hover { text-decoration: underline; }
+
+  /* Form controls */
+  .form-label { @apply mb-1 block font-semibold; }
+  .form-hint { @apply mb-2 block text-muted; }
+  .form-input {
+    @apply block w-full rounded-none border-2 border-ink bg-white px-3 py-2 text-ink;
+    min-height: 2.75rem;
+  }
+  .form-input-error { border-color: #d4351c; }
+  .form-error-message { @apply mb-2 block font-bold text-error; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -267,44 +262,5 @@ a:hover { color: var(--navy-lt); }
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
 }
-
-.footer-social {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.5rem; height: 2.5rem;
-  border-radius: 9999px;
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.12);
-  color: rgba(255,255,255,0.70);
-  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-}
-.footer-social:hover {
-  background: var(--gold-mid);
-  border-color: var(--gold-on-dark);
-  color: var(--navy);
-}
-
-.footer-link {
-  display: inline-block;
-  padding: 0.125rem 0;
-  font-size: 0.875rem;
-  color: rgba(255,255,255,0.60);
-  transition: color 0.2s ease;
-}
-.footer-link:hover { color: var(--gold-on-dark); }
-
-.gallery-card:hover { box-shadow: var(--shadow-xl); }
-
-.mobile-nav-link:hover { background: var(--navy-pale); color: var(--navy); }
-
-.quick-link-card:hover {
-  border-color: var(--gold-mid);
-  background: var(--gold-lt);
-  box-shadow: var(--shadow-xl);
-}
-.quick-link-card:hover p,
-.quick-link-card:hover span:first-child { color: var(--gold-dk); }
