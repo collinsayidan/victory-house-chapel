@@ -9,7 +9,7 @@ import { filled, leaders, siteConfig } from '../../content/siteContent';
 export const metadata = {
   title: 'About us',
   description:
-    'Victory House Chapel is a Pentecostal church in Edinburgh, part of the Assemblies of God. Learn what we believe, our vision and who leads the church.'
+    'Victory House - Assemblies of God is a Pentecostal church in Edinburgh. Learn what we believe, our vision and who leads the church.'
 };
 
 const values = [
@@ -38,7 +38,7 @@ export default function AboutPage() {
         title="A local church with a heart for Edinburgh"
         intro="We are part of the Assemblies of God, committed to biblical teaching, Spirit-led prayer, joyful worship and practical love for our neighbours."
         backgroundImage="/images/hero/worship.webp"
-        imageAlt="The congregation worshipping at Victory House Chapel"
+        imageAlt="The congregation worshipping at Victory House - Assemblies of God"
       />
 
       <Section>

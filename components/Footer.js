@@ -8,6 +8,8 @@ import {
   socialLinks
 } from '../content/siteContent';
 
+const [nameMain, nameSub] = siteConfig.name.split(' - ');
+
 // Only show social accounts once a real handle has been added
 const liveSocialLinks = socialLinks.filter((social) => !isPlaceholder(social.href));
 
@@ -49,7 +51,13 @@ export default function Footer() {
             <span className="relative block h-14 w-14 shrink-0 rounded-2xl bg-white p-1 shadow-card">
               <Image src="/images/logo-mark.png" alt="" fill sizes="56px" className="object-contain p-1" />
             </span>
-            <span className="font-display text-xl font-extrabold uppercase leading-tight tracking-[0.04em]">{siteConfig.shortName}</span>
+            <span className="flex flex-col leading-tight">
+              <span className="font-display text-xl font-extrabold uppercase tracking-[0.04em]">{nameMain}</span>
+              <span className="text-sm font-bold uppercase tracking-[0.12em] text-gold-300">
+                <span className="sr-only"> - </span>
+                {nameSub}
+              </span>
+            </span>
           </Link>
           <p className="mt-4 text-white/85">{siteConfig.description}</p>
           {liveSocialLinks.length > 0 ? (
@@ -129,7 +137,7 @@ export default function Footer() {
             © {year} {siteConfig.name}.
             {filled(siteConfig.charityNumber) ? (
               <>
-                {' '}{siteConfig.charityName} is a Scottish charity,{' '}
+                {' '}Scottish charity{' '}
                 <a
                   href={siteConfig.charityRegisterUrl}
                   className="text-white hover:text-white"

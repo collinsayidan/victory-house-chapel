@@ -9,7 +9,7 @@ import { filled, siteConfig } from '../../content/siteContent';
 export const metadata = {
   title: 'Contact us',
   description:
-    'Contact Victory House Chapel in Edinburgh by email, phone or our online form. Find our address at Murrayburn House, Edinburgh EH14 3HR.'
+    'Contact Victory House - Assemblies of God in Edinburgh by email, phone or our online form. Find our address at Murrayburn House, Edinburgh EH14 3HR.'
 };
 
 export default function ContactPage() {

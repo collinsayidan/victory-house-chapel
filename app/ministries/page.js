@@ -7,7 +7,7 @@ import { ministries } from '../../content/siteContent';
 export const metadata = {
   title: 'Ministries',
   description:
-    "Ministries at Victory House Chapel, Edinburgh: children's, youth, prayer, outreach, fellowship, and worship and media. Find a place to grow and serve."
+    "Ministries at Victory House - Assemblies of God, Edinburgh: children's, youth, prayer, outreach, fellowship, and worship and media. Find a place to grow and serve."
 };
 
 const steps = [

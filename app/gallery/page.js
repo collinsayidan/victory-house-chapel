@@ -6,7 +6,7 @@ import GalleryPageClient from './GalleryPageClient';
 export const metadata = {
   title: 'Gallery',
   description:
-    'Photos from worship services, prayer gatherings, outreach and church life at Victory House Chapel, Edinburgh.'
+    'Photos from worship services, prayer gatherings, outreach and church life at Victory House - Assemblies of God, Edinburgh.'
 };
 
 export default function GalleryPage() {
@@ -15,7 +15,7 @@ export default function GalleryPage() {
       <Hero
         eyebrow="Gallery"
         title="Moments from church life"
-        intro="Photos from worship services, prayer gatherings, outreach and community life at Victory House Chapel. Select a photo to see it larger."
+        intro="Photos from worship services, prayer gatherings, outreach and community life at Victory House - Assemblies of God. Select a photo to see it larger."
       />
       <Section>
         <GalleryPageClient />

@@ -1,7 +1,8 @@
 // content/siteContent.js
 export const siteConfig = {
-  name: 'Victory House Chapel Assemblies of God, Edinburgh',
-  shortName: 'Victory House Chapel',
+  // Registered name on the Scottish Charity Register (OSCR)
+  name: 'Victory House - Assemblies of God',
+  shortName: 'Victory House - Assemblies of God',
   // Public web address, used for search engines and link previews.
   url: 'https://www.victoryhousechapelag.org.uk',
   location: 'Edinburgh, Scotland',
@@ -11,7 +12,6 @@ export const siteConfig = {
   addressLine1: 'Murrayburn House, 2nd Floor',
   addressLine2: 'Edinburgh EH14 3HR',
   charityNumber: 'SC045449',
-  // Name as it appears on the Scottish Charity Register (OSCR)
   charityName: 'Victory House - Assemblies of God',
   charityRegisterUrl: 'https://www.oscr.org.uk/about-charities/search-the-register/charity-details?number=SC045449',
   email: 'info@victoryhousechapelag.org',
@@ -37,7 +37,7 @@ export const siteConfig = {
   hero: {
     title: 'A place to worship, grow and belong.',
     intro:
-      'Victory House Chapel Assemblies of God, Edinburgh is a welcoming local church serving people of many backgrounds across the city. We gather to worship Jesus, pray together, learn from Scripture and share the love of Christ in practical ways.'
+      'Victory House - Assemblies of God is a welcoming local church serving people of many backgrounds across the city. We gather to worship Jesus, pray together, learn from Scripture and share the love of Christ in practical ways.'
   },
   footerNotice:
     'This starter site includes sample wording and placeholders that should be reviewed and updated before publication.'
@@ -119,7 +119,7 @@ export const events = [
     location: 'Murrayburn House, 2nd Floor, Edinburgh EH14 3HR',
     description: 'A weekly gathering for worship, prayer, Bible teaching and fellowship.',
     image: '/images/events/church-service.webp',
-    alt: 'Congregation gathered for Sunday worship at Victory House Chapel in Edinburgh'
+    alt: 'Congregation gathered for Sunday worship at Victory House - Assemblies of God in Edinburgh'
   },
   {
     title: 'Midweek Prayer Meeting',
@@ -289,7 +289,7 @@ export const galleryItems = [
     title: 'Sunday worship',
     category: 'Worship',
     image: '/images/gallery/worship.jpg',
-    alt: 'Congregation gathered for Sunday worship at Victory House Chapel in Edinburgh'
+    alt: 'Congregation gathered for Sunday worship at Victory House - Assemblies of God in Edinburgh'
   },
   {
     id: 2,
@@ -340,7 +340,7 @@ export const galleryItems = [
     title: 'Special church event',
     category: 'Events',
     image: '/images/hero/church-activities.jpeg',
-    alt: 'Church members attending a special event or celebration at Victory House Chapel'
+    alt: 'Church members attending a special event or celebration at Victory House - Assemblies of God'
   }
 ];
 

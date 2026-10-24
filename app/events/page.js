@@ -10,7 +10,7 @@ import { events } from '../../content/siteContent';
 export const metadata = {
   title: 'Services and events',
   description:
-    'Regular services and events at Victory House Chapel, Edinburgh: Sunday worship, midweek prayer, youth fellowship and community outreach.'
+    'Regular services and events at Victory House - Assemblies of God, Edinburgh: Sunday worship, midweek prayer, youth fellowship and community outreach.'
 };
 
 export default function EventsPage() {

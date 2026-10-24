@@ -38,7 +38,7 @@ export const metadata = {
     images: [
       {
         url: '/images/hero/worship.webp',
-        alt: 'Worship at Victory House Chapel, Edinburgh'
+        alt: 'Worship at Victory House - Assemblies of God, Edinburgh'
       }
     ]
   },

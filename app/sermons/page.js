@@ -8,7 +8,7 @@ import { sermonHref, sermonSpeaker } from '../../lib/sermons';
 export const metadata = {
   title: 'Sermons',
   description:
-    'Watch, listen to or read recent sermons from Victory House Chapel, Edinburgh. Christ-centred Bible teaching for everyday life.'
+    'Watch, listen to or read recent sermons from Victory House - Assemblies of God, Edinburgh. Christ-centred Bible teaching for everyday life.'
 };
 
 function isExternal(href) {
