@@ -6,6 +6,9 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { navigation, siteConfig } from '../content/siteContent';
 
+// "Victory House" on top, "Assemblies of God" underneath
+const [nameMain, nameSub] = siteConfig.name.split(' - ');
+
 const mapsQuery = encodeURIComponent(`${siteConfig.addressLine1}, ${siteConfig.addressLine2}`);
 
 function isCurrent(pathname, href) {
@@ -77,11 +80,12 @@ export default function Header() {
               <Image src="/images/logo-mark.png" alt="" fill sizes="48px" className="object-contain p-1" priority />
             </span>
             <span className="flex flex-col leading-tight">
-              <span className="font-display text-[0.95rem] font-extrabold uppercase leading-tight tracking-[0.04em] text-white group-hover:underline sm:whitespace-nowrap sm:text-lg">
-                {siteConfig.shortName}
+              <span className="font-display whitespace-nowrap text-[0.95rem] font-extrabold uppercase leading-tight tracking-[0.03em] text-white group-hover:underline sm:text-lg">
+                {nameMain}
               </span>
-              <span className="hidden text-xs font-semibold uppercase tracking-[0.12em] text-gold-300 sm:block sm:whitespace-nowrap">
-                Assemblies of God · Edinburgh
+              <span className="whitespace-nowrap text-[0.68rem] font-bold uppercase tracking-[0.1em] text-gold-300 sm:text-xs sm:tracking-[0.12em]">
+                <span className="sr-only"> - </span>
+                {nameSub}
               </span>
             </span>
           </Link>
@@ -116,7 +120,7 @@ export default function Header() {
             <button
               ref={toggleRef}
               type="button"
-              className="inline-flex min-h-[2.75rem] items-center gap-2 rounded-full px-4 text-sm font-bold uppercase tracking-[0.12em] text-white ring-2 ring-inset ring-white/80 xl:hidden"
+              className="inline-flex min-h-[2.75rem] min-w-[2.75rem] items-center justify-center gap-2 rounded-full px-4 text-sm max-[359px]:px-3 font-bold uppercase tracking-[0.12em] text-white ring-2 ring-inset ring-white/80 xl:hidden"
               aria-controls="mobile-navigation"
               aria-expanded={menuOpen}
               onClick={() => setMenuOpen((open) => !open)}
@@ -128,7 +132,8 @@ export default function Header() {
                   <path d="M2 5h16M2 10h16M2 15h16" />
                 )}
               </svg>
-              Menu
+              {/* On the narrowest phones only the icon shows, so the church name fits */}
+              <span className="max-[359px]:sr-only">Menu</span>
             </button>
           </div>
         </div>

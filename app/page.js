@@ -7,9 +7,9 @@ import { galleryItems, ministries, sermons, siteConfig } from '../content/siteCo
 import { sermonHref, sermonSpeaker } from '../lib/sermons';
 
 export const metadata = {
-  title: { absolute: siteConfig.name },
+  title: { absolute: `${siteConfig.name} | Church in Edinburgh` },
   description:
-    'Victory House Chapel is a welcoming Assemblies of God church in Edinburgh. Join us for Sunday prayer at 10am and worship at 11am at Murrayburn House, EH14 3HR.'
+    'Victory House - Assemblies of God is a welcoming Pentecostal church in Edinburgh. Join us for Sunday prayer at 10am and worship at 11am at Murrayburn House, EH14 3HR.'
 };
 
 const mapsQuery = encodeURIComponent(`${siteConfig.addressLine1}, ${siteConfig.addressLine2}`);
@@ -39,6 +39,8 @@ const explore = [
   { href: '/donate', label: 'Give', text: 'Support the work of the church' }
 ];
 
+const [heroName, heroSub] = siteConfig.name.split(' - ');
+
 export default function HomePage() {
   const sundayServices = siteConfig.weeklyServices.filter((s) => s.day === 'Sunday');
   const latestSermon = sermons[0];
@@ -53,9 +55,11 @@ export default function HomePage() {
         <div className="absolute inset-0 -z-10 bg-gradient-to-t from-navy-950 via-navy-900/75 to-navy-900/40" aria-hidden="true" />
 
         <div className="container-page pb-14 pt-24 sm:pb-20 lg:pb-24">
-          <p className="eyebrow eyebrow-on-dark">Assemblies of God · Edinburgh</p>
+          <p className="eyebrow eyebrow-on-dark">A Pentecostal church in Edinburgh</p>
           <h1 className="display-caps max-w-5xl text-[2.75rem] text-white sm:text-7xl lg:text-8xl">
-            {siteConfig.shortName}
+            {heroName}
+            <span className="sr-only"> - </span>
+            <span className="mt-3 block text-2xl text-gold-300 sm:text-4xl lg:text-5xl">{heroSub}</span>
           </h1>
           <p className="mt-5 text-base font-bold uppercase tracking-[0.3em] text-gold-300 sm:text-lg">
             Worship <span aria-hidden="true">·</span> Grow <span aria-hidden="true">·</span> Belong

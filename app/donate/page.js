@@ -14,7 +14,7 @@ import {
 export const metadata = {
   title: 'Give',
   description:
-    'Support the work of Victory House Chapel, Edinburgh. Ways to give, Gift Aid and how we handle donations responsibly.'
+    'Support the work of Victory House - Assemblies of God, Edinburgh. Ways to give, Gift Aid and how we handle donations responsibly.'
 };
 
 // "Bank transfer: details" → { method, details }
@@ -34,7 +34,7 @@ export default function DonatePage() {
     <>
       <Hero
         eyebrow="Give"
-        title="Support the work of Victory House Chapel"
+        title="Support the work of Victory House - Assemblies of God"
         intro="Your generosity helps sustain worship, pastoral care, discipleship and practical outreach in Edinburgh."
         backgroundImage="/images/donate/donate-to-church.webp"
         imageAlt="Hands holding a young plant growing from coins"

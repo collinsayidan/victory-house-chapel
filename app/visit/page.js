@@ -9,7 +9,7 @@ import { siteConfig } from '../../content/siteContent';
 export const metadata = {
   title: 'Plan your visit',
   description:
-    'Everything you need for your first visit to Victory House Chapel in Edinburgh: service times, address, what happens on a Sunday and answers to common questions.'
+    'Everything you need for your first visit to Victory House - Assemblies of God in Edinburgh: service times, address, what happens on a Sunday and answers to common questions.'
 };
 
 const mapsQuery = encodeURIComponent(`${siteConfig.addressLine1}, ${siteConfig.addressLine2}`);

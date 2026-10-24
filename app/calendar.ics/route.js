@@ -39,7 +39,7 @@ export function GET() {
   const lines = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//Victory House Chapel//Services//EN',
+    'PRODID:-//Victory House - Assemblies of God//Services//EN',
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
     `X-WR-CALNAME:${escape(siteConfig.shortName)}`,

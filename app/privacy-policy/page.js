@@ -33,7 +33,7 @@ export default function PrivacyPolicyPage() {
 
       <Section
         title="Who we are"
-        intro="Victory House Chapel Assemblies of God, Edinburgh acts as the data controller for personal data collected through this website."
+        intro="Victory House - Assemblies of God acts as the data controller for personal data collected through this website."
       >
         <div className="prose-content">
           <p>
