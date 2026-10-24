@@ -317,14 +317,15 @@
   from { opacity: 0; transform: scale(0.96) translateY(16px); }
   to { opacity: 1; transform: none; }
 }
+/* Starts slightly enlarged so the blurred photo's soft edges stay out of view */
 @keyframes drift {
-  from { transform: scale(1); }
-  to { transform: scale(1.08); }
+  from { transform: scale(1.08); }
+  to { transform: scale(1.16); }
 }
 .hero-rise { animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) backwards; }
 .hero-line { transform-origin: left; animation: draw 0.9s 0.35s cubic-bezier(0.22, 1, 0.36, 1) backwards; }
 .hero-photo { animation: settle 1.1s 0.2s cubic-bezier(0.22, 1, 0.36, 1) backwards; }
-.hero-drift { animation: drift 18s ease-in-out infinite alternate; }
+.hero-drift { transform: scale(1.08); animation: drift 18s ease-in-out infinite alternate; }
 
 /* Cards lift slightly on hover */
 .lift { transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease; }
