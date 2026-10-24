@@ -17,7 +17,7 @@ export default function Hero({ eyebrow, title, intro, backgroundImage, imageAlt 
           />
         </>
       ) : (
-        <div aria-hidden="true" className="bg-dots absolute inset-0 -z-10" />
+        null
       )}
       <div className="container-page relative">
         <nav aria-label="Breadcrumb" className="pt-6 text-base">

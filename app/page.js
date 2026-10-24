@@ -49,33 +49,55 @@ export default function HomePage() {
 
   return (
     <>
-      {/* ── Hero: full-bleed photo with the church name ─────────────── */}
-      <section className="relative isolate flex min-h-[34rem] items-end overflow-hidden bg-navy-900 text-white sm:min-h-[40rem] lg:min-h-[calc(100svh-7.5rem)]">
-        <Image src="/images/hero/worship.webp" alt="" fill priority sizes="100vw" className="-z-20 object-cover" />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-navy-950 via-navy-900/75 to-navy-900/40" aria-hidden="true" />
-
-        <div className="container-page pb-14 pt-24 sm:pb-20 lg:pb-24">
-          <p className="eyebrow eyebrow-on-dark">A Pentecostal church in Edinburgh</p>
-          <h1 className="display-caps max-w-5xl text-[2.75rem] text-white sm:text-7xl lg:text-8xl">
-            {heroName}
-            <span className="sr-only"> - </span>
-            <span className="mt-3 block text-2xl text-gold-300 sm:text-4xl lg:text-5xl">{heroSub}</span>
-          </h1>
-          <p className="mt-5 text-base font-bold uppercase tracking-[0.3em] text-gold-300 sm:text-lg">
-            Worship <span aria-hidden="true">·</span> Grow <span aria-hidden="true">·</span> Belong
-          </p>
-          <p className="lead mt-6 max-w-2xl text-white/90">
-            A welcoming, Christ-centred church in Edinburgh. Whether you are exploring faith,
-            returning to church or looking for a church home, you are welcome here.
-          </p>
-          <div className="mt-9 flex flex-wrap gap-4">
-            <Link href="/visit" className="btn btn-gold btn-lg">
-              Plan your visit
-              <Icon name="arrow" className="h-5 w-5" />
-            </Link>
-            <Link href="/sermons" className="btn btn-inverse btn-lg">
-              Watch sermons
-            </Link>
+      {/* ── Hero: our hall as a full-width photo, shaded only behind the text ── */}
+      <section className="relative isolate flex min-h-[38rem] items-end overflow-hidden bg-navy-900 text-white sm:min-h-[42rem] lg:min-h-[calc(100svh-7.5rem)] lg:items-center">
+        {/* On phones the photo fills the top of the hero; on larger screens, all of it */}
+        <div className="absolute inset-x-0 top-0 -z-20 h-80 overflow-hidden sm:h-96 lg:inset-0 lg:h-auto">
+          <Image
+            src="/images/venue/church-place.jpg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="hero-drift object-cover object-center"
+          />
+          <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-navy-900/10 via-navy-900/40 to-navy-900 lg:hidden" />
+        </div>
+        {/* Larger screens: shade sits on the left, behind the text */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 hidden bg-gradient-to-r from-navy-900 via-navy-900/80 to-transparent lg:block"
+        />
+        <div className="container-page w-full pb-14 pt-64 sm:pb-20 sm:pt-72 lg:py-24">
+          <div className="max-w-2xl">
+            <p className="eyebrow eyebrow-on-dark hero-rise" style={{ animationDelay: '0.05s' }}>
+              A Pentecostal church in Edinburgh
+            </p>
+            <h1 className="display-caps hero-rise text-[2.75rem] text-white sm:text-7xl" style={{ animationDelay: '0.15s' }}>
+              {heroName}
+              <span className="sr-only"> - </span>
+              <span className="mt-3 block text-2xl text-gold-300 sm:text-4xl">{heroSub}</span>
+            </h1>
+            <span aria-hidden="true" className="hero-line mt-6 block h-1 w-24 rounded-full bg-gold-300" />
+            <p
+              className="hero-rise mt-6 text-base font-bold uppercase tracking-[0.3em] text-white sm:text-lg"
+              style={{ animationDelay: '0.3s' }}
+            >
+              Worship <span aria-hidden="true">·</span> Grow <span aria-hidden="true">·</span> Belong
+            </p>
+            <p className="lead hero-rise mt-5 max-w-xl text-white/90" style={{ animationDelay: '0.4s' }}>
+              A welcoming, Christ-centred church in Edinburgh. Whether you are exploring faith,
+              returning to church or looking for a church home, you are welcome here.
+            </p>
+            <div className="hero-rise mt-9 flex flex-wrap gap-4" style={{ animationDelay: '0.5s' }}>
+              <Link href="/visit" className="btn btn-gold btn-lg">
+                Plan your visit
+                <Icon name="arrow" className="h-5 w-5" />
+              </Link>
+              <Link href="/sermons" className="btn btn-inverse btn-lg">
+                Watch sermons
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -127,8 +149,8 @@ export default function HomePage() {
         <div className="container-page grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
           <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
             <Image
-              src="/images/venue/church-place.jpg"
-              alt="Our church hall on the 2nd floor of Murrayburn House, with the lectern, band and seating"
+              src="/images/gallery/after-church-gathring.jpeg"
+              alt="Church members talking together after a Sunday service"
               fill
               sizes="(min-width: 1024px) 36rem, 100vw"
               className="object-cover"
@@ -169,7 +191,7 @@ export default function HomePage() {
           <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {familyCards.map((card) => (
               <li key={card.title}>
-                <Link href="/ministries" className="group block h-full overflow-hidden rounded-2xl bg-white text-ink no-underline shadow-card ring-1 ring-navy-900/10 hover:text-ink">
+                <Link href="/ministries" className="lift group block h-full overflow-hidden rounded-2xl bg-white text-ink no-underline shadow-card ring-1 ring-navy-900/10 hover:text-ink">
                   <span className="relative block aspect-[4/3] overflow-hidden">
                     <Image
                       src={card.image}
@@ -259,14 +281,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Scripture over a photo ───────────────────────────────────── */}
-      <section className="relative isolate overflow-hidden bg-navy-900 py-20 text-white sm:py-28">
-        <Image src="/images/hero/hands-raised-worship.jpg" alt="" fill sizes="100vw" className="-z-20 object-cover" />
-        <div className="absolute inset-0 -z-10 bg-navy-950/80" aria-hidden="true" />
+      {/* ── Scripture ────────────────────────────────────────────────── */}
+      <section className="bg-navy-900 py-20 text-white sm:py-28">
         <figure className="container-page text-center">
+          <span aria-hidden="true" className="quote-mark block font-display text-7xl font-extrabold leading-none text-gold-300 sm:text-8xl">
+            “
+          </span>
           <blockquote>
             <p className="mx-auto max-w-4xl font-display text-3xl font-bold leading-snug text-white sm:text-5xl">
-              “Your word is a lamp to my feet and a light to my path.”
+              Your word is a lamp to my feet and a light to my path.
             </p>
           </blockquote>
           <figcaption className="mt-6 text-sm font-bold uppercase tracking-[0.25em] text-gold-300">Psalm 119:105</figcaption>
@@ -294,7 +317,7 @@ export default function HomePage() {
                     aria-hidden="true"
                     className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-navy-900/20 text-navy-900 transition-colors group-hover:bg-navy-900 group-hover:text-white"
                   >
-                    <Icon name="arrow" className="h-5 w-5" />
+                    <Icon name="arrow" className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5" />
                   </span>
                 </Link>
               </li>
@@ -325,7 +348,7 @@ export default function HomePage() {
                       alt={item.alt}
                       fill
                       sizes={index === 0 ? '(min-width: 1024px) 38rem, 100vw' : '(min-width: 1024px) 18rem, 50vw'}
-                      className="object-cover"
+                      className="object-cover transition-transform duration-700 hover:scale-105"
                     />
                   </div>
                   <figcaption className="sr-only">{item.title}</figcaption>

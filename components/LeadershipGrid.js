@@ -25,7 +25,7 @@ export default function LeadershipGrid({ leaders = [] }) {
                   className="object-cover object-top"
                 />
               ) : (
-                <span className="bg-dots absolute inset-0 flex flex-col items-center justify-center gap-3 bg-navy-900 text-center">
+                <span className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-navy-900 text-center">
                   <span className="relative block h-16 w-16 rounded-xl bg-white">
                     <Image src="/images/logo-mark.png" alt="" fill sizes="64px" className="object-contain p-1.5" />
                   </span>

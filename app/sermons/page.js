@@ -47,7 +47,7 @@ function SermonArtwork({ sermon, sizes, priority = false }) {
     return <Image src={sermon.image} alt={sermon.alt} fill sizes={sizes} priority={priority} className="object-cover" />;
   }
   return (
-    <span className="bg-dots absolute inset-0 flex flex-col items-center justify-center gap-3 bg-navy-900 text-center text-white">
+    <span className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-navy-900 text-center text-white">
       <span className="relative block h-14 w-14 rounded-xl bg-white p-1">
         <Image src="/images/logo-mark.png" alt="" fill sizes="56px" className="object-contain p-1" />
       </span>
