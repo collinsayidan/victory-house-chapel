@@ -67,8 +67,8 @@ export default function Header() {
       </aside>
 
       <header
-        className={`sticky top-0 z-40 border-b bg-white/95 backdrop-blur transition-shadow ${
-          scrolled ? 'border-line-light shadow-card' : 'border-transparent'
+        className={`sticky top-0 z-40 border-b backdrop-blur-xl transition-all duration-300 ${
+          scrolled ? 'border-navy-900/10 bg-white/85 shadow-card' : 'border-transparent bg-white'
         }`}
       >
         <div className="container-page flex h-[4.5rem] items-center justify-between gap-6">
@@ -87,7 +87,7 @@ export default function Header() {
           </Link>
 
           <nav aria-label="Main" className="hidden xl:block">
-            <ul className="flex items-center gap-1">
+            <ul className="flex items-center gap-1 rounded-full border border-navy-900/10 bg-surface/80 p-1">
               {barLinks.map((item) => {
                 const current = isCurrent(pathname, item.href);
                 return (
@@ -95,10 +95,10 @@ export default function Header() {
                     <Link
                       href={item.href}
                       aria-current={current ? 'page' : undefined}
-                      className={`relative block rounded-md px-3 py-2 text-[0.975rem] font-semibold no-underline hover:bg-navy-50 hover:text-navy-900 ${
+                      className={`block rounded-full px-4 py-2 text-[0.95rem] font-semibold no-underline transition-colors hover:text-navy-900 ${
                         current
-                          ? 'text-navy-900 after:absolute after:inset-x-3 after:-bottom-[0.95rem] after:h-1 after:bg-gold-500'
-                          : 'text-ink/85'
+                          ? 'bg-white text-navy-900 shadow-card ring-1 ring-gold-500/50'
+                          : 'text-ink/80 hover:bg-white/70'
                       }`}
                     >
                       {item.label}
@@ -116,7 +116,7 @@ export default function Header() {
             <button
               ref={toggleRef}
               type="button"
-              className="inline-flex min-h-[2.75rem] items-center gap-2 rounded-md px-3 font-semibold text-navy-900 ring-2 ring-inset ring-navy-900 xl:hidden"
+              className="inline-flex min-h-[2.75rem] items-center gap-2 rounded-full px-4 font-semibold text-navy-900 ring-2 ring-inset ring-navy-900 xl:hidden"
               aria-controls="mobile-navigation"
               aria-expanded={menuOpen}
               onClick={() => setMenuOpen((open) => !open)}
@@ -139,7 +139,7 @@ export default function Header() {
           hidden={!menuOpen}
           className="max-h-[calc(100vh-4.5rem)] overflow-y-auto border-t border-line-light bg-white xl:hidden"
         >
-          <ul className="container-page grid gap-1 py-4 sm:grid-cols-2">
+          <ul className="container-page grid gap-2 py-4 sm:grid-cols-2">
             {navigation.map((item) => {
               const current = isCurrent(pathname, item.href);
               return (
@@ -147,11 +147,12 @@ export default function Header() {
                   <Link
                     href={item.href}
                     aria-current={current ? 'page' : undefined}
-                    className={`block rounded-md border-l-4 px-4 py-3 text-lg font-semibold no-underline hover:bg-navy-50 ${
-                      current ? 'border-gold-500 bg-navy-50 text-navy-900' : 'border-transparent text-navy-700'
+                    className={`flex items-center justify-between rounded-xl border px-4 py-3 text-lg font-semibold no-underline hover:bg-surface ${
+                      current ? 'border-gold-500/60 bg-gold-50 text-navy-900' : 'border-navy-900/10 text-navy-700'
                     }`}
                   >
                     {item.label}
+                    <span aria-hidden="true" className="text-gold-800">→</span>
                   </Link>
                 </li>
               );

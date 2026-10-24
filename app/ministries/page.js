@@ -34,7 +34,7 @@ export default function MinistriesPage() {
       >
         <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {ministries.map((ministry) => (
-            <li key={ministry.title} className="card border-t-4 border-t-gold-500 p-7">
+            <li key={ministry.title} className="card relative overflow-hidden p-7 before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-gold-500 before:to-gold-300">
               <h3>{ministry.title}</h3>
               <p className="mt-3">{ministry.text}</p>
             </li>

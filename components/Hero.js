@@ -7,10 +7,15 @@ import Link from 'next/link';
  */
 export default function Hero({ eyebrow, title, intro, backgroundImage, imageAlt = '', children }) {
   return (
-    <div className="relative overflow-hidden bg-navy-900 text-white">
+    <div className="relative isolate overflow-hidden bg-navy-900 text-white">
+      <div aria-hidden="true" className="bg-dots absolute inset-0 -z-10 [mask-image:linear-gradient(to_bottom,black,transparent)]" />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-40 -top-40 h-[28rem] w-[28rem] rounded-full bg-navy-700/40 blur-3xl"
+        className="pointer-events-none absolute -right-32 -top-48 -z-10 h-[32rem] w-[32rem] rounded-full bg-navy-600/50 blur-3xl"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-40 left-1/4 -z-10 h-72 w-72 rounded-full bg-gold-500/15 blur-3xl"
       />
       <div className="container-page relative">
         <nav aria-label="Breadcrumb" className="pt-6 text-base">
@@ -43,11 +48,7 @@ export default function Hero({ eyebrow, title, intro, backgroundImage, imageAlt 
 
           {backgroundImage ? (
             <div className="relative hidden lg:block">
-              <div
-                aria-hidden="true"
-                className="absolute -bottom-4 -right-4 h-full w-full rounded-lg border-2 border-gold-500"
-              />
-              <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-lift">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-glow ring-1 ring-white/15">
                 <Image
                   src={backgroundImage}
                   alt={imageAlt}
@@ -56,6 +57,7 @@ export default function Hero({ eyebrow, title, intro, backgroundImage, imageAlt 
                   sizes="(min-width: 1200px) 30rem, 40vw"
                   className="object-cover"
                 />
+                <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-navy-900/40 to-transparent" />
               </div>
             </div>
           ) : null}

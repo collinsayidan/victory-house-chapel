@@ -91,7 +91,7 @@ export default function ContactForm() {
 
   if (status.type === 'success') {
     return (
-      <div className="rounded-lg bg-success p-6 text-white" role="status">
+      <div className="rounded-2xl bg-success p-6 text-white" role="status">
         <h2 className="font-sans text-2xl text-white">Message sent</h2>
         <p className="mt-2">Thank you for getting in touch. We will reply as soon as we can.</p>
       </div>
@@ -124,7 +124,7 @@ export default function ContactForm() {
       ) : null}
 
       {status.type === 'not-sent' ? (
-        <div className="mb-8 border-l-8 border-navy-900 bg-navy-50 p-5" role="status">
+        <div className="mb-8 rounded-r-xl border-l-8 border-navy-900 bg-navy-50 p-5" role="status">
           <h2 className="font-sans text-xl">Please email us instead</h2>
           <p className="mt-2">
             Our online form is not sending messages yet. Please email{' '}

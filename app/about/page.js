@@ -61,7 +61,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <aside className="self-start rounded-lg border-l-8 border-gold-500 bg-gold-50 p-7">
+          <aside className="self-start rounded-2xl border border-gold-500/40 bg-gold-50 p-7 shadow-card">
             <h2 className="font-sans text-xl">What to expect on a Sunday</h2>
             <p className="mt-3">
               A warm welcome, worship, prayer, Bible teaching and time to connect with others. Come

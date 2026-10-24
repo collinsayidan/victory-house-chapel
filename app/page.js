@@ -60,6 +60,10 @@ export default function HomePage() {
   const latestSermon = sermons[0];
   const latestSermonHref = sermonHref(latestSermon.href);
   const latestSermonSpeaker = sermonSpeaker(latestSermon);
+  // Highlight the last word of the headline in gold
+  const titleWords = siteConfig.hero.title.split(' ');
+  const titleEnd = titleWords.pop();
+  const titleStart = titleWords.join(' ');
 
   return (
     <>
@@ -70,12 +74,16 @@ export default function HomePage() {
           className="absolute inset-0 -z-10 bg-gradient-to-r from-navy-900 via-navy-900/90 to-navy-900/50"
           aria-hidden="true"
         />
+        <div className="bg-dots absolute inset-0 -z-10 [mask-image:linear-gradient(to_right,black,transparent)]" aria-hidden="true" />
+        <div className="pointer-events-none absolute -left-40 top-1/3 -z-10 h-96 w-96 rounded-full bg-gold-500/15 blur-3xl" aria-hidden="true" />
         <div className="absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-navy-900/80 to-transparent" aria-hidden="true" />
 
         <div className="container-page grid gap-12 py-16 sm:py-20 lg:grid-cols-[1.3fr_0.7fr] lg:items-center lg:py-28">
           <div>
             <span className="eyebrow eyebrow-on-dark">Welcome to {siteConfig.shortName}</span>
-            <h1 className="text-white sm:text-6xl lg:text-7xl">{siteConfig.hero.title}</h1>
+            <h1 className="text-white sm:text-6xl lg:text-7xl">
+              {titleStart} <span className="text-highlight">{titleEnd}</span>
+            </h1>
             <p className="lead mt-6 max-w-2xl text-white/90">
               A welcoming, Christ-centred church in Edinburgh. Whether you are exploring faith,
               returning to church or looking for a church home, you are welcome here.
@@ -89,9 +97,9 @@ export default function HomePage() {
                 About us
               </Link>
             </div>
-            <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-white/90">
+            <ul className="mt-10 flex flex-wrap gap-3 text-white/90">
               {facts.map((fact) => (
-                <li key={fact.label} className="flex items-center gap-2">
+                <li key={fact.label} className="glass flex items-center gap-2 rounded-full px-4 py-2 text-base">
                   <Icon name={fact.icon} className="h-5 w-5 text-gold-300" />
                   {fact.label}
                 </li>
@@ -99,7 +107,8 @@ export default function HomePage() {
             </ul>
           </div>
 
-          <div className="rounded-xl bg-white p-6 text-ink shadow-lift sm:p-8">
+          <div className="relative rounded-3xl bg-white p-6 text-ink shadow-glow ring-1 ring-gold-500/30 sm:p-8">
+            <div aria-hidden="true" className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-gold-500 to-transparent" />
             <NextGathering />
             <dl className="summary-list mt-5 border-t border-line-light">
               {sundayServices.map((service) => (
@@ -130,12 +139,18 @@ export default function HomePage() {
 
       {/* ── Pathways ─────────────────────────────────────────────────── */}
       <Section caption="New here?" title="Start with these">
-        <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {pathways.map((item) => (
             <li key={item.href}>
-              <Link href={item.href} className="card-link">
-                <span className="mb-5 flex h-12 w-12 items-center justify-center rounded-full bg-navy-50 text-navy-800">
+              <Link href={item.href} className="card-link group">
+                <span className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-navy-700 to-navy-900 text-gold-300 shadow-card">
                   <Icon name={item.icon} />
+                </span>
+                <span
+                  aria-hidden="true"
+                  className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full border border-navy-900/10 text-navy-700 transition-colors group-hover:border-gold-500 group-hover:bg-gold-50"
+                >
+                  <Icon name="arrowUpRight" className="h-4 w-4" />
                 </span>
                 <span className="card-link-title">{item.title}</span>
                 <span className="mt-2 block flex-1 text-base text-ink/85">{item.text}</span>
@@ -149,7 +164,7 @@ export default function HomePage() {
       <section className="section-alt">
         <div className="container-page grid gap-12 lg:grid-cols-2 lg:items-center">
           <div className="relative order-last lg:order-first">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-xl shadow-lift">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-lift">
               <Image
                 src="/images/hero/Church-Worship.jpeg"
                 alt="The congregation worshipping together during a Sunday service"
@@ -158,7 +173,11 @@ export default function HomePage() {
                 className="object-cover"
               />
             </div>
-            <div className="absolute -bottom-6 right-4 hidden w-56 overflow-hidden rounded-lg border-4 border-white shadow-lift sm:block lg:-right-6">
+            <div className="absolute -bottom-6 left-4 rounded-2xl bg-white px-5 py-4 shadow-lift ring-1 ring-navy-900/10 sm:left-6">
+              <p className="text-sm font-semibold uppercase tracking-[0.12em] text-gold-800">Part of the</p>
+              <p className="text-lg font-bold text-navy-900">Assemblies of God</p>
+            </div>
+            <div className="absolute -bottom-6 right-4 hidden w-52 overflow-hidden rounded-2xl border-4 border-white shadow-lift sm:block lg:-right-6">
               <div className="relative aspect-square">
                 <Image
                   src="/images/gallery/preaching.jpeg"
@@ -178,10 +197,11 @@ export default function HomePage() {
               from many cultures and generations. We gather to worship Jesus, grow in Scripture,
               pray together and serve our city with compassion.
             </p>
-            <ul className="mt-8 grid gap-5 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+            <ul className="mt-8 grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
               {homeHighlights.map((item) => (
-                <li key={item.title} className="border-t-2 border-gold-500 pt-3">
-                  <h3 className="text-lg">{item.title}</h3>
+                <li key={item.title} className="flex items-center gap-3 rounded-xl border border-navy-900/10 bg-white px-4 py-3 shadow-card">
+                  <span aria-hidden="true" className="h-2 w-2 shrink-0 rounded-full bg-gold-500" />
+                  <h3 className="text-base sm:text-lg">{item.title}</h3>
                 </li>
               ))}
             </ul>
@@ -208,7 +228,7 @@ export default function HomePage() {
         <ul className="grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4">
           {ministryTiles.map((tile) => (
             <li key={tile.title}>
-              <Link href="/ministries" className="tile-link aspect-[3/4]">
+              <Link href="/ministries" className="tile-link group aspect-[3/4] rounded-3xl">
                 <Image
                   src={tile.image}
                   alt={tile.alt}
@@ -217,8 +237,11 @@ export default function HomePage() {
                   className="object-cover opacity-90"
                 />
                 <span className="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/30 to-transparent" aria-hidden="true" />
-                <span className="tile-title absolute inset-x-0 bottom-0 p-4 text-base font-bold leading-snug text-white sm:p-5 sm:text-xl">
-                  {tile.title}
+                <span className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4 sm:p-5">
+                  <span className="tile-title text-base font-bold leading-snug text-white sm:text-xl">{tile.title}</span>
+                  <span aria-hidden="true" className="glass hidden h-9 w-9 shrink-0 items-center justify-center rounded-full sm:flex">
+                    <Icon name="arrowUpRight" className="h-4 w-4" />
+                  </span>
                 </span>
               </Link>
             </li>
@@ -229,7 +252,7 @@ export default function HomePage() {
       {/* ── Latest sermon ────────────────────────────────────────────── */}
       <section className="section-dark">
         <div className="container-page grid gap-10 lg:grid-cols-2 lg:items-center">
-          <div className="relative aspect-video overflow-hidden rounded-xl">
+          <div className="relative aspect-video overflow-hidden rounded-3xl shadow-glow ring-1 ring-white/15">
             <Image
               src={latestSermon.image}
               alt={latestSermon.alt}
@@ -263,7 +286,8 @@ export default function HomePage() {
 
       {/* ── Scripture ────────────────────────────────────────────────── */}
       <section className="section">
-        <figure className="container-page text-center">
+        <figure className="container-page">
+          <div className="bg-dots-light relative mx-auto max-w-4xl overflow-hidden rounded-3xl border border-gold-500/30 bg-gold-50/60 px-6 py-12 text-center sm:px-12 sm:py-16">
           <span aria-hidden="true" className="block font-display text-7xl leading-none text-gold-500">“</span>
           <blockquote>
             <p className="mx-auto max-w-3xl font-display text-3xl font-semibold leading-snug text-navy-900 sm:text-4xl">
@@ -271,6 +295,7 @@ export default function HomePage() {
             </p>
           </blockquote>
           <figcaption className="mt-5 text-lg font-semibold text-gold-800">Psalm 119:105</figcaption>
+          </div>
         </figure>
       </section>
 
@@ -289,7 +314,7 @@ export default function HomePage() {
           {[galleryItems[0], galleryItems[8], galleryItems[11], galleryItems[2], galleryItems[12]].map((item, index) => (
             <li key={item.id} className={index === 0 ? 'col-span-2 row-span-2' : ''}>
               <figure className="h-full">
-                <div className={`relative overflow-hidden rounded-lg ${index === 0 ? 'aspect-[4/3] lg:aspect-auto lg:h-full' : 'aspect-[4/3]'}`}>
+                <div className={`relative overflow-hidden rounded-2xl ${index === 0 ? 'aspect-[4/3] lg:aspect-auto lg:h-full' : 'aspect-[4/3]'}`}>
                   <Image
                     src={item.image}
                     alt={item.alt}

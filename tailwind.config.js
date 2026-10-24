@@ -44,7 +44,8 @@ module.exports = {
       },
       boxShadow: {
         card: '0 1px 2px rgba(11, 26, 59, 0.06), 0 2px 8px rgba(11, 26, 59, 0.05)',
-        lift: '0 4px 8px rgba(11, 26, 59, 0.06), 0 16px 32px rgba(11, 26, 59, 0.10)'
+        lift: '0 4px 8px rgba(11, 26, 59, 0.05), 0 24px 48px -12px rgba(11, 26, 59, 0.22)',
+        glow: '0 0 0 1px rgba(232, 200, 106, 0.25), 0 30px 60px -20px rgba(0, 0, 0, 0.55)'
       },
       maxWidth: {
         page: '76rem',

@@ -35,7 +35,7 @@ export default function CookieBanner() {
     <div
       role="region"
       aria-label="Cookies on this website"
-      className="fixed inset-x-0 bottom-0 z-50 border-t-4 border-navy-900 bg-surface shadow-[0_-4px_16px_rgba(0,0,0,0.12)]"
+      className="fixed inset-x-3 bottom-3 z-50 rounded-2xl border border-navy-900/15 bg-white shadow-lift sm:inset-x-6 sm:bottom-6"
     >
       <div className="container-page py-5">
         {state === 'asking' ? (
