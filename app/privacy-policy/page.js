@@ -43,7 +43,13 @@ export default function PrivacyPolicyPage() {
           <ul>
             <li>Organisation: {siteConfig.name}</li>
             {filled(siteConfig.charityNumber) ? (
-              <li>Registered Scottish Charity Number: {siteConfig.charityNumber}</li>
+              <li>
+                Registered Scottish charity: {siteConfig.charityName},{' '}
+                <a href={siteConfig.charityRegisterUrl} target="_blank" rel="noopener noreferrer">
+                  {siteConfig.charityNumber}
+                  <span className="sr-only"> on the Scottish Charity Register (opens in a new tab)</span>
+                </a>
+              </li>
             ) : null}
             <li>
               Postal address: {siteConfig.addressLine1}, {siteConfig.addressLine2}

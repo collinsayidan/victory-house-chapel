@@ -127,7 +127,21 @@ export default function Footer() {
         <div className="container-page flex flex-col gap-4 py-6 text-sm text-white/85 lg:flex-row lg:items-center lg:justify-between">
           <p className="max-w-none">
             © {year} {siteConfig.name}.
-            {filled(siteConfig.charityNumber) ? ` Scottish Charity Number: ${siteConfig.charityNumber}` : ''}
+            {filled(siteConfig.charityNumber) ? (
+              <>
+                {' '}{siteConfig.charityName} is a Scottish charity,{' '}
+                <a
+                  href={siteConfig.charityRegisterUrl}
+                  className="text-white hover:text-white"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {siteConfig.charityNumber}
+                  <span className="sr-only"> on the Scottish Charity Register (opens in a new tab)</span>
+                </a>
+                .
+              </>
+            ) : null}
           </p>
           <ul className="flex flex-wrap gap-x-6 gap-y-2">
             {legalNavigation.map((item) => (
