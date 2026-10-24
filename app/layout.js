@@ -24,8 +24,13 @@ export const metadata = {
     template: `%s | ${siteConfig.shortName}`
   },
   description: siteConfig.description,
+  // './' resolves to each page's own address on the live domain
+  alternates: {
+    canonical: './'
+  },
   openGraph: {
     type: 'website',
+    url: './',
     locale: 'en_GB',
     siteName: siteConfig.name,
     title: siteConfig.name,

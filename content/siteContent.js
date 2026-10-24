@@ -3,8 +3,7 @@ export const siteConfig = {
   name: 'Victory House Chapel Assemblies of God, Edinburgh',
   shortName: 'Victory House Chapel',
   // Public web address, used for search engines and link previews.
-  // Inferred from the church email domain — update if the site lives elsewhere.
-  url: 'https://www.victoryhousechapelag.org',
+  url: 'https://www.victoryhousechapelag.org.uk',
   location: 'Edinburgh, Scotland',
   tagline: 'A welcoming Christ-centred church for Edinburgh.',
   description:
