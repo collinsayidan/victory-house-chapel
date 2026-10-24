@@ -26,7 +26,7 @@ export default function CtaBand({
           <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy-900 via-navy-900/95 to-navy-900/60" aria-hidden="true" />
           <div className="bg-dots absolute inset-0 -z-10" aria-hidden="true" />
           <div
-            className="pointer-events-none absolute -right-24 -top-24 -z-10 h-80 w-80 rounded-full bg-gold-500/25 blur-3xl"
+            className="pointer-events-none absolute -right-24 -top-24 -z-10 h-80 w-80 rounded-full bg-navy-600/50 blur-3xl"
             aria-hidden="true"
           />
           <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">

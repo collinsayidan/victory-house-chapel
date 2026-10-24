@@ -148,7 +148,7 @@ export default function Header() {
                     href={item.href}
                     aria-current={current ? 'page' : undefined}
                     className={`flex items-center justify-between rounded-xl border px-4 py-3 text-lg font-semibold no-underline hover:bg-surface ${
-                      current ? 'border-gold-500/60 bg-gold-50 text-navy-900' : 'border-navy-900/10 text-navy-700'
+                      current ? 'border-navy-900/30 bg-navy-50 text-navy-900' : 'border-navy-900/10 text-navy-700'
                     }`}
                   >
                     {item.label}

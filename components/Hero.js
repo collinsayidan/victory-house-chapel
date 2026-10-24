@@ -15,7 +15,7 @@ export default function Hero({ eyebrow, title, intro, backgroundImage, imageAlt 
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -bottom-40 left-1/4 -z-10 h-72 w-72 rounded-full bg-gold-500/15 blur-3xl"
+        className="pointer-events-none absolute -bottom-40 left-1/4 -z-10 h-72 w-72 rounded-full bg-navy-600/30 blur-3xl"
       />
       <div className="container-page relative">
         <nav aria-label="Breadcrumb" className="pt-6 text-base">

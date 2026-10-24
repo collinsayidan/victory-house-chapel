@@ -20,7 +20,7 @@ export default function PrivacyPolicyPage() {
         title="Important notice"
         intro="Please review this wording carefully before the site goes live."
       >
-        <div className="rounded-2xl border border-gold-500/40 bg-gold-50 p-6">
+        <div className="rounded-2xl border border-navy-900/10 bg-navy-50 p-6">
           <p >
             This sample privacy policy is provided for general website
             development purposes only and does not constitute legal advice. The

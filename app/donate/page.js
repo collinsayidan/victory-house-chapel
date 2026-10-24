@@ -61,7 +61,7 @@ export default function DonatePage() {
               </p>
             </div>
           )}
-          <aside className="self-start rounded-2xl border border-gold-500/40 bg-gold-50 p-7 shadow-card">
+          <aside className="self-start rounded-2xl border border-navy-900/10 bg-navy-50 p-7 shadow-card">
             <h3 className="text-xl">Questions about giving?</h3>
             <p className="mt-3">
               Email <a href={`mailto:${financeContactEmail}`}>{financeContactEmail}</a> or{' '}

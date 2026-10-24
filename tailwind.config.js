@@ -33,7 +33,7 @@ module.exports = {
         muted: '#505A5F',
         line: '#B1B4B6',
         'line-light': '#E2E5E8',
-        surface: '#F6F5F2',
+        surface: '#F4F6FA',
         focus: '#FFDD00',
         success: '#00703C',
         error: '#D4351C'

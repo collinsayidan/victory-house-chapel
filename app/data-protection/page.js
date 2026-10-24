@@ -27,7 +27,7 @@ export default function DataProtectionPage() {
       {/* ── Important notice ─────────────────────────────────────────────── */}
       <Section>
         <div
-          className="rounded-2xl border border-gold-500/40 bg-gold-50 p-6 max-w-prose"
+          className="rounded-2xl border border-navy-900/10 bg-navy-50 p-6 max-w-prose"
         >
           <p className="mb-2 font-bold">
             Important

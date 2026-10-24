@@ -75,7 +75,7 @@ export default function HomePage() {
           aria-hidden="true"
         />
         <div className="bg-dots absolute inset-0 -z-10 [mask-image:linear-gradient(to_right,black,transparent)]" aria-hidden="true" />
-        <div className="pointer-events-none absolute -left-40 top-1/3 -z-10 h-96 w-96 rounded-full bg-gold-500/15 blur-3xl" aria-hidden="true" />
+        <div className="pointer-events-none absolute -left-40 top-1/3 -z-10 h-96 w-96 rounded-full bg-navy-600/30 blur-3xl" aria-hidden="true" />
         <div className="absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-navy-900/80 to-transparent" aria-hidden="true" />
 
         <div className="container-page grid gap-12 py-16 sm:py-20 lg:grid-cols-[1.3fr_0.7fr] lg:items-center lg:py-28">
@@ -148,7 +148,7 @@ export default function HomePage() {
                 </span>
                 <span
                   aria-hidden="true"
-                  className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full border border-navy-900/10 text-navy-700 transition-colors group-hover:border-gold-500 group-hover:bg-gold-50"
+                  className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full border border-navy-900/10 text-navy-700 transition-colors group-hover:border-navy-700 group-hover:bg-navy-50"
                 >
                   <Icon name="arrowUpRight" className="h-4 w-4" />
                 </span>
@@ -287,14 +287,14 @@ export default function HomePage() {
       {/* ── Scripture ────────────────────────────────────────────────── */}
       <section className="section">
         <figure className="container-page">
-          <div className="bg-dots-light relative mx-auto max-w-4xl overflow-hidden rounded-3xl border border-gold-500/30 bg-gold-50/60 px-6 py-12 text-center sm:px-12 sm:py-16">
-          <span aria-hidden="true" className="block font-display text-7xl leading-none text-gold-500">“</span>
+          <div className="bg-dots relative mx-auto max-w-4xl overflow-hidden rounded-3xl bg-navy-900 px-6 py-12 text-center shadow-lift sm:px-12 sm:py-16">
+          <span aria-hidden="true" className="block font-display text-7xl leading-none text-gold-300">“</span>
           <blockquote>
-            <p className="mx-auto max-w-3xl font-display text-3xl font-semibold leading-snug text-navy-900 sm:text-4xl">
+            <p className="mx-auto max-w-3xl font-display text-3xl font-semibold leading-snug text-white sm:text-4xl">
               Your word is a lamp to my feet and a light to my path.
             </p>
           </blockquote>
-          <figcaption className="mt-5 text-lg font-semibold text-gold-800">Psalm 119:105</figcaption>
+          <figcaption className="mt-5 text-lg font-semibold text-gold-300">Psalm 119:105</figcaption>
           </div>
         </figure>
       </section>

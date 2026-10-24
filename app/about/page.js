@@ -61,7 +61,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <aside className="self-start rounded-2xl border border-gold-500/40 bg-gold-50 p-7 shadow-card">
+          <aside className="self-start rounded-2xl border border-navy-900/10 bg-navy-50 p-7 shadow-card">
             <h2 className="font-sans text-xl">What to expect on a Sunday</h2>
             <p className="mt-3">
               A warm welcome, worship, prayer, Bible teaching and time to connect with others. Come
@@ -80,7 +80,7 @@ export default function AboutPage() {
         <ul className="grid gap-6 md:grid-cols-3">
           {values.map((value) => (
             <li key={value.title} className="card p-7">
-              <span className="mb-5 flex h-12 w-12 items-center justify-center rounded-full bg-gold-50 text-gold-800">
+              <span className="mb-5 flex h-12 w-12 items-center justify-center rounded-full bg-navy-50 text-navy-800">
                 <Icon name={value.icon} />
               </span>
               <h3>{value.title}</h3>
