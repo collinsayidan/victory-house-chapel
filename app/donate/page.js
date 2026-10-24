@@ -61,7 +61,7 @@ export default function DonatePage() {
               </p>
             </div>
           )}
-          <aside className="self-start rounded-lg border-l-8 border-gold-500 bg-gold-50 p-7">
+          <aside className="self-start rounded-2xl border border-navy-900/10 bg-navy-50 p-7 shadow-card">
             <h3 className="text-xl">Questions about giving?</h3>
             <p className="mt-3">
               Email <a href={`mailto:${financeContactEmail}`}>{financeContactEmail}</a> or{' '}
@@ -74,7 +74,7 @@ export default function DonatePage() {
       <Section alt caption="Your impact" title="What your giving supports">
         <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {donateSummary.map((item) => (
-            <li key={item.title} className="card border-t-4 border-t-gold-500 p-7">
+            <li key={item.title} className="card relative overflow-hidden p-7 before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-gold-500 before:to-gold-300">
               <h3 className="text-xl">{item.title}</h3>
               <p className="mt-3 text-base">{item.text}</p>
             </li>
@@ -108,7 +108,7 @@ export default function DonatePage() {
               <Link href="/privacy-policy">privacy policy</Link>.
             </p>
           </div>
-          <div className="relative hidden aspect-[4/3] overflow-hidden rounded-xl lg:block">
+          <div className="relative hidden aspect-[4/3] overflow-hidden rounded-3xl lg:block">
             <Image
               src="/images/donate/giving-to-god.jpg"
               alt=""

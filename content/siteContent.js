@@ -145,9 +145,13 @@ export const events = [
   }
 ];
 
+// Sermons, newest first. Fields still to be supplied by the church show
+// a friendly placeholder on the site (for example "Speaker to be announced").
 export const sermons = [
   {
     title: 'Hope in Christ',
+    series: 'Living Hope',
+    scripture: '1 Peter 1:3–9',
     speaker: '[Insert speaker name]',
     date: 'Sunday, 2 March 2026',
     summary: 'A message on the living hope we have through the resurrection of Jesus Christ.',
@@ -158,6 +162,8 @@ export const sermons = [
   },
   {
     title: 'A Church Devoted to Prayer',
+    series: 'Acts: The Church on Mission',
+    scripture: 'Acts 2:42–47',
     speaker: '[Insert speaker name]',
     date: 'Sunday, 23 February 2026',
     summary: 'An encouragement from Acts on prayer, unity and dependence on the Holy Spirit.',
@@ -168,6 +174,8 @@ export const sermons = [
   },
   {
     title: 'Faithful in Everyday Witness',
+    series: 'Acts: The Church on Mission',
+    scripture: 'Acts 1:8',
     speaker: '[Insert speaker name]',
     date: 'Sunday, 16 February 2026',
     summary: 'A practical sermon on following Jesus in daily life, work, study and relationships.',
@@ -175,6 +183,43 @@ export const sermons = [
     linkLabel: 'Watch sermon',
     image: '/images/sermons/sermon - 03.webp',
     alt: 'A church sermon focused on faithful Christian witness in everyday life'
+  },
+  // Placeholder slots: replace with real sermons as they are uploaded
+  {
+    title: '[Insert sermon title]',
+    series: '[Insert series]',
+    scripture: '[Insert scripture]',
+    speaker: '[Insert speaker name]',
+    date: '[Insert date]',
+    summary: '[Insert a one-sentence summary]',
+    href: '',
+    linkLabel: 'Watch sermon',
+    image: '',
+    alt: ''
+  },
+  {
+    title: '[Insert sermon title]',
+    series: '[Insert series]',
+    scripture: '[Insert scripture]',
+    speaker: '[Insert speaker name]',
+    date: '[Insert date]',
+    summary: '[Insert a one-sentence summary]',
+    href: '',
+    linkLabel: 'Watch sermon',
+    image: '',
+    alt: ''
+  },
+  {
+    title: '[Insert sermon title]',
+    series: '[Insert series]',
+    scripture: '[Insert scripture]',
+    speaker: '[Insert speaker name]',
+    date: '[Insert date]',
+    summary: '[Insert a one-sentence summary]',
+    href: '',
+    linkLabel: 'Watch sermon',
+    image: '',
+    alt: ''
   }
 ];
 

@@ -45,7 +45,7 @@ export default function GalleryPageClient() {
               onClick={() => setSelected(item)}
               className="group block w-full text-left"
             >
-              <span className="relative block aspect-[4/3] overflow-hidden rounded-lg bg-surface">
+              <span className="relative block aspect-[4/3] overflow-hidden rounded-2xl bg-surface">
                 <Image
                   src={item.image}
                   alt={item.alt}

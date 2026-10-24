@@ -42,7 +42,7 @@ export const metadata = {
 };
 
 export const viewport = {
-  themeColor: '#0b1a3b'
+  themeColor: '#16025e'
 };
 
 /* ─── Structured data for search engines and maps ──────────────────────── */

@@ -27,7 +27,7 @@ export default function DataProtectionPage() {
       {/* ── Important notice ─────────────────────────────────────────────── */}
       <Section>
         <div
-          className="border-l-8 border-gold-500 bg-gold-50 p-6 max-w-prose"
+          className="rounded-2xl border border-navy-900/10 bg-navy-50 p-6 max-w-prose"
         >
           <p className="mb-2 font-bold">
             Important
@@ -45,7 +45,7 @@ export default function DataProtectionPage() {
             return (
               <article
                 key={title}
-                className="card border-t-4 border-t-navy-900 p-6"
+                className="card relative overflow-hidden before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-navy-900 p-6"
               >
                 
                 <div

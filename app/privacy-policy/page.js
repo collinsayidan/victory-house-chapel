@@ -20,7 +20,7 @@ export default function PrivacyPolicyPage() {
         title="Important notice"
         intro="Please review this wording carefully before the site goes live."
       >
-        <div className="border-l-8 border-gold-500 bg-gold-50 p-6">
+        <div className="rounded-2xl border border-navy-900/10 bg-navy-50 p-6">
           <p >
             This sample privacy policy is provided for general website
             development purposes only and does not constitute legal advice. The
@@ -110,7 +110,7 @@ export default function PrivacyPolicyPage() {
             </ul>
           </div>
 
-          <div className="self-start rounded-lg bg-navy-50 p-6">
+          <div className="self-start rounded-2xl border border-navy-900/10 bg-navy-50 p-6">
             <p className="text-xl font-bold">
               Lawful bases
             </p>
@@ -170,7 +170,7 @@ export default function PrivacyPolicyPage() {
           ].map((item) => (
             <div
               key={item}
-              className="card border-t-4 border-t-navy-900 p-5"
+              className="card relative overflow-hidden before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-navy-900 p-5"
             >
               <p className="font-semibold">{item}</p>
             </div>

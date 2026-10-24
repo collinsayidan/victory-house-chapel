@@ -38,16 +38,18 @@ export default function Footer() {
   const mapsQuery = encodeURIComponent(`${siteConfig.addressLine1}, ${siteConfig.addressLine2}`);
 
   return (
-    <footer className="bg-navy-900 text-white">
+    <footer className="relative isolate overflow-hidden bg-navy-900 text-white">
       <div className="h-1 bg-gradient-to-r from-gold-800 via-gold-500 to-gold-300" aria-hidden="true" />
+      <div className="bg-dots absolute inset-0 -z-10 [mask-image:linear-gradient(to_bottom,black,transparent)]" aria-hidden="true" />
+      <div className="pointer-events-none absolute -right-40 top-0 -z-10 h-96 w-96 rounded-full bg-navy-600/40 blur-3xl" aria-hidden="true" />
 
       <div className="container-page grid gap-12 py-14 sm:py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
         <div>
           <Link href="/" className="inline-flex items-center gap-3 text-white no-underline hover:text-white">
-            <span className="relative block h-14 w-14 shrink-0 rounded-md bg-white p-1">
+            <span className="relative block h-14 w-14 shrink-0 rounded-2xl bg-white p-1 shadow-card">
               <Image src="/images/logo-mark.png" alt="" fill sizes="56px" className="object-contain p-1" />
             </span>
-            <span className="font-display text-2xl font-bold">{siteConfig.shortName}</span>
+            <span className="font-display text-xl font-extrabold uppercase leading-tight tracking-[0.04em]">{siteConfig.shortName}</span>
           </Link>
           <p className="mt-4 text-white/85">{siteConfig.description}</p>
           {liveSocialLinks.length > 0 ? (

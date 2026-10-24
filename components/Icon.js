@@ -9,6 +9,7 @@ const paths = {
   mail: <><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></>,
   users: <><circle cx="9" cy="8" r="3.5" /><path d="M2.5 20a6.5 6.5 0 0 1 13 0" /><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6" /></>,
   arrow: <path d="M5 12h14M13 6l6 6-6 6" />,
+  arrowUpRight: <path d="M7 17 17 7M8 7h9v9" />,
   play: <><circle cx="12" cy="12" r="9" /><path d="m10 8.5 5.5 3.5-5.5 3.5z" /></>
 };
 

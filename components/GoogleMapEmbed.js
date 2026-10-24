@@ -9,7 +9,7 @@ export default function GoogleMapEmbed({
   // Without an API key, show a simple link rather than a broken map
   if (!apiKey) {
     return (
-      <div className="rounded-lg bg-white p-6 shadow-card sm:p-8">
+      <div className="rounded-2xl border border-navy-900/10 bg-white p-6 shadow-card sm:p-8">
         <p className="font-semibold">{query}</p>
         <div className="mt-4 flex flex-wrap gap-4">
           <a
@@ -34,7 +34,7 @@ export default function GoogleMapEmbed({
   }
 
   return (
-    <div className="overflow-hidden rounded-lg border border-line-light">
+    <div className="overflow-hidden rounded-2xl border border-line-light">
       <iframe
         title={title}
         src={`https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${encoded}`}
