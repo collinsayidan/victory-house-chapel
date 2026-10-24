@@ -40,10 +40,8 @@ export default function Footer() {
   const mapsQuery = encodeURIComponent(`${siteConfig.addressLine1}, ${siteConfig.addressLine2}`);
 
   return (
-    <footer className="relative isolate overflow-hidden bg-navy-900 text-white">
-      <div className="h-1 bg-gradient-to-r from-gold-800 via-gold-500 to-gold-300" aria-hidden="true" />
-      <div className="bg-dots absolute inset-0 -z-10 [mask-image:linear-gradient(to_bottom,black,transparent)]" aria-hidden="true" />
-      <div className="pointer-events-none absolute -right-40 top-0 -z-10 h-96 w-96 rounded-full bg-navy-600/40 blur-3xl" aria-hidden="true" />
+    <footer className="bg-navy-900 text-white">
+      <div className="h-1 bg-gold-300" aria-hidden="true" />
 
       <div className="container-page grid gap-12 py-14 sm:py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
         <div>
