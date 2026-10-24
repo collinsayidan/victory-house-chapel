@@ -3,6 +3,7 @@ import { Figtree } from 'next/font/google';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import CookieBanner from '../components/CookieBanner';
+import ScrollReveal from '../components/ScrollReveal';
 import { siteConfig } from '../content/siteContent';
 
 /* ─── Fonts ────────────────────────────────────────────────────────────── */
@@ -89,6 +90,7 @@ export default function RootLayout({ children }) {
           <Footer />
         </div>
         <CookieBanner />
+        <ScrollReveal />
       </body>
     </html>
   );
