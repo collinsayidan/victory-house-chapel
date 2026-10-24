@@ -316,8 +316,32 @@
   .radio-item input { @apply mt-0.5 h-7 w-7 shrink-0 accent-navy-900; }
 }
 
+/* ─── Motion ───────────────────────────────────────────────────────────── */
+
+/* Sections fade up as they scroll into view (classes added by ScrollReveal) */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.revealed { opacity: 1; transform: none; }
+
+/* Cards in a grid follow one after another */
+.reveal ul > li {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.revealed ul > li { opacity: 1; transform: none; }
+.reveal.revealed ul > li:nth-child(2) { transition-delay: 0.08s; }
+.reveal.revealed ul > li:nth-child(3) { transition-delay: 0.16s; }
+.reveal.revealed ul > li:nth-child(4) { transition-delay: 0.24s; }
+.reveal.revealed ul > li:nth-child(5) { transition-delay: 0.32s; }
+.reveal.revealed ul > li:nth-child(n + 6) { transition-delay: 0.4s; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .reveal, .reveal ul > li { opacity: 1 !important; transform: none !important; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;

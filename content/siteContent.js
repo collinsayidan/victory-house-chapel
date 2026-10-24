@@ -253,30 +253,31 @@ export const donateSummary = [
 export const leaders = [
   {
     id: 1,
-    name: 'Pastor [Insert Name]',
-    role: 'Lead Pastor',
+    name: 'Rev. Kwarteng Boamah',
+    role: 'Head Pastor',
     email: '[insert-pastor-email@example.org]',
     phone: '[Insert contact number]',
-    image: '/images/leaders/HeadPastor.JPG',
-    alt: 'Portrait of the lead pastor at Victory House Chapel'
+    image: '/images/leaders/rev-kwarteng-boamah.jpg',
+    alt: 'Rev. Kwarteng Boamah, Head Pastor, speaking during a service'
   },
   {
     id: 2,
-    name: '[Insert Name]',
+    name: 'Rev. Henry Sackey',
     role: 'Associate Pastor',
     email: '[insert-associate-email@example.org]',
     phone: '[Insert contact number]',
-    image: '/images/leaders/Henry.jpg',
-    alt: 'Portrait of the associate pastor at Victory House Chapel'
+    image: '/images/leaders/rev-henry-sackey.jpg',
+    alt: 'Rev. Henry Sackey, Associate Pastor, seated during a service'
   },
   {
     id: 3,
-    name: '[Insert Name]',
+    name: 'Kwadwo Amankwa',
     role: 'Church Administrator',
     email: '[insert-admin-email@example.org]',
     phone: '[Insert contact number]',
-    image: '/images/leaders/IMG_6433.JPG',
-    alt: 'Portrait of the church administrator at Victory House Chapel'
+    // Photo to follow: the card shows a placeholder until one is added
+    image: '',
+    alt: 'Kwadwo Amankwa, Church Administrator'
   }
 ];
 
@@ -306,8 +307,10 @@ export const galleryItems = [
     id: 4,
     title: 'Pastoral leadership',
     category: 'Pastors',
-    image: '/images/leaders/HeadPastor.JPG',
-    alt: 'Portrait of the pastor and leadership team at Victory House Chapel'
+    image: '/images/leaders/rev-kwarteng-boamah.jpg',
+    alt: 'Rev. Kwarteng Boamah, Head Pastor, speaking during a service',
+    // Portrait photos are cropped from the top so faces stay in view
+    position: 'top'
   },
   {
     id: 5,
@@ -375,6 +378,21 @@ galleryItems.push(
     category: 'Programmes',
     image: '/images/gallery/children-activities.jpeg',
     alt: 'Children and adults playing a game together in a park'
+  },
+  {
+    id: 14,
+    title: 'Our new home',
+    category: 'Worship',
+    image: '/images/venue/church-place.jpg',
+    alt: 'The church hall on the 2nd floor of Murrayburn House, with the lectern, band and seating'
+  },
+  {
+    id: 15,
+    title: "Pastor's appreciation, 11 October 2026",
+    category: 'Events',
+    image: '/images/events/pastors-appreciation-2026.jpg',
+    position: 'top',
+    alt: "Poster for Pastor's Appreciation Sunday on 11 October 2026, honouring Rev. Kwarteng Boamah and Rev. Henry Sackey, 10:30am to 1:30pm at 2nd Floor, Murrayburn House"
   }
 );
 
