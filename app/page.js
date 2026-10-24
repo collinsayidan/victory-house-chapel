@@ -59,8 +59,10 @@ export default function HomePage() {
             fill
             priority
             sizes="100vw"
-            className="hero-drift object-cover object-center"
+            className="hero-drift object-cover object-center blur-[6px]"
           />
+          {/* A soft, even navy wash gives the blurred photo a calm, worshipful feel */}
+          <div aria-hidden="true" className="absolute inset-0 bg-navy-900/35" />
           <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-navy-900/10 via-navy-900/40 to-navy-900 lg:hidden" />
         </div>
         {/* Larger screens: shade sits on the left, behind the text */}
