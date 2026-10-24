@@ -10,7 +10,10 @@ export const siteConfig = {
     'A Christian church within the Assemblies of God, serving a diverse congregation with Sunday services, midweek prayer meetings and community outreach.',
   addressLine1: 'Murrayburn House, 2nd Floor',
   addressLine2: 'Edinburgh EH14 3HR',
-  charityNumber: '[Insert Scottish charity number]',
+  charityNumber: 'SC045449',
+  // Name as it appears on the Scottish Charity Register (OSCR)
+  charityName: 'Victory House - Assemblies of God',
+  charityRegisterUrl: 'https://www.oscr.org.uk/about-charities/search-the-register/charity-details?number=SC045449',
   email: 'info@victoryhousechapelag.org',
   phone: '013 1244 18915',
   privacyEmail: '[Insert privacy email]',

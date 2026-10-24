@@ -111,8 +111,14 @@ export default function AboutPage() {
           </div>
           {filled(siteConfig.charityNumber) ? (
             <div>
-              <dt>Scottish Charity Number</dt>
-              <dd>{siteConfig.charityNumber}</dd>
+              <dt>Scottish charity</dt>
+              <dd>
+                {siteConfig.charityName},{' '}
+                <a href={siteConfig.charityRegisterUrl} target="_blank" rel="noopener noreferrer">
+                  {siteConfig.charityNumber}
+                  <span className="sr-only"> on the Scottish Charity Register (opens in a new tab)</span>
+                </a>
+              </dd>
             </div>
           ) : null}
           <div>
