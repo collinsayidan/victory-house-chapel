@@ -31,7 +31,7 @@ export default function CtaBand({
           />
           <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
             <div className="max-w-2xl">
-              <h2 className="text-white">{title}</h2>
+              <h2 className="display-caps text-3xl text-white sm:text-5xl">{title}</h2>
               <p className="mt-3 text-lg text-white/90">{text}</p>
             </div>
             <div className="flex shrink-0 flex-wrap gap-4">

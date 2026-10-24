@@ -49,7 +49,7 @@ export default function Footer() {
             <span className="relative block h-14 w-14 shrink-0 rounded-2xl bg-white p-1 shadow-card">
               <Image src="/images/logo-mark.png" alt="" fill sizes="56px" className="object-contain p-1" />
             </span>
-            <span className="font-display text-2xl font-bold">{siteConfig.shortName}</span>
+            <span className="font-display text-xl font-extrabold uppercase leading-tight tracking-[0.04em]">{siteConfig.shortName}</span>
           </Link>
           <p className="mt-4 text-white/85">{siteConfig.description}</p>
           {liveSocialLinks.length > 0 ? (

@@ -123,19 +123,26 @@
   .skip-link:focus,
   .skip-link:focus-visible { left: 0; }
 
-  /* Eyebrow: a small pill badge with a gold dot */
+  /* Eyebrow: small spaced capitals with a short gold rule */
   .eyebrow, .caption, .caption-on-dark {
-    @apply mb-4 inline-flex items-center gap-2 rounded-full border border-navy-900/10 bg-navy-50 px-3.5 py-1 text-xs font-bold uppercase tracking-[0.12em] text-navy-800 sm:text-sm;
+    @apply mb-4 inline-flex items-center gap-3 text-sm font-bold uppercase tracking-[0.2em] text-navy-700;
   }
   .eyebrow::before, .caption::before, .caption-on-dark::before {
     content: '';
     display: inline-block;
-    width: 0.4rem;
-    height: 0.4rem;
-    border-radius: 9999px;
+    width: 2rem;
+    height: 2px;
     background: var(--gold);
   }
-  .eyebrow-on-dark, .caption-on-dark { @apply border-white/15 bg-white/5 text-gold-300; }
+  .eyebrow-on-dark, .caption-on-dark { @apply text-gold-300; }
+
+  /* Bold capitals for short display headings, as on many church sites */
+  .display-caps {
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    line-height: 1.02;
+    font-weight: 800;
+  }
 
   /* Gold text highlight for a key word in a headline */
   .text-highlight {
@@ -164,15 +171,15 @@
 
   /* Buttons */
   .btn {
-    @apply inline-flex min-h-[3rem] items-center justify-center gap-2 rounded-full px-6 py-3 text-base font-semibold leading-tight no-underline;
+    @apply inline-flex min-h-[3rem] items-center justify-center gap-2 rounded-full px-7 py-3 text-sm font-bold uppercase leading-tight tracking-[0.12em] no-underline;
     transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
   }
   .btn svg { transition: transform 0.2s ease; }
   .btn:hover svg:last-child:not(:first-child) { transform: translateX(3px); }
   .btn:hover { text-decoration: none; }
   .btn:active { transform: translateY(1px); }
-  .btn-sm { @apply min-h-[2.5rem] px-4 py-2 text-sm; }
-  .btn-lg { @apply min-h-[3.5rem] px-7 text-lg; }
+  .btn-sm { @apply min-h-[2.5rem] px-5 py-2 text-xs; }
+  .btn-lg { @apply min-h-[3.5rem] px-8 text-base; }
 
   .btn-primary { background: var(--navy); color: #fff; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 6px 16px -6px rgba(11, 26, 59, 0.6); }
   .btn-primary:hover, .btn-primary:visited { color: #fff; }
