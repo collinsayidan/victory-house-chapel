@@ -14,20 +14,22 @@ module.exports = {
        * (gold-300) or in its dark shade on white (gold-800).
        */
       colors: {
+        // Brand: deep navy #16025E and gold #F3C407
         navy: {
-          50: '#EEF2FA',
-          100: '#DCE4F4',
-          600: '#24478F',
-          700: '#1B3A78',
-          800: '#14285A',
-          900: '#0B1A3B'
+          50: '#F1EFFB',
+          100: '#DFDAF6',
+          600: '#4430B5',
+          700: '#2E1A96',
+          800: '#210B78',
+          900: '#16025E',
+          950: '#0D0140'
         },
         gold: {
-          50: '#FBF6E9',
-          100: '#F5EACB',
-          300: '#E8C86A',
-          500: '#D4A84B',
-          800: '#7A5C1E'
+          50: '#FEF9E1',
+          100: '#FCEFB0',
+          300: '#F3C407',
+          500: '#F3C407',
+          800: '#7A6000'
         },
         ink: '#0B0C0C',
         muted: '#505A5F',

@@ -50,7 +50,7 @@ export default function HomePage() {
       {/* ── Hero: full-bleed photo with the church name ─────────────── */}
       <section className="relative isolate flex min-h-[34rem] items-end overflow-hidden bg-navy-900 text-white sm:min-h-[40rem] lg:min-h-[calc(100svh-7.5rem)]">
         <Image src="/images/hero/worship.webp" alt="" fill priority sizes="100vw" className="-z-20 object-cover" />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#071229] via-navy-900/75 to-navy-900/40" aria-hidden="true" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-navy-950 via-navy-900/75 to-navy-900/40" aria-hidden="true" />
 
         <div className="container-page pb-14 pt-24 sm:pb-20 lg:pb-24">
           <p className="eyebrow eyebrow-on-dark">Assemblies of God · Edinburgh</p>
@@ -258,7 +258,7 @@ export default function HomePage() {
       {/* ── Scripture over a photo ───────────────────────────────────── */}
       <section className="relative isolate overflow-hidden bg-navy-900 py-20 text-white sm:py-28">
         <Image src="/images/hero/hands-raised-worship.jpg" alt="" fill sizes="100vw" className="-z-20 object-cover" />
-        <div className="absolute inset-0 -z-10 bg-[#071229]/80" aria-hidden="true" />
+        <div className="absolute inset-0 -z-10 bg-navy-950/80" aria-hidden="true" />
         <figure className="container-page text-center">
           <blockquote>
             <p className="mx-auto max-w-4xl font-display text-3xl font-bold leading-snug text-white sm:text-5xl">

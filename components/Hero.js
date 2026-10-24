@@ -13,7 +13,7 @@ export default function Hero({ eyebrow, title, intro, backgroundImage, imageAlt 
           <Image src={backgroundImage} alt={imageAlt} fill priority sizes="100vw" className="-z-20 object-cover" />
           <div
             aria-hidden="true"
-            className="absolute inset-0 -z-10 bg-gradient-to-r from-[#071229] via-navy-900/85 to-navy-900/55"
+            className="absolute inset-0 -z-10 bg-gradient-to-r from-navy-950 via-navy-900/85 to-navy-900/55"
           />
         </>
       ) : (

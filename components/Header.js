@@ -46,7 +46,7 @@ export default function Header() {
   return (
     <>
       {/* Utility bar: the answer to "when and where?" on every page */}
-      <aside aria-label="Service times and location" className="border-b border-white/10 bg-[#071229] text-sm text-white">
+      <aside aria-label="Service times and location" className="border-b border-white/10 bg-navy-950 text-sm text-white">
         <div className="container-page flex flex-wrap items-center justify-between gap-x-6 gap-y-1 py-2">
           <p className="max-w-none">
             <span className="font-semibold text-gold-300">Sundays</span> Prayer 10:00am · Worship
