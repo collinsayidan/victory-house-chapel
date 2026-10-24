@@ -49,10 +49,27 @@ export default function HomePage() {
 
   return (
     <>
-      {/* ── Hero: clean navy with the church name and our hall ─────── */}
-      <section className="overflow-hidden bg-navy-900 text-white">
-        <div className="container-page grid items-center gap-10 py-14 sm:py-20 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14 lg:py-24">
-          <div>
+      {/* ── Hero: our hall as a full-width photo, shaded only behind the text ── */}
+      <section className="relative isolate flex min-h-[38rem] items-end overflow-hidden bg-navy-900 text-white sm:min-h-[42rem] lg:min-h-[calc(100svh-7.5rem)] lg:items-center">
+        {/* On phones the photo fills the top of the hero; on larger screens, all of it */}
+        <div className="absolute inset-x-0 top-0 -z-20 h-80 overflow-hidden sm:h-96 lg:inset-0 lg:h-auto">
+          <Image
+            src="/images/venue/church-place.jpg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="hero-drift object-cover object-center"
+          />
+          <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-navy-900/10 via-navy-900/40 to-navy-900 lg:hidden" />
+        </div>
+        {/* Larger screens: shade sits on the left, behind the text */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 hidden bg-gradient-to-r from-navy-900 via-navy-900/80 to-transparent lg:block"
+        />
+        <div className="container-page w-full pb-14 pt-64 sm:pb-20 sm:pt-72 lg:py-24">
+          <div className="max-w-2xl">
             <p className="eyebrow eyebrow-on-dark hero-rise" style={{ animationDelay: '0.05s' }}>
               A Pentecostal church in Edinburgh
             </p>
@@ -81,17 +98,6 @@ export default function HomePage() {
                 Watch sermons
               </Link>
             </div>
-          </div>
-
-          <div className="hero-photo relative aspect-[4/3] overflow-hidden rounded-3xl shadow-lift ring-1 ring-white/15 lg:aspect-[5/4]">
-            <Image
-              src="/images/venue/church-place.jpg"
-              alt="Our church hall on the 2nd floor of Murrayburn House, set out for Sunday worship"
-              fill
-              priority
-              sizes="(min-width: 1024px) 34rem, 100vw"
-              className="hero-drift object-cover"
-            />
           </div>
         </div>
       </section>
