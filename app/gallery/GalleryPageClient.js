@@ -51,7 +51,7 @@ export default function GalleryPageClient() {
                   alt={item.alt}
                   fill
                   sizes="(min-width: 1024px) 24rem, (min-width: 640px) 50vw, 100vw"
-                  className="object-cover"
+                  className={`object-cover ${item.position === 'top' ? 'object-top' : ''}`}
                 />
               </span>
               <span className="mt-2 block text-base text-muted">{item.category}</span>

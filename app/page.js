@@ -123,8 +123,8 @@ export default function HomePage() {
         <div className="container-page grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
           <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
             <Image
-              src="/images/gallery/after-church-gathring.jpeg"
-              alt="Church members talking together after a Sunday service"
+              src="/images/venue/church-place.jpg"
+              alt="Our church hall on the 2nd floor of Murrayburn House, with the lectern, band and seating"
               fill
               sizes="(min-width: 1024px) 36rem, 100vw"
               className="object-cover"

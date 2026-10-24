@@ -72,8 +72,8 @@ export default function VisitPage() {
         eyebrow="Plan your visit"
         title="Everything you need for your first visit"
         intro="We want your first Sunday with us to feel straightforward and welcoming from the moment you arrive."
-        backgroundImage="/images/hero/church-activities.jpeg"
-        imageAlt="Church members gathered together at Victory House Chapel"
+        backgroundImage="/images/venue/church-premises.jpg"
+        imageAlt="Our church hall on the 2nd floor of Murrayburn House, set out for a Sunday service"
       >
         <a
           href={`https://www.google.com/maps/dir/?api=1&destination=${mapsQuery}`}

@@ -106,7 +106,7 @@ export default function AboutPage() {
       >
         <dl className="summary-list max-w-3xl">
           <div>
-            <dt>Lead Pastor</dt>
+            <dt>Head Pastor</dt>
             <dd>Rev. Kwarteng Boamah</dd>
           </div>
           {filled(siteConfig.charityNumber) ? (

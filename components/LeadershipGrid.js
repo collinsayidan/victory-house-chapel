@@ -3,7 +3,8 @@ import Image from 'next/image';
 import { filled } from '../content/siteContent';
 
 // Names, emails and phone numbers still marked "[Insert …]" are hidden,
-// so a card shows only the details the church has confirmed.
+// so a card shows only the details the church has confirmed. A leader
+// without a photo gets a branded placeholder tile.
 export default function LeadershipGrid({ leaders = [] }) {
   return (
     <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -15,23 +16,26 @@ export default function LeadershipGrid({ leaders = [] }) {
         return (
           <li key={leader.id} className="card overflow-hidden">
             <div className="relative aspect-square bg-surface">
-              <Image
-                src={leader.image}
-                alt={leader.alt}
-                fill
-                sizes="(min-width: 1024px) 24rem, (min-width: 640px) 50vw, 100vw"
-                className="object-cover"
-              />
+              {filled(leader.image) ? (
+                <Image
+                  src={leader.image}
+                  alt={leader.alt}
+                  fill
+                  sizes="(min-width: 1024px) 24rem, (min-width: 640px) 50vw, 100vw"
+                  className="object-cover object-top"
+                />
+              ) : (
+                <span className="bg-dots absolute inset-0 flex flex-col items-center justify-center gap-3 bg-navy-900 text-center">
+                  <span className="relative block h-16 w-16 rounded-xl bg-white">
+                    <Image src="/images/logo-mark.png" alt="" fill sizes="64px" className="object-contain p-1.5" />
+                  </span>
+                  <span className="text-sm font-bold uppercase tracking-[0.2em] text-gold-300">Photo coming soon</span>
+                </span>
+              )}
             </div>
             <div className="p-5">
-              {name ? (
-                <>
-                  <p className="text-base font-semibold text-gold-800">{leader.role}</p>
-                  <h3 className="mt-1 text-xl">{name}</h3>
-                </>
-              ) : (
-                <h3 className="text-xl">{leader.role}</h3>
-              )}
+              <h3 className="text-xl">{leader.role}</h3>
+              {name ? <p className="mt-1 text-lg font-semibold text-gold-800">{name}</p> : null}
               {email || phone ? (
                 <dl className="mt-3 space-y-1 text-base">
                   {email ? (
